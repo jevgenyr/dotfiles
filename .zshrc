@@ -1,8 +1,14 @@
+# Frederic's .zsrhc
+# https://github.com/kiasaki/dotfiles
+
 # oh-my-zsh
 export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="amuse"
 DISABLE_CORRECTION="true"
 source $ZSH/oh-my-zsh.sh
+
+# load aliases
+source $HOME/.aliases
 
 # plugins
 plugins=(git)
