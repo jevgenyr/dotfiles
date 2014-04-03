@@ -1,0 +1,20 @@
+#!/bin/sh
+
+brew tap phinze/homebrew-cask
+brew install brew-cask
+
+brew cask install dropbox
+brew cask install google-chrome
+brew cask install alfred
+brew cask install cyberduck
+brew cask install gimp
+brew cask install hipchat
+brew cask install iterm2
+brew cask install mamp
+brew cask install mou
+brew cask install pgadmin3
+brew cask install prepros
+brew cask install sequel-pro
+brew cask install skype
+brew cask install sublime-text
+brew cask install virtualbox 
