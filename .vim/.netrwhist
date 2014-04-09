@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/Users/kiasaki'
+let g:netrw_dirhist_2='/Users/kiasaki/dotfiles'
+let g:netrw_dirhist_3='/Users/kiasaki/Code/GitRepos/belighted/sites-internes'
+let g:netrw_dirhist_4='/Users/kiasaki/Code/GitRepos/belighted/sites-internes/app'
+let g:netrw_dirhist_5='/Users/kiasaki/Code/GitRepos/belighted/sites-internes/app/services'
+let g:netrw_dirhist_6='/Users/kiasaki/Code/GitRepos/belighted/sites-internes/app/services/search'
+let g:netrw_dirhist_7='/Users/kiasaki/Code/GitRepos/belighted/sites-internes/app/services'
+let g:netrw_dirhist_8='/Users/kiasaki/Code/GitRepos/belighted/sites-internes/app/services/admin'
+let g:netrw_dirhist_9='/Users/kiasaki/Code/GitRepos/belighted/sites-internes/app/services/admin/forms'
