@@ -30,7 +30,7 @@ set expandtab " ^ (spaces)
 
 " UI
 set background=dark
-colorscheme solarized
+colorscheme marslo16
 set modeline
 set modelines=4
 set laststatus=2 " always have status shown
