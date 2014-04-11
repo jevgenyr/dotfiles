@@ -1,6 +1,8 @@
 # Frederic's .zsrhc
 # https://github.com/kiasaki/dotfiles
 
+eval "$(rbenv init - --no-rehash)"
+
 # oh-my-zsh
 export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="../../dotfiles/my_zsh_theme"
@@ -15,6 +17,7 @@ export PATH="$(brew --prefix josegonzalez/php/php55)/bin:$PATH"
 export PATH="$HOME/.bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="./bin:$PATH"
 
 # env vars
 export LANGUAGE=en_US.UTF-8
@@ -24,7 +27,6 @@ export EDITOR=vim
 
 # aditionnal sources
 source $HOME/.aliases
-eval "$(rbenv init - --no-rehash)"
 
 # ssh agent
 SSH_ENV=$HOME/.ssh/environment
