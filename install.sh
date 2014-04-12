@@ -25,13 +25,20 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
 fi
 
 DOTFILES="$HOME/dotfiles"
-if [ ! -L "$HOME/.tmux.conf" ]; then
-	ln -s $DOTFILES/.zshrc $HOME/.zshrc
-	ln -s $DOTFILES/.tmux.conf $HOME/.tmux.conf
-	ln -s $DOTFILES/.gitconfig $HOME/.gitconfig
-	ln -s $DOTFILES/.hushlogin $HOME/.hushlogin
-	ln -s $DOTFILES/.vimrc $HOME/.vimrc
-	ln -s $DOTFILES/.vim $HOME/.vim
-fi
+
+rm $HOME/.zshrc
+rm $HOME/.tmux.conf
+rm $HOME/.gitconfig
+rm $HOME/.hushlogin
+rm $HOME/.vimrc
+rm $HOME/.aliases
+rm -r $HOME/.vim
+ln -s $DOTFILES/.zshrc $HOME/.zshrc
+ln -s $DOTFILES/.tmux.conf $HOME/.tmux.conf
+ln -s $DOTFILES/.gitconfig $HOME/.gitconfig
+ln -s $DOTFILES/.hushlogin $HOME/.hushlogin
+ln -s $DOTFILES/.vimrc $HOME/.vimrc
+ln -s $DOTFILES/.aliases $HOME/.aliases
+ln -s $DOTFILES/.vim $HOME/.vim
 
 echo "All done mista!"
