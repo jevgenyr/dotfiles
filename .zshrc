@@ -25,6 +25,10 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export EDITOR=vim
 
+export GOPATH=$HOME/Code/GitRepos/gowork
+export GOROOT=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+
 # aditionnal sources
 source $HOME/.aliases
 

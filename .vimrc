@@ -26,6 +26,9 @@ set tabstop=2 " Tab by two
 set shiftwidth=2 " ^
 set expandtab " ^ (spaces)
 
+set splitbelow " More natural window splits
+set splitright
+
 " Font
 
 " UI
@@ -38,6 +41,7 @@ set number " line numbers
 set cursorline " hightlight current line
 set lcs=tab:▸\ ,trail:·,nbsp:_ "Show invisibles
 set hlsearch " highlight searches
+set incsearch " highlight first match
 set ruler " show the cursor position
 set showcmd " show the (partial) command as it’s being typed
 set showmode " show the current mode
@@ -51,6 +55,11 @@ set mouse=a " mouse in all modes
 set backspace=indent,eol,start " allow bckspace in insert
 set esckeys " allow cursor keys in insert mode
 noremap <leader>W :w !sudo tee % > /dev/null<CR> " save a file as root (,W)
+
+nnoremap <C-J> <C-W><C-J> " Map Ctrl+hjkl to move around splits
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 " Specifics
 filetype plugin indent on

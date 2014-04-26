@@ -1,3 +1,4 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
-let g:netrw_dirhist_1='/Users/kiasaki/Code/GitRepos/anekdotes/solutions'
+let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_1='/Users/kiasaki/Code/GitRepos/belighted/nomadsuite/engines/bs/nomad_core/app/models/nomad/core'
+let g:netrw_dirhist_2='/Users/kiasaki/Code/GitRepos/belighted/nomadsuite/engines/bs/nomad_core/app/models/nomad/core/bs'
