@@ -33,7 +33,7 @@ set splitright
 
 " UI
 set background=dark
-colorscheme marslo16
+colorscheme railscat
 set modeline
 set modelines=4
 set laststatus=2 " always have status shown

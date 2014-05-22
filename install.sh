@@ -1,37 +1,35 @@
 #!/bin/sh
 
-if [ ! -d "$HOME/.bin" ]; then
-	mkdir "$HOME/.bin"
-fi
-if [ ! -d "$HOME/dev" ]; then
-	mkdir "$HOME/dev"
-fi
-if [ ! -d "$HOME/code" ]; then
-	mkdir "$HOME/code"
+code="$HOME/code"
+
+for directory in $code "$HOME/.bin" "$code/dev" "$code/repos" "$code/libs"; do
+	if [ ! -d $directory ]; then
+		mkdir $directory
+	fi
+done
+
+if [[ ! `uname` == 'Darwin' ]]; then
+	sudo apt-get install vim git curl zsh php5 php5-json
 fi
 
-sudo apt-get install vim git curl zsh php5 php5-json
-
-cd "$HOME/dev"
 rm "$HOME/.bin/composer"
+cd "$code/dev"
 curl -sS https://getcomposer.org/installer | php
-cd "$HOME/.bin"
-ln -s $HOME/dev/composer.phar composer
+ln -s $code/dev/composer.phar $HOME/.bin/composer
 
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
 	curl -L http://install.ohmyz.sh | sh
-	sudo chsh -s $(which zsh) kiasaki
+	sudo chsh -s $(which zsh) $(whoami)
 	rm $HOME/.zshrc
 fi
 
-DOTFILES="$HOME/dotfiles"
-if [ ! -L "$HOME/.tmux.conf" ]; then
-	ln -s $DOTFILES/.zshrc $HOME/.zshrc
-	ln -s $DOTFILES/.tmux.conf $HOME/.tmux.conf
-	ln -s $DOTFILES/.gitconfig $HOME/.gitconfig
-	ln -s $DOTFILES/.hushlogin $HOME/.hushlogin
-	ln -s $DOTFILES/.vimrc $HOME/.vimrc
-	ln -s $DOTFILES/.vim $HOME/.vim
-fi
+DOTFILES="$HOME/dotfiles/tolink"
 
-echo "All done mista!"
+for file in $(ls $DOTFILES); do
+	if [ ! -L "$HOME/.$file" ]; then
+		echo "Linking $file"
+		ln -s $DOTFILES/$file $HOME/.$file
+	fi
+done
+
+echo "All done master!"

@@ -1,15 +1,13 @@
-# Easier navigation: .., ..., ...., ....., and ~
+# Easier navigation: .., ..., and ~
 alias ..="cd .."
 alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
 alias ~="cd ~"
 
 # Shortcuts
 alias d="cd ~/Dropbox"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
-alias p="cd ~/Code/GitRepos"
+alias p="cd ~/code/repos"
 
 # Ruby on Rails
 alias b='bundle'
@@ -84,14 +82,6 @@ alias mergepdf='/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Re
 # Ring the terminal bell, and put a badge on Terminal.app’s Dock icon
 # (useful when executing time-consuming commands)
 alias badge="tput bel"
-
-# Stuff I never really use but cannot delete either because of http://xkcd.com/530/
-alias stfu="osascript -e 'set volume output muted true'"
-alias pumpitup="osascript -e 'set volume 7'"
-
-# Kill all the tabs in Chrome to free up memory
-# [C] explained: http://www.commandlinefu.com/commands/view/402/exclude-grep-from-your-grepped-output-of-ps-alias-included-in-description
-alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
 
 # Lock the screen (when going AFK)
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"

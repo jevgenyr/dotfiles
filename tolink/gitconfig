@@ -2,7 +2,7 @@
 	ui = true
 [core]
 	editor = vim
-	excludesfile = /Users/kiasaki/.gitignore_global
+	excludesfile = $HOME/.gitignore_global
 [user]
 	name = Frederic Gingras
 	email = frederic@gingras.cc
