@@ -1,9 +1,0 @@
-export MAILGUN_API_KEY=""
-export MAILGUN_DOMAIN=""
-
-export MG_USERNAME=""
-export MG_PASSWORD=""
-export MG_DOMAIN=""
-
-export DIGITAL_OCEAN_CLIENT=""
-export DIGITAL_OCEAN_KEY=""
