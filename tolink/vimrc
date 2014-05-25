@@ -61,7 +61,9 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-nnoremap <leader>t <c-p>
+" Ctrl P remapsz
+nnoremap <leader>t :CtrlP<enter>
+nnoremap <C-t> :CtrlP<enter>
 
 " Specifics
 filetype plugin indent on
@@ -89,6 +91,20 @@ function! StripWhitespace()
   call setreg('/', old_query)
 endfunction
 noremap <leader>ss :call StripWhitespace()<CR>
+
+" Fancy RSpec runner
+" Credits: http://blog.santosvelasco.com/2012/07/04/vim-and-rspec-run-the-test-under-the-cursor/
+function! RSpecFile()
+  execute("!clear && rspec " . expand("%p"))
+endfunction
+map <leader>R :call RSpecFile() <CR>
+command! RSpecFile call RSpecFile()
+
+function! RSpecCurrent()
+  execute("!clear && rspec " . expand("%p") . ":" . line("."))
+endfunction
+map <leader>r :call RSpecCurrent() <CR>
+command! RSpecCurrent call RSpecCurrent()
 
 " Automatic commands
 if has("autocmd")
