@@ -51,10 +51,13 @@ set scrolloff=6 " scroll page when at 6 line of end/top
 
 " Commands
 let mapleader="," " have a better leader
-set mouse=a " mouse in all modes
+"set mouse=a " mouse in all modes
 set backspace=indent,eol,start " allow bckspace in insert
-set esckeys " allow cursor keys in insert mode
+"set esckeys " allow cursor keys in insert mode
 noremap <leader>W :w !sudo tee % > /dev/null<CR> " save a file as root (,W)
+noremap <leader>bi :! bundle install<CR>
+noremap <leader>r :! rake<CR>
+noremap <leader>cu :! cucumber<CR>
 
 nnoremap <C-J> <C-W><C-J> " Map Ctrl+hjkl to move around splits
 nnoremap <C-K> <C-W><C-K>
@@ -91,6 +94,7 @@ function! StripWhitespace()
   call setreg('/', old_query)
 endfunction
 noremap <leader>ss :call StripWhitespace()<CR>
+noremap <leader>nt :NERDTree
 
 " Fancy RSpec runner
 " Credits: http://blog.santosvelasco.com/2012/07/04/vim-and-rspec-run-the-test-under-the-cursor/
