@@ -8,5 +8,3 @@
 	email = frederic@gingras.cc
 [push]
 	default = simple
-[credential]
-	helper = osxkeychain
