@@ -33,3 +33,6 @@ source $HOME/.aliases
 source $HOME/.env
 
 cd $HOME/code/repos
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"

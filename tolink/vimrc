@@ -79,9 +79,9 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 set showtabline=2
-nnoremap <C-o> :tab split<CR>
-nnoremap <C-u> :tabp<CR>
-nnoremap <C-i> :tabn<CR>
+nnoremap <C-y> :tab split<CR>
+nnoremap <C-i> :tabp<CR>
+nnoremap <C-o> :tabn<CR>
 
 " Specifics
 filetype plugin indent on
