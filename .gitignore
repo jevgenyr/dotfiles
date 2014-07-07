@@ -1,4 +1,6 @@
 .DS_Store
 tolink/vim/.netrwhist
 tolink/vim/swaps
+tolink/vim/undo
+tolink/vim/backups
 tolink/vim/.VimballRecord

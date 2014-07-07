@@ -38,8 +38,10 @@ set foldlevel=1         "this is just what i use
 " Font
 
 " UI
+let g:solarized_termcolors=256
+syntax enable
 set background=dark
-colorscheme railscat
+colorscheme solarized
 set modeline
 set modelines=4
 set laststatus=2 " always have status shown

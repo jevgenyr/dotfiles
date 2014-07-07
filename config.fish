@@ -42,7 +42,7 @@ function fish_prompt
 
    echo #space between commands
 
-   set_color yellow
+   set_color cyan
    printf '%s' (whoami)
    set_color normal
    printf ' at '
