@@ -38,7 +38,8 @@ set foldlevel=1         "this is just what i use
 " Font
 
 " UI
-colorscheme jellybeans
+set t_Co=256
+colorscheme molokai
 set modeline
 set modelines=4
 set laststatus=2 " always have status shown
