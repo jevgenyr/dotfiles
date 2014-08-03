@@ -2,6 +2,10 @@
 
 export PATH="~/.bin:/usr/local/bin:$PATH"
 
+export GOPATH=$HOME/code/go
+export GOROOT=$HOME/code/dev/go
+export PATH=$PATH:$GOROOT/bin
+
 export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
