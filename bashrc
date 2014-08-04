@@ -1,6 +1,6 @@
 # Basic VM Bashrc
 
-export PATH="~/.bin:/usr/local/bin:$PATH"
+export PATH="~/.bin:.:/usr/local/bin:$PATH"
 
 export GOPATH=$HOME/code/go
 export GOROOT=$HOME/code/dev/go
