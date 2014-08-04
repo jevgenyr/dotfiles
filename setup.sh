@@ -10,7 +10,7 @@ else
   echo "Installing: Curl"
   sudo apt-get install curl
 fi
-if command_exists curl; then
+if command_exists git; then
   echo "Skipping: Git already installed"
 else
   echo "Installing: Git"
@@ -28,13 +28,10 @@ for directory in $code "$HOME/.bin" "$code/dev" "$code/repos" "$code/libs"; do
 done
 
 # Setup shell & dotfiles
-for file in "bashrc" "tmux.conf" "vimrc" "vim" "gitconfig"; do
-  if [[ ! -a "$HOME/.$file" ]]; then
-    ln -s "$HOME/dotfiles/$file" "$HOME/.$file"
-    echo "Installing: Linking file .$file"
-  else
-    echo "Skipping: File $file alredy linked"
-  fi
+for file in "bashrc" "tmux.conf" "vimrc" "vim" "gitconfig" "bash_profile"; do
+  rm -f "$HOME/.$file"
+  ln -s "$HOME/dotfiles/$file" "$HOME/.$file"
+  echo "Installing: Linking file .$file"
 done
 for file in "$HOME/.env" "$HOME/.hushlogin"; do
   if [ ! -f $file ]; then
