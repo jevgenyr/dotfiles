@@ -66,6 +66,7 @@ noremap <leader>r :! rake<CR>
 noremap <leader>cuk :! cucumber<CR>
 noremap <leader>cu :! composer update<CR>
 noremap <leader>ci :! composer install<CR>
+noremap <leader>hh :! hh_client<CR>
 noremap <leader>pu :! phpunit<CR>
 
 noremap <leader>nt :NERDTree<CR>
