@@ -25,6 +25,7 @@ alias gb='git branch'
 alias gs='git status -sb'
 
 alias op='xdg-open .'
+alias clean='find . -name "*.DS_Store" -type f -delete'
 
 blk='\[\e[0;30m\]' # Black - Regular
 red='\[\e[0;31m\]' # Red
