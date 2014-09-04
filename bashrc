@@ -5,6 +5,8 @@ export PATH="~/.bin:.:/usr/local/bin:$PATH"
 export GOPATH=$HOME/code/go
 export GOROOT=$HOME/code/dev/go
 export PATH=$PATH:$GOROOT/bin
+export PATH=$PATH:$GOPATH/bin
+export wd=$GOPATH/src/github.com/kiasaki
 
 export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8
