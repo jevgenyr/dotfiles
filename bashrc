@@ -46,15 +46,15 @@ function git_info {
     echo `git status` | grep "nothing to commit" > /dev/null 2>&1
     if [ "$?" -eq "0" ]; then
       # @4 - Clean repository - nothing to commit
-      echo -e "\e[0;32m$(printf '(%s)' $__git_branch)"
+      echo "$(printf '(%s)' $__git_branch)"
     else
       # @5 - Changes to working tree
-      echo -e "\e[0;31m$(printf '(%s)' $__git_branch)"
+      echo "<!> $(printf '(%s)' $__git_branch)"
     fi
   fi
 }
 
-export PS1="$cyn\u$wht at $cyn\h$wht in $ylw\W "'$(git_info)'"\n$grn[\$?]$wht $ $rst"
+export PS1="$cyn\u$wht at $cyn\h$wht in $ylw\W $grn"'$(git_info)'"\n$grn[\$?]$wht $ $rst"
 #export PS1='\[\e]0;\w\a\]\n\[\e[32m\]\u@\h: \[\e[33m\]\w\[\e[0m\]\n\$ '
 
 source $HOME/.env
