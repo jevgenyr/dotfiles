@@ -2,6 +2,7 @@
 
 export PATH="~/.bin:.:/usr/local/bin:$PATH"
 
+# Go
 export GOPATH=$HOME/code/go
 export GOROOT=$HOME/code/dev/go
 export PATH=$PATH:$GOROOT/bin
@@ -14,6 +15,7 @@ export LC_ALL=en_US.UTF-8
 export EDITOR=vim
 export APP_ENV=development
 
+# Git aliases
 alias gaa='git add --all'
 alias gc='git commit'
 alias gp='git push origin HEAD'
@@ -43,18 +45,20 @@ function git_info {
   git rev-parse --is-inside-work-tree &> /dev/null;
   if [ $? -eq 0 ]; then
     __git_branch="`git branch 2> /dev/null | grep -e ^* | sed 's/* //'`"
+    echo "$(printf '(%s)' $__git_branch)"
+  fi
+}
+function git_changes {
+  git rev-parse --is-inside-work-tree &> /dev/null;
+  if [ $? -eq 0 ]; then
     echo `git status` | grep "nothing to commit" > /dev/null 2>&1
-    if [ "$?" -eq "0" ]; then
-      # @4 - Clean repository - nothing to commit
-      echo "$(printf '(%s)' $__git_branch)"
-    else
-      # @5 - Changes to working tree
-      echo "<!> $(printf '(%s)' $__git_branch)"
+    if [ $? -ne 0 ]; then
+      echo '<!> '
     fi
   fi
 }
 
-export PS1="$cyn\u$wht at $cyn\h$wht in $ylw\W $grn"'$(git_info)'"\n$grn[\$?]$wht $ $rst"
+export PS1="$cyn\u$wht at $cyn\h$wht in $ylw\W $red"'$(git_changes)'"$grn"'$(git_info)'"\n$grn[\$?]$wht $ $rst"
 #export PS1='\[\e]0;\w\a\]\n\[\e[32m\]\u@\h: \[\e[33m\]\w\[\e[0m\]\n\$ '
 
 source $HOME/.env
