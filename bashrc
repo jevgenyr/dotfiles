@@ -13,7 +13,6 @@ export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export EDITOR=vim
-export APP_ENV=development
 
 # Git aliases
 alias gaa='git add --all'
@@ -27,6 +26,7 @@ alias gco='git checkout'
 alias gcm='git checkout master'
 alias gb='git branch'
 alias gs='git status -sb'
+alias gfr='git fetch && git rebase'
 
 alias op='xdg-open .'
 alias clean='find . -name "*.DS_Store" -type f -delete'
@@ -58,9 +58,11 @@ function git_changes {
   fi
 }
 
+# Nice PS1 line
 export PS1="$cyn\u$wht at $cyn\h$wht in $ylw\W $red"'$(git_changes)'"$grn"'$(git_info)'"\n$grn[\$?]$wht $ $rst"
-#export PS1='\[\e]0;\w\a\]\n\[\e[32m\]\u@\h: \[\e[33m\]\w\[\e[0m\]\n\$ '
 
+# Those are computer specific config / secrets
 source $HOME/.env
 
+# Get closer to projects
 cd $HOME/code/repos
