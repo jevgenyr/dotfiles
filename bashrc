@@ -28,6 +28,7 @@ alias gb='git branch'
 alias gs='git status -sb'
 alias gfr='git fetch && git rebase'
 
+alias be='bundle exec '
 alias op='xdg-open .'
 alias clean='find . -name "*.DS_Store" -type f -delete'
 
