@@ -92,6 +92,9 @@ if exists("&undodir")
   set undodir=~/.vim/undo
 endif
 
+" NerdTree ignore those ugly __pycache__
+let NERDTreeIgnore=['\.DS_Store$', '\.vim$', '__pycache__', '.git']
+
 " Buffer explorer config
 let g:bufExplorerShowRelativePath=1
 
