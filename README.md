@@ -20,5 +20,10 @@ Mostly config for the following:
 
 - Vim
 - Git
+- Git helpers
 - Bash shell
+- Bash aliases and shortcuts
 - tmux
+- Ruby
+- Python
+- Go
