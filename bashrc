@@ -59,6 +59,25 @@ function git_changes {
   fi
 }
 
+# Python helpers
+#####
+
+# New virtual env
+export VENV_PYTHON=$HOME/code/dev/pypy/bin/pypy
+export VENV_HOME=$HOME/code/venv
+function venvn {
+  if [[ ! -d $VENV_HOME ]]; then
+    mkdir -p $VENV_HOME
+  fi
+  (cd $VENV_HOME && virtualenv --python=$VENV_PYTHON $1)
+}
+# Activate specific virtual env
+function venva {
+  . "$HOME/code/venv/$1/bin/activate"
+}
+# Deactivate shortcut
+alias venvd='deactivate'
+
 # Nice PS1 line
 export PS1="$cyn\u$wht at $cyn\h$wht in $ylw\W $red"'$(git_changes)'"$grn"'$(git_info)'"\n$grn[\$?]$wht $ $rst"
 
