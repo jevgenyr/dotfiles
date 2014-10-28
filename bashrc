@@ -86,3 +86,6 @@ source $HOME/.env
 
 # Get closer to projects
 cd $HOME/code/repos
+
+export NVM_DIR="/Users/kiasaki/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
