@@ -1,0 +1,9 @@
+\set QUIET
+\set ON_ERROR_ROLLBACK interactive
+\timing on
+\pset linestyle unicode
+\pset border 1
+\pset null ¤
+\pset format wrapped
+\pset expanded auto
+\unset QUIET
