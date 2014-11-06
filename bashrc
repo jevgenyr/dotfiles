@@ -28,6 +28,7 @@ alias gb='git branch'
 alias gs='git status -sb'
 alias gfr='git fetch && git rebase'
 
+alias ll='ls -la'
 alias be='bundle exec '
 alias op='xdg-open .'
 alias clean='find . -name "*.DS_Store" -type f -delete'
@@ -89,3 +90,6 @@ cd $HOME/code/repos
 
 export NVM_DIR="/Users/kiasaki/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
