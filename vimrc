@@ -2,6 +2,12 @@
 " https://github.com/kiasaki/dotfiles
 call pathogen#infect()
 
+call plug#begin()
+Plug 'airblade/vim-gitgutter'
+Plug 'bling/vim-airline'
+Plug 'junegunn/goyo.vim'
+call plug#end()
+
 " Behaviors
 syntax on
 set hidden
