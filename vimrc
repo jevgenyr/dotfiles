@@ -6,6 +6,7 @@ call plug#begin()
 Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
 Plug 'junegunn/goyo.vim'
+Plug 'editorconfig/editorconfig-vim'
 call plug#end()
 
 " Behaviors
