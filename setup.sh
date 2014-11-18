@@ -18,7 +18,7 @@ else
 fi
 
 code=$HOME/code
-for directory in $code "$HOME/.bin" "$code/dev" "$code/repos" "$code/libs"; do
+for directory in $code "$HOME/.bin" "$HOME/pgdata" "$code/dev" "$code/repos" "$code/libs"; do
   if [[ ! -d $directory ]]; then
     mkdir $directory
     echo "Installing: Creating directory $directory"
