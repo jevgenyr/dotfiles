@@ -12,6 +12,9 @@ Plug 'wakatime/vim-wakatime'
 Plug 'ervandew/supertab'
 Plug 'kien/ctrlp.vim'
 Plug 'bufexplorer.zip'
+Plug 'tpope/vim-fugitive'
+Plug 'junegunn/vim-easy-align'
+
 " Languages
 Plug 'fatih/vim-go'
 Plug 'hhvm/vim-hack'
@@ -25,6 +28,7 @@ Plug 'evidens/vim-twig'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'slim-template/vim-slim'
 Plug 'mustache/vim-mustache-handlebars'
+Plug 'saltstack/salt-vim'
 call plug#end()
 
 " Behaviors
@@ -116,6 +120,15 @@ set directory=~/.vim/swaps " centralize
 if exists("&undodir")
   set undodir=~/.vim/undo
 endif
+
+" plugin: vim-easy-align
+" Alignment of = : , etc.
+vnoremap <silent> <Enter> :EasyAlign<Enter>
+
+" plugin: vim-fugitive
+nmap <leader>gs :Gstatus<CR>
+nmap <leader>gc :Gcommit<CR>
+nmap <leader>gp :Git push<CR>
 
 " NerdTree ignore those ugly __pycache__
 let NERDTreeIgnore=['\.DS_Store$', '\.vim$', '__pycache__', '.git']

@@ -17,7 +17,7 @@ export EDITOR=vim
 
 
 #####
-# Git helpers
+# Git aliases
 #####
   alias gaa='git add --all'
   alias gc='git commit'
@@ -32,6 +32,11 @@ export EDITOR=vim
   alias gs='git status -sb'
   alias gfr='git fetch && git rebase'
 
+#####
+# Ansible aliases
+#####
+  alias asv='ansible-vault '
+  alias asp='ansible-playbook --ask-vault-pass -v '
 
 #####
 # Postgres helpers
