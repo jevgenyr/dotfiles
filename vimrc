@@ -55,6 +55,11 @@ set tabstop=2 " Tab by two
 set shiftwidth=2 " ^
 set expandtab " ^ (spaces)
 
+set scrolloff=6 " scroll page when at 6 line of end/top
+" Ctrl+U Ctrl+D speed
+autocmd VimEnter * autocmd WinEnter * let w:created=1
+autocmd WinEnter * if !exists('w:created') | setlocal scroll=6 | endif
+
 set splitbelow " More natural window splits
 set splitright
 
@@ -82,7 +87,6 @@ set showcmd " show the (partial) command as it’s being typed
 set showmode " show the current mode
 set title " Show the filename in the window titlebar
 set list " show whitespace
-set scrolloff=6 " scroll page when at 6 line of end/top
 
 " Commands
 let mapleader="," " have a better leader
