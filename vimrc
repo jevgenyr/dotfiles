@@ -6,6 +6,7 @@ call plug#begin()
 Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
 Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'wakatime/vim-wakatime'
@@ -55,10 +56,8 @@ set tabstop=2 " Tab by two
 set shiftwidth=2 " ^
 set expandtab " ^ (spaces)
 
+set scroll=8 " Ctrl+U Ctrl+D speed
 set scrolloff=6 " scroll page when at 6 line of end/top
-" Ctrl+U Ctrl+D speed
-autocmd VimEnter * autocmd WinEnter * let w:created=1
-autocmd WinEnter * if !exists('w:created') | setlocal scroll=6 | endif
 
 set splitbelow " More natural window splits
 set splitright
@@ -87,6 +86,7 @@ set showcmd " show the (partial) command as it’s being typed
 set showmode " show the current mode
 set title " Show the filename in the window titlebar
 set list " show whitespace
+set gfn=Menlo:h14 " GUI font
 
 " Commands
 let mapleader="," " have a better leader
@@ -102,7 +102,7 @@ noremap <leader>ci :! composer install<CR>
 noremap <leader>hh :! hh_client<CR>
 noremap <leader>pu :! phpunit<CR>
 
-noremap <leader>nt :NERDTree<CR>
+noremap <leader>nt :NERDTreeToggle<CR>
 " Ctrl P remapsz
 nnoremap <leader>t :CtrlP<enter>
 nnoremap <C-t> :CtrlP<enter>
@@ -134,10 +134,23 @@ nmap <leader>gs :Gstatus<CR>
 nmap <leader>gc :Gcommit<CR>
 nmap <leader>gp :Git push<CR>
 
-" NerdTree ignore those ugly __pycache__
-let NERDTreeIgnore=['\.DS_Store$', '\.vim$', '__pycache__', '.git']
+" plugin: bling/vim-airline
+set laststatus=2
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+let g:airline#extensions#hunks#non_zero_only = 1
+let g:airline#extensions#whitespace#enabled = 0
 
-" Buffer explorer config
+" plugin: goyo + limelight
+autocmd User GoyoEnter Limelight
+autocmd User GoyoLeave Limelight!
+nnoremap <Leader>z :Goyo<CR>
+nnoremap <Leader>x :Limelight!!<CR>
+
+" plugin: nerdtree (hide those ugly __pycache__)
+let NERDTreeIgnore=['\.DS_Store$', '\.vim$', '__pycache__', '.git', 'node_modules']
+
+" plugin: bufexplorer
 let g:bufExplorerShowRelativePath=1
 
 " Use relative line numbers
@@ -176,4 +189,6 @@ if has("autocmd")
   filetype on
   " Treat .json files as .js
   autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
+  " Set ft to markdown for all known markdown file endings
+  autocmd BufNewFile,BufRead *.{md,markdown,mdown,mkd,mkdn,txt} setfiletype markdown syntax=markdown
 endif
