@@ -16,9 +16,9 @@ else
   echo "Installing: Git"
   sudo apt-get install git
 fi
-if [[ ! -d "$HOME/.cask"]]; then
+if [[ ! -d "$HOME/.cask" ]]; then
   echo "Installing: Cask"
-  curl -fsSkL https://raw.github.com/cask/cask/master/go | python
+  `curl -fsSkL https://raw.github.com/cask/cask/master/go | python`
 else
   echo "Skipping: Cask already installed"
 fi
@@ -34,8 +34,8 @@ for directory in $code "$HOME/.bin" "$HOME/pgdata" "$code/dev" "$code/repos" "$c
 done
 
 # Setup shell & dotfiles
-for file in "bashrc" "tmux.conf" "vimrc" "vim" "gitconfig" "bash_profile" "psqlrc" "emacs" "emacs.d"; do
-  rm -f "$HOME/.$file"
+for file in "bashrc" "tmux.conf" "vimrc" "vim" "gitconfig" "bash_profile" "psqlrc" "emacs.d"; do
+  rm -rf "$HOME/.$file"
   ln -s "$HOME/dotfiles/$file" "$HOME/.$file"
   echo "Installing: Linking file .$file"
 done

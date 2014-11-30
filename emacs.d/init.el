@@ -5,8 +5,8 @@
 (cask-initialize)
 
 ;; Require config files
-(load-file "Deviant-theme.el")
-(load-file "sticky-window.el")
+(load-file "~/emacs.d/Deviant-theme.el")
+(load-file "~/emacs.d/sticky-window.el")
 
 ;; -------------
 ;; Behaviors
