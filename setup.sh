@@ -1,7 +1,7 @@
 #!/bin/bash
 
 command_exists () {
-  type "$1" &> /dev/null ;
+  type "$1" &> /dev/null;
 }
 
 if command_exists curl; then
@@ -16,6 +16,12 @@ else
   echo "Installing: Git"
   sudo apt-get install git
 fi
+if [[ ! -d "$HOME/.cask"]]; then
+  echo "Installing: Cask"
+  curl -fsSkL https://raw.github.com/cask/cask/master/go | python
+else
+  echo "Skipping: Cask already installed"
+fi
 
 code=$HOME/code
 for directory in $code "$HOME/.bin" "$HOME/pgdata" "$code/dev" "$code/repos" "$code/libs"; do
@@ -28,11 +34,12 @@ for directory in $code "$HOME/.bin" "$HOME/pgdata" "$code/dev" "$code/repos" "$c
 done
 
 # Setup shell & dotfiles
-for file in "bashrc" "tmux.conf" "vimrc" "vim" "gitconfig" "bash_profile" "psqlrc"; do
+for file in "bashrc" "tmux.conf" "vimrc" "vim" "gitconfig" "bash_profile" "psqlrc" "emacs" "emacs.d"; do
   rm -f "$HOME/.$file"
   ln -s "$HOME/dotfiles/$file" "$HOME/.$file"
   echo "Installing: Linking file .$file"
 done
+
 for file in "$HOME/.env" "$HOME/.hushlogin"; do
   if [ ! -f $file ]; then
     touch $file

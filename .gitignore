@@ -1,7 +1,13 @@
 .DS_Store
+
 vim/.netrwhist
 vim/swaps
 vim/undo
 vim/backups
 vim/.VimballRecord
 vim/plugged
+
+emacs.d/.cask
+.org-id-locations
+*~
+*#

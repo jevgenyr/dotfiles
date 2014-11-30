@@ -1,5 +1,7 @@
 # Mah verey own bashrc
 export PATH="~/.bin:.:/usr/local/bin:$PATH"
+# Put Cask in path for emacs
+export PATH="$HOME/.cask/bin:$PATH"
 
 export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8
