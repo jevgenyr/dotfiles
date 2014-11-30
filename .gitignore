@@ -8,6 +8,8 @@ vim/.VimballRecord
 vim/plugged
 
 emacs.d/.cask
+emacs.d/smex-items
+emacs.d/custom.el
 .org-id-locations
 *~
 *#

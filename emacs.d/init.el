@@ -5,14 +5,26 @@
 (cask-initialize)
 
 ;; Require config files
-(load-file "~/emacs.d/Deviant-theme.el")
-(load-file "~/emacs.d/sticky-window.el")
+(load-file "~/.emacs.d/Deviant-theme.el")
+(load-file "~/.emacs.d/sticky-window.el")
+
+;; Load custom settings to this machine
+(setq custom-file "~/.emacs.d/custom.el")
+(if (file-exists-p custom-file)
+    (load custom-file))
 
 ;; -------------
 ;; Behaviors
 ;; -------------
+;; File saving / backup optimizations
+(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+(setq delete-old-versions -1)
+(setq version-control t)
+(setq vc-make-backup-files t)
+(setq auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save-list/" t)))
 ;; Better search suggestions in minibuffer
-(ido-mode)
+(setq ido-enable-flex-matching t)
+(ido-mode +1)
 ;; No init screen, we know our stuff
 (setq inhibit-startup-screen +1)
 ;; Default scrolling is a bit wonky, fix it
@@ -39,12 +51,20 @@
 (global-set-key     [(control x) (?0)]        'sticky-window-delete-window)
 (global-set-key     [(control x) (?1)]        'sticky-window-delete-other-windows)
 (global-set-key     [(control x) (?9)]        'sticky-window-keep-window-visible)
+;; Plugin: smex (file opening)
+(global-set-key "\M-x" 'smex)
+;; Kill line shortcut
+(global-set-key (kbd "C-,") 'kill-whole-line)
+;; Plugin: Maggit keybindings
+(global-set-key (kbd "C-c g" 'magit-status)
 
 ;; -------------
 ;; Interface
 ;; -------------
+;; Let nyan show me the way
+(nyan-mode +1)
 ;; Load theme
-(load-theme 'Deviant t)
+(load-theme 'cyberpunk t)
 ;; Less clutter
 (when (window-system)
   (tool-bar-mode -1)
@@ -63,15 +83,3 @@
 (sml/apply-theme 'dark)
 (setq sml/shorten-directory t)
 (setq sml/shorten-modes t)
-
-;; File saving / backup optimizations
-(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
-(setq delete-old-versions -1)
-(setq version-control t)
-(setq vc-make-backup-files t)
-(setq auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save-list/" t)))
-
-;; Load custom settings to this machine
-(setq custom-file "~/.emacs.d/custom.el")
-(if (file-exists-p custom-file)
-    (load custom-file))

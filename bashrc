@@ -17,6 +17,7 @@ export EDITOR=vim
   alias op='xdg-open .'
   alias clean='find . -name "*.DS_Store" -type f -delete'
   alias em='emacs '
+  alias caskup='(cd $HOME/.emacs.d/; $HOME/.cask/bin/cask install)'
 
 
 #####

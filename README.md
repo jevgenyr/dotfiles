@@ -19,6 +19,7 @@ That's it, that's all. You are up and running with the best config possible (for
 Mostly config for the following:
 
 - Vim
+- Emacs
 - Git
 - Git helpers
 - Bash shell
