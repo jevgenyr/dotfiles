@@ -7,6 +7,10 @@ vim/backups
 vim/.VimballRecord
 vim/plugged
 
+emacs.d/eshell
+emacs.d/elpa
+emacs.d/url
+emacs.d/ido.last
 emacs.d/.cask
 emacs.d/smex-items
 emacs.d/custom.el
