@@ -5,7 +5,10 @@
 (setq user-mail-address "frederic@gingras.cc")
 
 ;; Include Common Lisp, emacs lisp being only a subset
-(eval-when-compile (require 'cl))
+(require 'cl)
+
+;; Add folders to load-path
+(add-to-list 'load-path "~/.emacs.d/vendor/")
 
 ;; Load custom settings to this machine
 (setq custom-file "~/.emacs.d/custom.el")
@@ -22,4 +25,5 @@
 (load-file "~/.emacs.d/init.d/keybindings.el")
 (load-file "~/.emacs.d/init.d/interface.el")
 (load-file "~/.emacs.d/init.d/languages.el")
+(load-file "~/.emacs.d/init.d/plugins.el")
 (load-file "~/.emacs.d/init.d/erc.el")

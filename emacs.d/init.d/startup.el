@@ -76,8 +76,3 @@
 (windmove-default-keybindings)
 ;; when cursor is on edge, move to the other side, as in a toroidal space
 (setq windmove-wrap-around t)
-
-;; Plugin: uniquify (ensure all buffer has unique
-;; names by including parent if needed)
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'forward)

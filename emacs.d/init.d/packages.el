@@ -28,11 +28,19 @@
 			   smex
 			   ;; Org mode (productivity apps)
 			   org
+			   ;; "C-p" sublime text like file/buffer/history opening
+			   projectile
+			   helm
+			   helm-projectile
+			   ;; Per project workspaces
+			   perspective
 			   ;; My theme
 			   solarized-theme
 			   
 			   ;; Languages major modes (self-explanatory)
 			   
+			   ;; Go
+			   go-mode
 			   ;; Ruby
 			   rvm
 			   coffee-mode

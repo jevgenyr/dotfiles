@@ -13,6 +13,7 @@
 
 ;; Use ibuffer to manage buffers
 (global-set-key (kbd "C-x C-b") 'ibuffer)
+(global-set-key (kbd "C-x b") 'ido-switch-buffer)
 
 ;; In file symbol navigation like "C-r" in Sublime Text
 (global-set-key (kbd "M-i") 'ido-goto-symbol)
