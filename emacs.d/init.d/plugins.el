@@ -23,3 +23,14 @@
 ;; (ensure all buffer has unique names by including parent if needed)
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
+
+;; Org Notes
+(setq org-directory "~/Dropbox/org")
+(setq org-default-notes-file (concat org-directory "/notes.org"))
+(define-key global-map (kbd "C-c c") 'org-capture)
+
+(setq org-capture-templates
+      '(("t" "Todo" entry (file+headline (concat org-directory "/gtd.org") "Tasks")
+             "* TODO %?\n  %i\n  %a")
+        ("j" "Journal" entry (file+datetree (concat org-directory "/journal.org"))
+             "* %?\nEntered on %U\n  %i\n  %a")))

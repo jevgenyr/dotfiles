@@ -1,9 +1,0 @@
-[color]
-	ui = true
-[core]
-	editor = vim
-[user]
-	name = Frederic Gingras
-	email = frederic@gingras.cc
-[push]
-	default = simple

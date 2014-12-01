@@ -3,7 +3,7 @@
 ;; Don't use messages that you don't read
 (setq initial-scratch-message "")
 (setq inhibit-startup-message t)
-(setq initial-major-mode 'org-mode)
+;;(setq initial-major-mode 'org-mode)
 
 ;; Less clutter (scollbars, menus, fs)
 (menu-bar-mode -1)
