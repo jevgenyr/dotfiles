@@ -19,6 +19,12 @@
 
 (rvm-use-default) ;; Enables rvm
 
+;; Stylus Mode
+(add-to-list 'auto-mode-alist '("\\.styl$" . stylus-mode))
+
+;; Jade Mode
+(add-to-list 'auto-mode-alist '("\\.jade$" . jade-mode))
+
 ;; YAML Mode
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode))

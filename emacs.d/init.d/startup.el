@@ -38,6 +38,7 @@
 ;; Tab width and use spaces
 (setq tab-width 2)
 (setq indent-tabs-mode nil)
+(setq indent-line-function 'insert-tab)
 
 ;; Turn off backupfiles, I don't use them so y even put then in a folder
 (setq make-backup-files nil)

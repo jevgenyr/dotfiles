@@ -8,6 +8,8 @@ vim/backups
 vim/.VimballRecord
 vim/plugged
 
+emacs.d/projectile.cache
+emacs.d/bookmarks
 emacs.d/eshell
 emacs.d/elpa
 emacs.d/url

@@ -24,6 +24,10 @@
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
 
+;; Activate elscreen
+;; kbdings: https://github.com/knu/elscreen
+(elscreen-start)
+
 ;; Org Notes
 (setq org-directory "~/Dropbox/org")
 (setq org-default-notes-file (concat org-directory "/notes.org"))
@@ -34,3 +38,4 @@
              "* TODO %?\n  %i\n  %a")
         ("j" "Journal" entry (file+datetree (concat org-directory "/journal.org"))
              "* %?\nEntered on %U\n  %i\n  %a")))
+

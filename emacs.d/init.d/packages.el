@@ -34,6 +34,8 @@
 			   helm-projectile
 			   ;; Per project workspaces
 			   perspective
+			   ;; Window session managment
+			   elscreen
 			   ;; My theme
 			   solarized-theme
 			   
@@ -46,12 +48,16 @@
 			   coffee-mode
 			   haml-mode
 			   yaml-mode
+			   ;; Nodejs
+			   stylus-mode
+			   jade-mode
 			   ;; PHP
 			   php-mode
 			   ;; Other
 			   web-mode
 			   markdown-mode
-			   twittering-mode)
+			   twittering-mode
+			   writeroom-mode)
   "Default packages")
 
 ;; Install default packages
