@@ -34,7 +34,7 @@ for directory in $code "$HOME/.bin" "$HOME/pgdata" "$code/dev" "$code/repos" "$c
 done
 
 # Setup shell & dotfiles
-for file in "bashrc" "tmux.conf" "vimrc" "vim" "gitconfig" "bash_profile" "psqlrc" "emacs.d"; do
+for file in "bashrc" "tmux.conf" "vimrc" "gvimrc" "vim" "gitconfig" "bash_profile" "psqlrc" "emacs.d"; do
   rm -rf "$HOME/.$file"
   ln -s "$HOME/dotfiles/$file" "$HOME/.$file"
   echo "Installing: Linking file .$file"

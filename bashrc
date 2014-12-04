@@ -8,6 +8,9 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export EDITOR=vim
 
+stty start undef
+stty stop undef
+
 
 #####
 # Aliases
