@@ -9,6 +9,7 @@ call pathogen#infect()
 call plug#begin()
 Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
+Plug 'edkolev/tmuxline.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'editorconfig/editorconfig-vim'
@@ -85,6 +86,8 @@ endif
 
 " Automatic commands
 if has("autocmd")
+  " Resize splits when the window is resized
+  autocmd VimResized * :wincmd =
   " Enable file type detection
   filetype on
   " Treat .json files as .js
@@ -176,6 +179,14 @@ let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline#extensions#hunks#non_zero_only = 1
 let g:airline#extensions#whitespace#enabled = 0
+let g:airline#extensions#tabline#enabled = 1
+" plugin: tmuxline
+let g:tmuxline_separators = {
+    \ 'left' : '',
+    \ 'left_alt': '>',
+    \ 'right' : '',
+    \ 'right_alt' : '<',
+    \ 'space' : ' '}
 
 " plugin: goyo + limelight
 autocmd User GoyoEnter Limelight
