@@ -21,6 +21,8 @@ Plug 'bufexplorer.zip'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/vim-easy-align'
 
+Plug 'Pychimp/vim-luna'
+
 " Languages
 Plug 'fatih/vim-go'
 Plug 'hhvm/vim-hack'
@@ -102,7 +104,7 @@ endif
 " #############################
 
 set t_Co=256                      " Use ALL the colors please
-colorscheme molokai               " Color theme
+colorscheme luna-term             " Color theme
 set modeline                      " Tell vim to parse those modelines
 set modelines=4                   " Modelines on mac default to 0, activate it
 set laststatus=2                  " always have status shown
@@ -182,6 +184,16 @@ let g:airline_right_sep = ''
 let g:airline#extensions#hunks#non_zero_only = 1
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='luna'
+let g:airline_theme_patch_func = 'AirlineThemePatch'
+function! AirlineThemePatch(palette)
+  if g:airline_theme == 'luna'
+    for colors in values(a:palette.inactive)
+      let colors[2] = 254 " text color
+      let colors[3] = 235 " bg
+    endfor
+  endif
+endfunction
 " plugin: tmuxline
 let g:tmuxline_separators = {
     \ 'left' : '',
