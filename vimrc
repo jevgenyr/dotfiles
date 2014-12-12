@@ -128,7 +128,7 @@ let &colorcolumn="80,".join(range(120,999),",")
 " Commands
 " #############################
 
-let mapleader="," " have a better leader
+let mapleader=" " " have a better leader
 set mouse=a " mouse in all modes
 set backspace=indent,eol,start " allow bckspace in insert
 set esckeys " breaks esc in sequences in insert mode but removes timeout
