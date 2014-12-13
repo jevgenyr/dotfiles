@@ -110,7 +110,7 @@ set modelines=4                   " Modelines on mac default to 0, activate it
 set laststatus=2                  " always have status shown
 set number                        " line numbers
 set cursorline                    " hightlight current line
-set lcs=tab:▸\ ,trail:·,nbsp:_    " Show invisibles
+set lcs=tab:˚\ ,trail:·,nbsp:_    " Show invisibles
 set hlsearch                      " highlight searches
 set incsearch                     " highlight first match
 set ruler                         " show the cursor position
