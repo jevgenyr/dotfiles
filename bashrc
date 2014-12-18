@@ -11,6 +11,23 @@ export EDITOR=vim
 stty start undef
 stty stop undef
 
+# History
+HISTSIZE=5000
+HISTFILESIZE=10000
+export HISTCONTROL=ignoreboth:erasedups # no duplicate entries
+shopt -s histappend                     # append history file
+export PROMPT_COMMAND="history -a"      # update histfile after every command
+
+# Ls
+platform=`uname`
+if [[ $platform == 'linux' ]]; then
+   alias ls='ls --color=auto -p'
+elif [[ $platform == 'Darwin' ]]; then
+   alias ls='ls -Gp'
+fi
+LS_COLORS='di=1:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90'
+export LS_COLORS
+
 
 #####
 # Aliases

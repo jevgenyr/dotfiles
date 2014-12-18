@@ -20,6 +20,7 @@ Plug 'kien/ctrlp.vim'
 Plug 'bufexplorer.zip'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/vim-easy-align'
+Plug 'ervandew/ag'
 
 Plug 'Pychimp/vim-luna'
 
