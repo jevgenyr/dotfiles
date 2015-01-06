@@ -216,6 +216,9 @@ let NERDTreeIgnore=['\.DS_Store$', '\.vim$', '__pycache__', '.git', 'node_module
 " plugin: bufexplorer
 let g:bufExplorerShowRelativePath=1
 
+" plugin: Ctrl+P
+let g:ctrlp_custom_ignore = 'node_modules'
+
 " Use relative line numbers
 if exists("&relativenumber")
   set relativenumber

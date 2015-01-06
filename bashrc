@@ -38,6 +38,8 @@ export LS_COLORS
   alias clean='find . -name "*.DS_Store" -type f -delete'
   alias em='emacs '
   alias caskup='(cd $HOME/.emacs.d/; $HOME/.cask/bin/cask install)'
+  alias edbash='vim ~/.bashrc'
+  alias edvim='vim ~/.vimrc'
 
 
 #####
@@ -75,7 +77,7 @@ export LS_COLORS
   export GOROOT=$HOME/code/dev/go
   export PATH=$PATH:$GOROOT/bin
   export PATH=$PATH:$GOPATH/bin
-  export wd=$GOPATH/src/github.com/kiasaki
+  export wd=$GOPATH/src/github.com
 
 
 #####
