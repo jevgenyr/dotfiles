@@ -40,6 +40,7 @@ export LS_COLORS
   alias caskup='(cd $HOME/.emacs.d/; $HOME/.cask/bin/cask install)'
   alias edbash='vim ~/.bashrc'
   alias edvim='vim ~/.vimrc'
+  alias tmux='tmux -2'
 
 
 #####
@@ -83,7 +84,7 @@ export LS_COLORS
 #####
 # Node.js helpers
 #####
-  export NVM_DIR="/Users/kiasaki/.nvm"
+  export NVM_DIR="$HOME/.nvm"
   [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 

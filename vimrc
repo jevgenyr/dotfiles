@@ -105,7 +105,7 @@ endif
 " #############################
 
 set t_Co=256                      " Use ALL the colors please
-colorscheme luna-term             " Color theme
+colorscheme railscat              " Color theme
 set modeline                      " Tell vim to parse those modelines
 set modelines=4                   " Modelines on mac default to 0, activate it
 set laststatus=2                  " always have status shown
