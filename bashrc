@@ -54,6 +54,7 @@ export LS_COLORS
   alias gd='git diff'
   alias gca='git commit -a'
   alias gco='git checkout'
+  alias gcl='git checkout -'
   alias gcm='git checkout master'
   alias gb='git branch'
   alias gs='git status -sb'
