@@ -95,6 +95,8 @@ if has("autocmd")
   autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
   " Set ft to markdown for all known markdown file endings
   autocmd BufNewFile,BufRead *.{md,markdown,mdown,mkd,mkdn,txt} setfiletype markdown syntax=markdown
+
+  autocmd BufRead,BufNewFile *.es6 setfiletype javascript
 endif
 
 
