@@ -14,12 +14,10 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'scrooloose/nerdtree'
-Plug 'wakatime/vim-wakatime'
 Plug 'ervandew/supertab'
 Plug 'kien/ctrlp.vim'
 Plug 'bufexplorer.zip'
 Plug 'tpope/vim-fugitive'
-Plug 'junegunn/vim-easy-align'
 Plug 'ervandew/ag'
 
 Plug 'Pychimp/vim-luna'
@@ -150,15 +148,12 @@ noremap <leader>be :BufExplorerHorizontalSplit<CR>
 nnoremap <leader>t :CtrlP<enter>
 nnoremap <C-t> :CtrlP<enter>
 
-" Ctrl+s to save
-map <C-s> <esc>:w<CR>
-imap <C-s> <esc>:w<CR>
-
 " Emacs beginning/end of line
 imap <C-e> <c-o>$
 imap <C-a> <c-o>^
 
-nnoremap <C-J> <C-W><C-J> " Map Ctrl+hjkl to move around splits
+" Map Ctrl+hjkl to move around splits
+nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
@@ -169,15 +164,6 @@ nnoremap <C-y> :tab split<CR>
 nnoremap <C-i> :tabp<CR>
 nnoremap <C-o> :tabn<CR>
 
-" plugin: vim-easy-align
-" Alignment of = : , etc.
-vnoremap <silent><Enter> :EasyAlign<Enter>
-
-" plugin: vim-fugitive
-nmap <leader>gs :Gstatus<CR>
-nmap <leader>gc :Gcommit<CR>
-nmap <leader>gp :Git push<CR>
-
 " plugin: bling/vim-airline
 set laststatus=2
 let g:airline_left_sep = ''
@@ -186,6 +172,13 @@ let g:airline#extensions#hunks#non_zero_only = 1
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='wombat'
+let g:airline_theme_patch_func = 'AirlineThemePatch'
+function! AirlineThemePatch(palette)
+  for colors in values(a:palette.inactive)
+    let colors[2] = 254 " text color
+    let colors[3] = 238 " bg
+  endfor
+endfunction
 
 " plugin: tmuxline
 let g:tmuxline_separators = {
@@ -226,17 +219,3 @@ function! StripWhitespace()
   call setreg('/', old_query)
 endfunction
 noremap <leader>ss :call StripWhitespace()<CR>
-
-" Fancy RSpec runner
-" Credits: http://blog.santosvelasco.com/2012/07/04/vim-and-rspec-run-the-test-under-the-cursor/
-function! RSpecFile()
-  execute("!clear && rspec " . expand("%p"))
-endfunction
-map <leader>R :call RSpecFile() <CR>
-command! RSpecFile call RSpecFile()
-
-function! RSpecCurrent()
-  execute("!clear && rspec " . expand("%p") . ":" . line("."))
-endfunction
-map <leader>r :call RSpecCurrent() <CR>
-command! RSpecCurrent call RSpecCurrent()

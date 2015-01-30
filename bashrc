@@ -93,7 +93,7 @@ export LS_COLORS
 # Python helpers
 #####
   # New virtual env
-  export VENV_PYTHON=$HOME/code/dev/pypy/bin/pypy
+  export VENV_PYTHON=`which python`
   export VENV_HOME=$HOME/code/venv
   function venvn {
     if [[ ! -d $VENV_HOME ]]; then
@@ -107,6 +107,16 @@ export LS_COLORS
   }
   # Deactivate shortcut
   alias venvd='deactivate'
+
+
+#####
+# Fun functions
+#####
+
+function weather {
+  echo MONTREAL:
+  curl -s "http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query=${@:-H2T+1H6}" | perl -ne 's/&amp;deg;/°/g;/<title>([^<]+)/&&printf "%s: ",$1;/<fcttext>([^<]+)/&&print $1,"\n"';
+}
 
 
 #####
