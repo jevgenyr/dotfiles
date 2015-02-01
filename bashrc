@@ -41,6 +41,7 @@ export LS_COLORS
   alias edbash='vim ~/.bashrc'
   alias edvim='vim ~/.vimrc'
   alias tmux='tmux -2'
+  alias xclip='xclip -selection c'
 
 
 #####
