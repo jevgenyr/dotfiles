@@ -1,5 +1,3 @@
-# Mah verey own bashrc
-export PATH="~/.bin:.:/usr/local/bin:$PATH"
 # Put Cask in path for emacs
 export PATH="$HOME/.cask/bin:$PATH"
 
@@ -42,6 +40,7 @@ export LS_COLORS
   alias edvim='vim ~/.vimrc'
   alias tmux='tmux -2'
   alias xclip='xclip -selection c'
+  alias dienode="ps -ax | grep node | head -1 | tr -s ' ' | cut -d ' ' -f 1 | xargs kill | echo"
 
 
 #####
