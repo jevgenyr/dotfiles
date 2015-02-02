@@ -40,8 +40,6 @@ export LS_COLORS
   alias edvim='vim ~/.vimrc'
   alias tmux='tmux -2'
   alias xclip='xclip -selection c'
-  alias dienode="ps -ax | grep node | head -1 | sed 's/^ //' | cut -d ' ' -f 1 | xargs kill | echo"
-
 
 #####
 # Git aliases
@@ -71,6 +69,11 @@ export LS_COLORS
 #####
   alias pgup="postgres -D $HOME/pgdata"
 
+#####
+# Redis helpers
+#####
+  alias redisup="redis-server $HOME/dotfiles/conf/redis.conf"
+
 
 #####
 # Go helpers
@@ -87,6 +90,7 @@ export LS_COLORS
 #####
   export NVM_DIR="$HOME/.nvm"
   [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+  alias dienode="ps -ax | grep node | head -1 | sed 's/^ //' | cut -d ' ' -f 1 | xargs kill | echo"
 
 
 #####
