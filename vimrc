@@ -134,6 +134,12 @@ set mouse=a " mouse in all modes
 set backspace=indent,eol,start " allow bckspace in insert
 set esckeys " breaks esc in sequences in insert mode but removes timeout
 set timeoutlen=1000 ttimeoutlen=0
+
+imap <Up> <NOP>
+imap <Down> <NOP>
+imap <Left> <NOP>
+imap <Right> <NOP>
+
 noremap <leader>W :w !sudo tee % > /dev/null<CR> " save a file as root (,W)
 noremap <leader>bi :! bundle install<CR>
 noremap <leader>r :! rake<CR>
