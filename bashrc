@@ -154,7 +154,11 @@ function weather {
   }
 
   # Nice PS1 line
-  export PS1="$cyn\u$wht at $cyn\h$wht in $ylw\W $red"'$(git_changes)'"$grn"'$(git_info)'"\n$grn[\$?]$wht $ $rst"
+  ssh=''
+  if [ -n "$SSH_TTY" ]; then
+    ssh="$red[ssh]"
+  fi
+  export PS1="$ssh $cyn\u$wht at $cyn\h$wht in $ylw\W $red"'$(git_changes)'"$grn"'$(git_info)'"\n$grn[\$?]$wht $ $rst"
 
   # Those are computer specific config / secrets
   source $HOME/.env
