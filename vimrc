@@ -48,8 +48,6 @@ set nocompatible            " no vi support
 set clipboard=unnamed       " use mac clipboard
 set ttyfast                 " optimize for fast terminal connections
 set encoding=utf-8 nobomb   " UTF-8 encoding
-set binary                  " no empty line at eof
-set noeol                   " ^
 set exrc                    " per directory .vimrc
 set secure                  " ^ in secure mode
 set noerrorbells            " no error bells
