@@ -40,7 +40,6 @@ export LS_COLORS
   alias edvim='vim ~/.vimrc'
   alias tmux='tmux -2'
   alias xclip='xclip -selection c'
-  alias gogetk='go get github.com/kiasaki/'
 
 #####
 # Git aliases
@@ -84,6 +83,9 @@ export LS_COLORS
   export PATH=$PATH:$GOROOT/bin
   export PATH=$PATH:$GOPATH/bin
   export wd=$GOPATH/src/github.com
+  function gogetk() {
+    `go get github.com/kiasaki/$1`
+  }
 
 
 #####
