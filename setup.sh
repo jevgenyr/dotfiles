@@ -46,6 +46,10 @@ for file in "$HOME/.env" "$HOME/.hushlogin"; do
   fi
 done
 
+if [ ! -f "$HOME/.gitconfig" ]; then
+  cp "$HOME/dotfiles/gitconfig" "$HOME/.gitconfig"
+fi
+
 # Install composer
 if command_exists composer; then
   echo "Skipping: Composer alredy installed"

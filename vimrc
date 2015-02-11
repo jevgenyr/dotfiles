@@ -48,8 +48,6 @@ set nocompatible            " no vi support
 set clipboard=unnamed       " use mac clipboard
 set ttyfast                 " optimize for fast terminal connections
 set encoding=utf-8 nobomb   " UTF-8 encoding
-set binary                  " no empty line at eof
-set noeol                   " ^
 set exrc                    " per directory .vimrc
 set secure                  " ^ in secure mode
 set noerrorbells            " no error bells
@@ -134,6 +132,12 @@ set mouse=a " mouse in all modes
 set backspace=indent,eol,start " allow bckspace in insert
 set esckeys " breaks esc in sequences in insert mode but removes timeout
 set timeoutlen=1000 ttimeoutlen=0
+
+imap <Up> <NOP>
+imap <Down> <NOP>
+imap <Left> <NOP>
+imap <Right> <NOP>
+
 noremap <leader>W :w !sudo tee % > /dev/null<CR> " save a file as root (,W)
 noremap <leader>bi :! bundle install<CR>
 noremap <leader>r :! rake<CR>
