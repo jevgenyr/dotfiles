@@ -206,6 +206,9 @@ let g:bufExplorerShowRelativePath=1
 " plugin: Ctrl+P
 let g:ctrlp_custom_ignore = 'node_modules'
 
+" plugin: vim-go
+let g:go_auto_type_info = 1
+
 " Use relative line numbers
 if exists("&relativenumber")
   set relativenumber
