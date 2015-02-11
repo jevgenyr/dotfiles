@@ -40,6 +40,7 @@ export LS_COLORS
   alias edvim='vim ~/.vimrc'
   alias tmux='tmux -2'
   alias xclip='xclip -selection c'
+  alias gogetk='go get github.com/kiasaki/'
 
 #####
 # Git aliases
@@ -156,9 +157,9 @@ function weather {
   # Nice PS1 line
   ssh=''
   if [ -n "$SSH_TTY" ]; then
-    ssh="$red[ssh]"
+    ssh="$red[ssh] "
   fi
-  export PS1="$ssh $cyn\u$wht at $cyn\h$wht in $ylw\W $red"'$(git_changes)'"$grn"'$(git_info)'"\n$grn[\$?]$wht $ $rst"
+  export PS1="$ssh$cyn\u$wht at $cyn\h$wht in $ylw\W $red"'$(git_changes)'"$grn"'$(git_info)'"\n$grn[\$?]$wht $ $rst"
 
   # Those are computer specific config / secrets
   source $HOME/.env
