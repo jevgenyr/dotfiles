@@ -1,6 +1,5 @@
 " Frederic's .vimrc
 " https://github.com/kiasaki/dotfiles
-call pathogen#infect()
 
 " #############################
 " PLUGINS
