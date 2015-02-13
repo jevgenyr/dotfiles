@@ -46,7 +46,8 @@ autocmd VimResized * :wincmd =
 " Swap , and \ for leader.
 let mapleader=" "
 
-colorscheme peachpuff
+" Centralize swaps in one folder
+set backupdir=~/.vim/backups directory=~/.vim/swaps
 
 call plug#begin()
 " Plugins
@@ -67,6 +68,8 @@ Plug 'wavded/vim-stylus'
 Plug 'Glench/Vim-Jinja2-Syntax'
 call plug#end()
 
+colorscheme hybrid
+
 " Leader commands
 nmap <leader>n :nohlsearch<CR>
 noremap <leader>W :w !sudo tee % > /dev/null<CR> " save a file as root (,W)
@@ -82,11 +85,11 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+map <Up> <NOP>
+map <Down> <NOP>
+map <Left> <NOP>
+map <Right> <NOP>
 imap <Up> <NOP>
 imap <Down> <NOP>
 imap <Left> <NOP>
 imap <Right> <NOP>
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>

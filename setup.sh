@@ -21,7 +21,7 @@ fi
 code=$HOME/code
 for directory in "$HOME/.bin" "$HOME/pgdata" $code "$code/dev" "$code/repos" \
 "$HOME/.vim" "$HOME/.vim/autoload" "$HOME/.vim/autoload" "$code/venv" \
-"$HOME/.vim/swaps" "$HOME/.vim/backups" "$HOME/.vim/undo"; do
+"$HOME/.vim/swaps" "$HOME/.vim/backups" "$HOME/.vim/undo" "$HOME/.vim/colors"; do
   if [[ ! -d $directory ]]; then
     mkdir $directory
   fi
@@ -42,7 +42,10 @@ done
 
 # File copies
 if [ ! -f "$HOME/.vim/autoload/plug.vim" ]; then
-  cp "$HOME/dotfiles/plug.vim" "$HOME/.vim/autoload/plug.vim"
+  cp "$HOME/dotfiles/vim/plug.vim" "$HOME/.vim/autoload/plug.vim"
+fi
+if [ ! -f "$HOME/.vim/colors/hybrid.vim" ]; then
+  cp "$HOME/dotfiles/vim/hybrid.vim" "$HOME/.vim/colors/hybrid.vim"
 fi
 if [ ! -f "$HOME/.gitconfig" ]; then
   cp "$HOME/dotfiles/gitconfig" "$HOME/.gitconfig"
