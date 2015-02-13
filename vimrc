@@ -28,7 +28,7 @@ set shortmess=atI
 set visualbell t_vb=
 
 " Show hard tabs and trailing whitespace
-set list listchars=tab:»·,trail:·
+set list listchars=tab:˚\ ,trail:·,nbsp:_
 
 " Show hard tabs as 4 side, use 2 space indentation rounded to multiples.
 set tabstop=4 expandtab shiftwidth=2 shiftround
@@ -40,11 +40,53 @@ filetype plugin indent on
 " Show tab-complete suggestions and complete longest substring.
 set wildmenu wildmode=list:longest
 
-" Swap , and \ for leader.
-noremap \ ,
-let mapleader=","
+" Resize windows evenly on size cahnge
+autocmd VimResized * :wincmd =
 
-" Clear search results.
-nmap <leader>n :nohlsearch<CR>
+" Swap , and \ for leader.
+let mapleader=" "
 
 colorscheme peachpuff
+
+call plug#begin()
+" Plugins
+Plug 'airblade/vim-gitgutter'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'ervandew/supertab'
+Plug 'bufexplorer.zip'
+Plug 'ervandew/ag'
+
+" Languages
+Plug 'fatih/vim-go'
+Plug 'pangloss/vim-javascript'
+Plug 'StanAngeloff/php.vim'
+Plug 'digitaltoad/vim-jade'
+Plug 'wavded/vim-stylus'
+Plug 'Glench/Vim-Jinja2-Syntax'
+call plug#end()
+
+" Leader commands
+nmap <leader>n :nohlsearch<CR>
+noremap <leader>W :w !sudo tee % > /dev/null<CR> " save a file as root (,W)
+noremap <leader>nt :NERDTreeToggle<CR>
+noremap <leader>be :BufExplorerHorizontalSplit<CR>
+autocmd User GoyoEnter Limelight
+autocmd User GoyoLeave Limelight!
+nnoremap <Leader>z :Goyo<CR>
+
+" Map Ctrl+hjkl to move around splits
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+imap <Up> <NOP>
+imap <Down> <NOP>
+imap <Left> <NOP>
+imap <Right> <NOP>
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
