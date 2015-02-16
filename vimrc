@@ -33,6 +33,9 @@ set list listchars=tab:˚\ ,trail:·,nbsp:_
 " Show hard tabs as 4 side, use 2 space indentation rounded to multiples.
 set tabstop=4 expandtab shiftwidth=2 shiftround
 
+" Use mac clipboard
+set clipboard=unnamed
+
 " Syntax highlighting, filetype indentation rules.
 syntax on
 filetype plugin indent on
