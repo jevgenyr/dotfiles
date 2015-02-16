@@ -46,6 +46,10 @@ set wildmenu wildmode=list:longest
 " Resize windows evenly on size cahnge
 autocmd VimResized * :wincmd =
 
+" Remove timeouts from esc
+set esckeys
+set timeoutlen=1000 ttimeoutlen=0
+
 " Swap , and \ for leader.
 let mapleader=" "
 

@@ -83,7 +83,6 @@ alias venvd='deactivate'
 #####
 # Shell PS1 line & base dir & .env
 source $HOME/dotfiles/prompt.sh
-export PS1="$ssh$cyn\u$wht at $cyn\h$wht in $ylw\W $red"'$(git_changes)'"$grn"'$(git_info)'"\n$grn[\$?]$wht $ $rst"
 
 # Those are computer specific config / secrets
 source $HOME/.env

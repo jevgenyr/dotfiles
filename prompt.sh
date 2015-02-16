@@ -26,7 +26,22 @@ function git_changes {
 }
 
 # Nice PS1 line
-ssh=''
-if [ -n "$SSH_TTY" ]; then
-  ssh="$red[ssh] "
-fi
+export PROMPT_COMMAND=__prompt_command
+function __prompt_command() {
+  local EXIT="$?"
+
+  PS1=""
+  if [ -n "$SSH_TTY" ]; then
+    PS1+="$pur"
+  else
+    PS1+="$cyn"
+  fi
+  PS1+="\h $wht- $ylw\W $red"'$(git_changes)'"$grn"'$(git_info)'"\n"
+
+  if [ $EXIT != 0 ]; then
+    PS1+="$red"
+  else
+    PS1+="$grn"
+  fi
+  PS1+="\$$rst "
+}
