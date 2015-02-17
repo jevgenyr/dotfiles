@@ -14,6 +14,8 @@ export PROMPT_COMMAND="history -a"      # update histfile after every command
 platform=`uname`
 if [[ $platform == 'linux' ]]; then
   alias ls='ls --color=auto -p'
+  setxkbmap -option ctrl:swapcaps # Swap Left Control and Caps Lock
+  setxkbmap -option ctrl:nocaps   # Make left ctrl a ctrl not caps
 elif [[ $platform == 'Darwin' ]]; then
   alias ls='ls -Gp'
 fi
