@@ -85,6 +85,7 @@ noremap <leader>be :BufExplorerHorizontalSplit<CR>
 autocmd User GoyoEnter Limelight
 autocmd User GoyoLeave Limelight!
 nnoremap <Leader>z :Goyo<CR>
+let g:bufExplorerShowRelativePath=1
 
 " Map Ctrl+hjkl to move around splits
 nnoremap <C-J> <C-W><C-J>

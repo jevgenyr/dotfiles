@@ -107,4 +107,3 @@ source $HOME/dotfiles/completion/hub.sh
 
 # Get closer to projects
 cd $HOME/code/repos
-
