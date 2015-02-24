@@ -32,7 +32,7 @@ for directory in "$HOME/.bin" "$HOME/pgdata" $code "$code/dev" "$code/repos" \
 done
 
 # File symlinks
-for file in "bashrc" "bash_profile" "tmux.conf" "vimrc" "psqlrc" "i3" "Xresources"; do
+for file in "bashrc" "bash_profile" "tmux.conf" "vimrc" "psqlrc" "i3" "Xresources" "xinitrc"; do
   rm -rf "$HOME/.$file"
   ln -s "$HOME/dotfiles/$file" "$HOME/.$file"
 done

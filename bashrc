@@ -22,10 +22,8 @@ kernel_name=`uname -r`
 if [[ $kernel_name == *"ARCH" ]]; then
   export KEYMAP=ca_multi.map.gz
   sudo localectl set-keymap --no-convert ca_multi
-  sudo localectl set-x11-keymap --no-convert ca "" multi
   if [[ -z "$DISPLAY" ]]; then
-    setxkbmap -option ctrl:swapcaps # Swap Left Control and Caps Lock
-    setxkbmap -option ctrl:nocaps   # Make left ctrl a ctrl not caps
+    sudo localectl set-x11-keymap --no-convert ca "" multi
   fi
 fi
 
