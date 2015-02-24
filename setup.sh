@@ -13,8 +13,12 @@ if $osx; then
   brew install curl git tmux tig tree graphviz bazaar
   brew install hub
 else
-  sudo apt-get install -y curl git tmux tig tree bzr
-  sudo apt-get install -y htop
+  if [[ `uname -r` == *"ARCH" ]]; then
+    sudo pacman -S vim git curl alsa-utils tig
+  else
+    sudo apt-get install -y curl git tmux tig tree bzr
+    sudo apt-get install -y htop
+  fi
 fi
 
 # Directories
@@ -28,7 +32,7 @@ for directory in "$HOME/.bin" "$HOME/pgdata" $code "$code/dev" "$code/repos" \
 done
 
 # File symlinks
-for file in "bashrc" "bash_profile" "tmux.conf" "vimrc" "psqlrc"; do
+for file in "bashrc" "bash_profile" "tmux.conf" "vimrc" "psqlrc" "i3" "Xresources"; do
   rm -rf "$HOME/.$file"
   ln -s "$HOME/dotfiles/$file" "$HOME/.$file"
 done

@@ -28,7 +28,7 @@ set shortmess=atI
 set visualbell t_vb=
 
 " Show hard tabs and trailing whitespace
-set list listchars=tab:˚\ ,trail:·,nbsp:_
+set list listchars=tab:>\ ,trail:�,nbsp:_
 
 " Show hard tabs as 4 side, use 2 space indentation rounded to multiples.
 set tabstop=4 expandtab shiftwidth=2 shiftround

@@ -4,8 +4,8 @@ stty start undef
 stty stop undef
 
 # History
-HISTSIZE=5000
-HISTFILESIZE=10000
+export HISTSIZE=5000
+export HISTFILESIZE=10000
 export HISTCONTROL=ignoreboth:erasedups # no duplicate entries
 shopt -s histappend                     # append history file
 export PROMPT_COMMAND="history -a"      # update histfile after every command
@@ -14,10 +14,19 @@ export PROMPT_COMMAND="history -a"      # update histfile after every command
 platform=`uname`
 if [[ $platform == 'linux' ]]; then
   alias ls='ls --color=auto -p'
-  setxkbmap -option ctrl:swapcaps # Swap Left Control and Caps Lock
-  setxkbmap -option ctrl:nocaps   # Make left ctrl a ctrl not caps
 elif [[ $platform == 'Darwin' ]]; then
   alias ls='ls -Gp'
+fi
+
+kernel_name=`uname -r`
+if [[ $kernel_name == *"ARCH" ]]; then
+  export KEYMAP=ca_multi.map.gz
+  sudo localectl set-keymap --no-convert ca_multi
+  sudo localectl set-x11-keymap --no-convert ca "" multi
+  if [[ -z "$DISPLAY" ]]; then
+    setxkbmap -option ctrl:swapcaps # Swap Left Control and Caps Lock
+    setxkbmap -option ctrl:nocaps   # Make left ctrl a ctrl not caps
+  fi
 fi
 
 #####
