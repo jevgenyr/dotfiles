@@ -66,6 +66,14 @@
 (defvar my-auto-save-folder "~/.emacs.d/.saves/")
 (setq backup-directory-alist `(("." . "~/.emacs.d/.saves")))
 (setq auto-save-file-name-transforms `((".*" ,my-auto-save-folder t)))
+; use ido mode globally
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+(ido-mode 1)
+; column 80
+(after 'whitespace
+    (setq whitespace-style '(face empty tabs lines-tail trailing))
+    (global-whitespace-mode t))
 
 (when window-system
   (set-face-attribute 'mode-line nil
@@ -98,6 +106,8 @@
 (show-paren-mode 1)
 ; Highlight current line
 (global-hl-line-mode 1)
+; Set theme
+(load-theme 'misterioso)
 
 
 ;;;; keybindings
@@ -105,6 +115,7 @@
 (global-set-key (kbd "C--") 'text-scale-decrease)
 (global-set-key (kbd "C-=") 'text-scale-set)
 (global-set-key (kbd "C-;") 'toggle-comment-on-line)
+(global-set-key (kbd "RET") 'newline-and-indent)
 
 
 ;;;; functions
@@ -121,7 +132,7 @@
     (exec-path-from-shell-initialize))
 
 ;;;; evil
-(after 'evil
+(after "evil-autoloads"
     (evil-mode 1)
 
     (setq evil-want-C-u-scroll t)
@@ -136,13 +147,13 @@
     (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
     (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
 
-    (after 'helm
+    (after "helm-autoloads"
         (define-key evil-normal-state-map (kbd "SPC a") 'helm-find-files)
         (define-key evil-normal-state-map (kbd "SPC f") 'helm-projectile)
         (define-key evil-normal-state-map (kbd "SPC x") 'helm-M-x)))
 
 ;;;; helm
-(after 'helm
+(after "helm-autoloads"
     (after 'helm-config
         (setq helm-buffers-fuzzy-matching t)
         (setq helm-recentf-fuzzy-match t)
@@ -153,15 +164,15 @@
         (global-set-key (kbd "C-x b") 'helm-mini)))
 
 ;;;; Projectile
-(after 'projectile
+(after "projectile-autoloads"
     (projectile-global-mode))
 
 ;;;; smart-tab
-(after 'smart-tab
+(after "smart-tab-autoloads"
     (global-smart-tab-mode 1))
 
 ;;;; flycheck
-(after 'flycheck
+(after "flycheck-autoloads"
     (global-flycheck-mode)
     (setq-default flycheck-temp-prefix ".flycheck")
     (setq-default flycheck-disabled-checkers
@@ -169,15 +180,16 @@
     (flycheck-add-mode 'javascript-eslint 'web-mode))
 
 ;;;; magit
-(after 'magit
-    (setq evil-magit-want-horizontal-movement t)
-    (setq evil-magit-state 'motion))
+(after "magit-autoloads"
+    (global-set-key (kbd "C-x g") 'magit-status)
+    (after "evil-autoloads"
+        (define-key evil-normal-state-map (kbd "SPC g") 'magit-status)))
 
 ;;;; evil-magit
-(after 'evil-magit
-    (global-set-key (kbd "C-x g") 'magit-status)
-    (after 'evil
-        (define-key evil-normal-state-map (kbd "SPC g") 'magit-status)))
+(after "evil-magit-autoloads"
+    (evil-magit-init)
+    (setq evil-magit-want-horizontal-movement t)
+    (setq evil-magit-state 'motion))
 
 ;;;; j2-mode
 (after "js2-mode-autoloads"

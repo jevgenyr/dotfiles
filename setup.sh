@@ -114,4 +114,8 @@ if [ ! -f "$HOME/.gitconfig" ]; then
   cp "$HOME/dotfiles/gitconfig" "$HOME/.gitconfig"
 fi
 
+echo "Fetching Leiningen"
+curl -o ~/bin/lein https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
+chmod +x ~/bin/lein
+
 echo "All done!"

@@ -45,7 +45,7 @@ export CLICOLOR=1
 
 export EDITOR=vim
 export PATH="/usr/bin:/bin:/usr/local/bin:/usr/sbin:/sbin"
-export PATH="$PATH:~/bin:."
+export PATH="$PATH:$HOME/bin:."
 
 #####
 # Aliases
