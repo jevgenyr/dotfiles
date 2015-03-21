@@ -6,9 +6,10 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 if $osx; then
+  brew tap petere/postgresql
   brew install curl git tmux tig tree graphviz bazaar hub vim
   brew install rabbitmq redis ansible jq rbenv nvm rethinkdb
-  brew install the_silver_searcher postgresql-9.4 sqlite
+  brew install the_silver_searcher postgresql-9.4 sqlite httpie
   brew install ssh-copy-id mongodb mcrypt
 else
   if [[ `uname -r` == *"ARCH" ]]; then
@@ -28,7 +29,7 @@ done
 # Directories
 code=$HOME/code
 for directory in \
-  "$HOME/bin" "$code" "$code/dev" "$code/repos" "$code/venv" \
+  "$HOME/bin" "$code" "$code/dev" "$code/repos" "$code/venv" "$code/go" \
   "$HOME/.vim" "$HOME/.vim/autoload" "$HOME/.vim/swaps" \
   "$HOME/.vim/backups" "$HOME/.vim/undo" "$HOME/.vim/colors"; do
   if [[ ! -d $directory ]]; then
@@ -45,6 +46,10 @@ if $osx; then
     rm go.tar.gz
   fi
 
+  export GOROOT=$code/dev/go
+  export GOPATH=$code/go
+  export GOBIN=$HOME/bin
+  echo "Fetching muun ,gin, goreman, hk"
   $code/dev/go/bin/go get github.com/kiasaki/muun
   $code/dev/go/bin/go get github.com/codegangsta/gin
   $code/dev/go/bin/go get github.com/mattn/goreman

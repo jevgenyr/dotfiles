@@ -1,4 +1,5 @@
 export EDITOR=vim
+export PATH=".:$HOME/bin:$PATH"
 
 stty start undef
 stty stop undef
