@@ -6,7 +6,10 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 if $osx; then
-  brew install curl git tmux tig tree graphviz bazaar hub
+  brew install curl git tmux tig tree graphviz bazaar hub vim
+  brew install rabbitmq redis ansible jq rbenv nvm rethinkdb
+  brew install the_silver_searcher postgresql-9.4 sqlite
+  brew install ssh-copy-id mongodb mcrypt
 else
   if [[ `uname -r` == *"ARCH" ]]; then
     sudo pacman -S vim git curl alsa-utils tig
