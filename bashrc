@@ -52,7 +52,7 @@ alias asp='ansible-playbook --ask-vault-pass -v '
 
 #####
 # Postgres helpers
-alias pgup="postgres -D $HOME/pgdata"
+alias pgup="postgres -D /data/postgres"
 
 #####
 # Redis helpers
