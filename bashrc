@@ -68,6 +68,9 @@ export wd=$GOPATH/src/github.com
 function gogetk {
   `go get github.com/kiasaki/$1`
 }
+function cg {
+  cd $GOPATH/src/github.com/$1;
+}
 
 #####
 # Node.js helpers
