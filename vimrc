@@ -94,6 +94,8 @@ nnoremap <Leader>z :Goyo<CR>
 
 let g:bufExplorerShowRelativePath=1
 autocmd BufNewFile,BufRead *.md setlocal spell
+autocmd BufWritePost *.go :GoLint
+autocmd BufWritePost *.go :GoBuild
 
 " Map Ctrl+hjkl to move around splits
 nnoremap <C-J> <C-W><C-J>
