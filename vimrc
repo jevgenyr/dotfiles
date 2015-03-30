@@ -73,6 +73,7 @@ Plug 'StanAngeloff/php.vim'
 Plug 'digitaltoad/vim-jade'
 Plug 'wavded/vim-stylus'
 Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'raichoo/haskell-vim'
 call plug#end()
 
 colorscheme hybrid
@@ -94,8 +95,8 @@ nnoremap <Leader>z :Goyo<CR>
 
 let g:bufExplorerShowRelativePath=1
 autocmd BufNewFile,BufRead *.md setlocal spell
-autocmd BufWritePost *.go :GoLint
 autocmd BufWritePost *.go :GoBuild
+noremap <Leader>gl :GoLint<CR>
 
 " Map Ctrl+hjkl to move around splits
 nnoremap <C-J> <C-W><C-J>

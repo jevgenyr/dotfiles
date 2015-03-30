@@ -57,7 +57,7 @@ if $osx; then
 fi
 
 # File symlinks
-for file in "bashrc" "bash_profile" "tmux.conf" "vimrc" "psqlrc" "i3" "Xresources" "xinitrc"; do
+for file in "bashrc" "bash_profile" "tmux.conf" "vimrc" "psqlrc" "i3" "Xresources" "xinitrc" "ghci"; do
   rm -rf "$HOME/.$file"
   ln -s "$HOME/dotfiles/$file" "$HOME/.$file"
 done
