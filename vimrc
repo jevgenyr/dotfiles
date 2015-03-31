@@ -68,12 +68,13 @@ Plug 'ervandew/ag'
 
 " Languages
 Plug 'fatih/vim-go'
-Plug 'pangloss/vim-javascript'
+Plug 'othree/yajs.vim'
 Plug 'StanAngeloff/php.vim'
 Plug 'digitaltoad/vim-jade'
 Plug 'wavded/vim-stylus'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'raichoo/haskell-vim'
+Plug 'leafgarland/typescript-vim'
 call plug#end()
 
 colorscheme hybrid
@@ -95,8 +96,11 @@ nnoremap <Leader>z :Goyo<CR>
 
 let g:bufExplorerShowRelativePath=1
 autocmd BufNewFile,BufRead *.md setlocal spell
-autocmd BufWritePost *.go :GoBuild
 noremap <Leader>gl :GoLint<CR>
+autocmd BufWritePost *.go :GoBuild
+autocmd BufWritePost *.ts :make
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
 
 " Map Ctrl+hjkl to move around splits
 nnoremap <C-J> <C-W><C-J>
