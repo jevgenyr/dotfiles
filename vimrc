@@ -75,6 +75,8 @@ Plug 'wavded/vim-stylus'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'raichoo/haskell-vim'
 Plug 'leafgarland/typescript-vim'
+Plug 'wting/rust.vim'
+Plug 'klen/python-mode'
 call plug#end()
 
 colorscheme hybrid
@@ -95,6 +97,7 @@ autocmd User GoyoLeave Limelight!
 nnoremap <Leader>z :Goyo<CR>
 
 let g:bufExplorerShowRelativePath=1
+autocmd BufNewFile,BufRead *.sl set filetype=solo
 autocmd BufNewFile,BufRead *.md setlocal spell
 noremap <Leader>gl :GoLint<CR>
 autocmd BufWritePost *.go :GoBuild
