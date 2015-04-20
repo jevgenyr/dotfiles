@@ -77,7 +77,14 @@ Plug 'raichoo/haskell-vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'wting/rust.vim'
 Plug 'klen/python-mode'
+
+Plug 'Raimondi/delimitMate'
+Plug 'kien/ctrlp.vim'
 call plug#end()
+
+" Java
+let delimitMate_expand_cr = 1
+set wildignore+=*/build/**
 
 colorscheme hybrid
 
@@ -98,6 +105,7 @@ nnoremap <Leader>z :Goyo<CR>
 
 let g:bufExplorerShowRelativePath=1
 autocmd BufNewFile,BufRead *.sl set filetype=solo
+autocmd BufNewFile,BufRead *.syp set filetype=clojure
 autocmd BufNewFile,BufRead *.md setlocal spell
 noremap <Leader>gl :GoLint<CR>
 autocmd BufWritePost *.go :GoBuild

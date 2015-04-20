@@ -53,7 +53,7 @@ alias asp='ansible-playbook --ask-vault-pass -v '
 
 #####
 # Postgres helpers
-alias pgup="postgres -D /data/postgres"
+alias pgup="postgres -D /data/postgres -h 0.0.0.0"
 
 #####
 # Redis helpers
@@ -95,7 +95,8 @@ alias venvd='deactivate'
 
 #####
 # Shell PS1 line & base dir & .env
-source $HOME/dotfiles/prompt.sh
+#source $HOME/dotfiles/prompt.sh
+export PS1="\[\e[0;36m\]\W>\[\e[0m\] "
 
 # Those are computer specific config / secrets
 source $HOME/.env
