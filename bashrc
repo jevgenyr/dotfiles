@@ -1,6 +1,9 @@
 export EDITOR=vim
 export PATH=".:$HOME/bin:$PATH"
 
+# Behave like vi
+set -o vi
+
 stty start undef
 stty stop undef
 
@@ -31,9 +34,9 @@ fi
 #####
 # Aliases
 alias ll='ls -la'
-alias clean='find . -name "*.DS_Store" -type f -delete'
 alias tmux='tmux -2'
 alias xclip='xclip -selection c'
+alias vim='nvim'
 
 #####
 # Git aliases
@@ -65,12 +68,7 @@ export GOPATH=$HOME/code/go
 export GOROOT=$HOME/code/dev/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 export wd=$GOPATH/src/github.com
-function gogetk {
-  `go get github.com/kiasaki/$1`
-}
-function cg {
-  cd $GOPATH/src/github.com/$1;
-}
+export wdk=$GOPATH/src/github.com/kiasaki
 
 #####
 # Node.js helpers
@@ -102,7 +100,7 @@ export PS1="\[\e[0;36m\]\W>\[\e[0m\] "
 source $HOME/.env
 
 # Have a bin folder in my home directory
-export PATH="$PATH:$HOME/.bin"
+export PATH="$PATH:$HOME/bin"
 
 # Source completions
 source $HOME/dotfiles/completion/git.sh
