@@ -1,66 +1,44 @@
-set nocompatible
-
-" Backspace past beginning of line in insert mode.
-set backspace=indent,eol,start
-
-" Allow switching buffers without saving.
-set hidden
-
-" Show cursor position and incomplete commands, always show status line.
-set ruler showcmd laststatus=2
-
-" Search incrementally with smart case sensitivity, highlight all matches.
+" Don't bother supporting vi, update window title, no ~file
+set nocompatible title nobackup
+" Show line number, current line and current command
+set number cursorline showcmd
+" Search incrementally with smart case sensitivity, highlight all matches
 set incsearch ignorecase smartcase hlsearch
-
-" Automatic indentation and adjust with tab and backspace.
+" Automatic indentation and adjust with tab and backspace
 set autoindent smartindent smarttab
-
-" Show line numbers, highlight current line and fixed columns.
-set number cursorline colorcolumn=80,100,120
-
-" Set window title.
-set title
-
 " Shorten messages and disable intro screen
 set shortmess=atI
-
-" Disable audible bell.
+" Disable audible bell
 set visualbell t_vb=
-
-" Show hard tabs and trailing whitespace
-set list listchars=tab:>\ ,trail:·,nbsp:_
-
-" Show hard tabs as 4 side, use 2 space indentation rounded to multiples.
+" Allow backspace in insert mode, how hard tabs and trailing whitespace
+set backspace=2 list listchars=tab:>\ ,trail:·,nbsp:_
+" Show hard tabs as 4 wide, use 2 space indentation rounded to multiples
 set tabstop=4 expandtab shiftwidth=2 shiftround
-
-" Use mac clipboard
+" Use mac's clipboard
 set clipboard=unnamed
-
-" Syntax highlighting, filetype indentation rules.
-syntax on
-filetype plugin indent on
-
 " Show tab-complete suggestions and complete longest substring.
 set wildmenu wildmode=list:longest
-
-" Resize windows evenly on size cahnge
-autocmd VimResized * :wincmd =
-
-" Remove timeouts from esc
-set esckeys
-set timeoutlen=1000 ttimeoutlen=0
-
-" Swap , and \ for leader.
+" Use space as leader
 let mapleader=" "
 
-" Centralize swaps in one folder
-set backupdir=~/.vim/backups directory=~/.vim/swaps
+" Syntax highlighting, filetype indentation rules, color scheme
+syntax on
+filetype plugin indent on
+colorscheme desert
+
+" Various auto commands
+autocmd VimResized * :wincmd = " Equalize window sizes on resize
+autocmd BufNewFile,BufRead *.md setlocal spell " Help correct my english
+
+" Map Ctrl+hjkl to move around splits
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 call plug#begin()
 " Plugins
 Plug 'airblade/vim-gitgutter'
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'ervandew/supertab'
 Plug 'bufexplorer.zip'
@@ -69,61 +47,15 @@ Plug 'ervandew/ag'
 " Languages
 Plug 'fatih/vim-go'
 Plug 'othree/yajs.vim'
-Plug 'StanAngeloff/php.vim'
 Plug 'digitaltoad/vim-jade'
-Plug 'wavded/vim-stylus'
 Plug 'Glench/Vim-Jinja2-Syntax'
-Plug 'raichoo/haskell-vim'
-Plug 'leafgarland/typescript-vim'
 Plug 'wting/rust.vim'
 Plug 'klen/python-mode'
-
-Plug 'Raimondi/delimitMate'
-Plug 'kien/ctrlp.vim'
 call plug#end()
-
-" Java
-let delimitMate_expand_cr = 1
-set wildignore+=*/build/**
-
-colorscheme hybrid
 
 " Leader commands
 nmap <leader>n :nohlsearch<CR>
-noremap <leader>W :w !sudo tee % > /dev/null<CR> " save a file as root (,W)
 noremap <leader>nt :NERDTreeToggle<CR>
 noremap <leader>be :BufExplorerHorizontalSplit<CR>
-
-noremap <leader>ss :set spell<CR>
-noremap <leader>sns :set nospell<CR>
 noremap <leader>sp :set paste<CR>
 noremap <leader>snp :set nopaste<CR>
-
-autocmd User GoyoEnter Limelight
-autocmd User GoyoLeave Limelight!
-nnoremap <Leader>z :Goyo<CR>
-
-let g:bufExplorerShowRelativePath=1
-autocmd BufNewFile,BufRead *.sl set filetype=solo
-autocmd BufNewFile,BufRead *.syp set filetype=clojure
-autocmd BufNewFile,BufRead *.md setlocal spell
-noremap <Leader>gl :GoLint<CR>
-autocmd BufWritePost *.go :GoBuild
-autocmd BufWritePost *.ts :make
-autocmd QuickFixCmdPost [^l]* nested cwindow
-autocmd QuickFixCmdPost    l* nested lwindow
-
-" Map Ctrl+hjkl to move around splits
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
-map <Up> <NOP>
-map <Down> <NOP>
-map <Left> <NOP>
-map <Right> <NOP>
-imap <Up> <NOP>
-imap <Down> <NOP>
-imap <Left> <NOP>
-imap <Right> <NOP>
