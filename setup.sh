@@ -30,8 +30,7 @@ done
 code=$HOME/code
 for directory in \
   "$HOME/bin" "$code" "$code/dev" "$code/repos" "$code/venv" "$code/go" \
-  "$HOME/.vim" "$HOME/.vim/autoload" "$HOME/.vim/swaps" \
-  "$HOME/.vim/backups" "$HOME/.vim/undo" "$HOME/.vim/colors"; do
+  "$HOME/.vim" "$HOME/.vim/autoload" "$HOME/.vim/swaps" "$HOME/.vim/colors"; do
   if [[ ! -d $directory ]]; then
     mkdir $directory
   fi
@@ -49,7 +48,7 @@ if $osx; then
   export GOROOT=$code/dev/go
   export GOPATH=$code/go
   export GOBIN=$HOME/bin
-  echo "Fetching muun ,gin, goreman, hk"
+  echo "Fetching muun, gin, goreman, hk"
   $code/dev/go/bin/go get github.com/kiasaki/muun
   $code/dev/go/bin/go get github.com/codegangsta/gin
   $code/dev/go/bin/go get github.com/mattn/goreman
@@ -57,7 +56,7 @@ if $osx; then
 fi
 
 # File symlinks
-for file in "bashrc" "bash_profile" "tmux.conf" "vimrc" "psqlrc" "i3" "Xresources" "xinitrc" "ghci"; do
+for file in "bashrc" "bash_profile" "tmux.conf" "vimrc" "psqlrc" "ghci" "nvimrc"; do
   rm -rf "$HOME/.$file"
   ln -s "$HOME/dotfiles/$file" "$HOME/.$file"
 done
