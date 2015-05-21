@@ -31,12 +31,13 @@ if [[ $kernel_name == *"ARCH" ]]; then
   fi
 fi
 
+which setxkbmap>/dev/null && setxkbmap -option caps:ctrl_modifier
+
 #####
 # Aliases
 alias ll='ls -la'
 alias tmux='tmux -2'
 alias xclip='xclip -selection c'
-alias vim='nvim'
 
 #####
 # Git aliases

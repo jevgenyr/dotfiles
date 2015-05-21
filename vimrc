@@ -24,7 +24,7 @@ let mapleader=" "
 " Syntax highlighting, filetype indentation rules, color scheme
 syntax on
 filetype plugin indent on
-colorscheme desert
+colorscheme hybrid
 
 " Various auto commands
 autocmd VimResized * :wincmd = " Equalize window sizes on resize
@@ -43,6 +43,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'ervandew/supertab'
 Plug 'bufexplorer.zip'
 Plug 'ervandew/ag'
+Plug 'tpope/vim-fugitive'
 
 " Languages
 Plug 'fatih/vim-go'
