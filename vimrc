@@ -18,6 +18,8 @@ set tabstop=4 expandtab shiftwidth=2 shiftround
 set clipboard=unnamed
 " Show tab-complete suggestions and complete longest substring.
 set wildmenu wildmode=list:longest
+" Color line 80
+set colorcolumn=80
 " Use space as leader
 let mapleader=" "
 
@@ -31,10 +33,10 @@ autocmd VimResized * :wincmd = " Equalize window sizes on resize
 autocmd BufNewFile,BufRead *.md setlocal spell " Help correct my english
 
 " Map Ctrl+hjkl to move around splits
+nnoremap <C-H> <C-W><C-H>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
 
 call plug#begin()
 " Plugins
@@ -47,11 +49,12 @@ Plug 'tpope/vim-fugitive'
 
 " Languages
 Plug 'fatih/vim-go'
-Plug 'othree/yajs.vim'
 Plug 'digitaltoad/vim-jade'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'wting/rust.vim'
 Plug 'klen/python-mode'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 call plug#end()
 
 " Leader commands

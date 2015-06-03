@@ -1,9 +1,6 @@
 export EDITOR=vim
 export PATH=".:$HOME/bin:$PATH"
 
-# Behave like vi
-set -o vi
-
 stty start undef
 stty stop undef
 
@@ -62,6 +59,10 @@ alias pgup="(cd /data && sudo -u postgres postgres -D /data/postgres -h 0.0.0.0)
 #####
 # Redis helpers
 alias redisup="redis-server $HOME/dotfiles/conf/redis.conf"
+
+#####
+# InfluxDB helpers
+alias influxup="influxd -config /usr/local/etc/influxdb.conf"
 
 #####
 # Go helpers
