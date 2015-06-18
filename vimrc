@@ -1,5 +1,5 @@
 " Don't bother supporting vi, update window title, no ~file
-set nocompatible title nobackup
+set nocompatible title nobackup noswapfile
 " Show line number, current line and current command
 set number cursorline showcmd
 " Search incrementally with smart case sensitivity, highlight all matches
