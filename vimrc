@@ -31,6 +31,8 @@ colorscheme hybrid
 " Various auto commands
 autocmd VimResized * :wincmd = " Equalize window sizes on resize
 autocmd BufNewFile,BufRead *.md setlocal spell " Help correct my english
+autocmd BufNewFile,BufRead *.tag set ft=html " treat riot .tag as html
+autocmd BufNewFile,BufRead *.sl set ft=solo " syntax for solo's .sl
 
 " Map Ctrl+hjkl to move around splits
 nnoremap <C-H> <C-W><C-H>
@@ -55,6 +57,7 @@ Plug 'wting/rust.vim'
 Plug 'klen/python-mode'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'dag/vim2hs'
 call plug#end()
 
 " Leader commands

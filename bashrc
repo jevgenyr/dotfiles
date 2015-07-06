@@ -54,7 +54,7 @@ alias asp='ansible-playbook --ask-vault-pass -v '
 
 #####
 # Postgres helpers
-alias pgup="(cd /data && sudo -u postgres postgres -D /data/postgres -h 0.0.0.0)"
+alias pgup="postgres -D /data/postgres -h 0.0.0.0"
 
 #####
 # Redis helpers
@@ -92,6 +92,10 @@ function venva {
 }
 # Deactivate shortcut
 alias venvd='deactivate'
+
+#####
+# Ruby helpers
+eval "$(rbenv init -)"
 
 #####
 # Shell PS1 line & base dir & .env

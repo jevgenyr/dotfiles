@@ -1,8 +1,8 @@
 brew tap petere/postgresql
 brew install curl git tmux tig tree graphviz bazaar hub vim
-brew install rabbitmq redis ansible jq rbenv rethinkdb
+brew install rabbitmq redis ansible jq rbenv ruby-build rethinkdb
 brew install the_silver_searcher postgresql-9.4 sqlite httpie
-brew install ssh-copy-id mongodb mcrypt ghc
+brew install ssh-copy-id mongodb mcrypt ghc cabal-install reattach-to-user-namespace
 
 code=$HOME/code
  

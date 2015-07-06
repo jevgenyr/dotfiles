@@ -12,7 +12,8 @@ done
 code=$HOME/code
 for directory in \
   "$HOME/bin" "$code" "$code/dev" "$code/repos" "$code/venv" "$code/go" \
-  "$HOME/.vim" "$HOME/.vim/autoload" "$HOME/.vim/swaps" "$HOME/.vim/colors"; do
+  "$HOME/.vim" "$HOME/.vim/autoload" "$HOME/.vim/swaps" "$HOME/.vim/colors" \
+  "$HOME/.vim/syntax"; do
   if [[ ! -d $directory ]]; then
     mkdir $directory
   fi
@@ -37,6 +38,9 @@ if [ ! -f "$HOME/.vim/autoload/plug.vim" ]; then
 fi
 if [ ! -f "$HOME/.vim/colors/hybrid.vim" ]; then
   cp "$HOME/dotfiles/vim/hybrid.vim" "$HOME/.vim/colors/hybrid.vim"
+fi
+if [ ! -f "$HOME/.vim/syntax/solo.vim" ]; then
+  cp "$HOME/dotfiles/vim/solo.vim" "$HOME/.vim/syntax/solo.vim"
 fi
 if [ ! -f "$HOME/.gitconfig" ]; then
   cp "$HOME/dotfiles/gitconfig" "$HOME/.gitconfig"
