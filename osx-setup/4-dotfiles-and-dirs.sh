@@ -49,3 +49,6 @@ if [ ! -f "$HOME/.config/fish/functions/fish_prompt.fish" ]; then
   mkdir -p "$HOME/.config/fish/functions"
   cp "$HOME/dotfiles/conf/fish/fish_prompt.fish" "$HOME/.config/fish/functions/fish_prompt.fish"
 fi
+if [ ! -f "$HOME/.config/fish/config.fish" ]; then
+  cp "$HOME/dotfiles/config.fish" "$HOME/.config/fish/config.fish"
+fi
