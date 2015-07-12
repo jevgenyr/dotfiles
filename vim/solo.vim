@@ -15,7 +15,7 @@ syntax match soloSymbol "\<\k\+\>"
 
 syntax keyword soloBuiltin if function new try catch finally
 syntax keyword soloBuiltin instanceof typeof void throw
-syntax keyword soloBuiltin def set!
+syntax keyword soloBuiltin def set! get
 syntax keyword soloBuiltin + - * / %
 syntax keyword soloBuiltin "< <= > >= || && == === != !=="
 syntax keyword soloBuiltin null? true? false?
@@ -43,6 +43,8 @@ syntax region soloMap    matchgroup=soloParen start="{"  matchgroup=soloParen en
 
 syntax match soloBracketError "]\|}\|)"
 
+syntax sync fromstart
+
 highlight default link soloSymbol       Identifier
 highlight default link soloBuiltin      Keyword
 highlight default link soloString       String
@@ -55,6 +57,6 @@ highlight default link soloComment      Comment
 highlight default link soloCommentTodo  Todo
 
 highlight default link soloParen        Delimiter
-highlight default link soloBracketError Error
+"highlight default link soloBracketError Error
 
 let b:current_syntax = "solo"

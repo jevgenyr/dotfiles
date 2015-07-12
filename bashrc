@@ -105,9 +105,6 @@ export PS1="\[\e[0;36m\]\W>\[\e[0m\] "
 # Those are computer specific config / secrets
 source $HOME/.env
 
-# Have a bin folder in my home directory
-export PATH="$PATH:$HOME/bin"
-
 # Source completions
 source $HOME/dotfiles/completion/git.sh
 source $HOME/dotfiles/completion/hub.sh

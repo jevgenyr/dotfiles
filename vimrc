@@ -26,7 +26,7 @@ let mapleader=" "
 " Syntax highlighting, filetype indentation rules, color scheme
 syntax on
 filetype plugin indent on
-colorscheme hybrid
+colorscheme hybrid " PaperColor
 
 " Various auto commands
 autocmd VimResized * :wincmd = " Equalize window sizes on resize
@@ -48,6 +48,7 @@ Plug 'ervandew/supertab'
 Plug 'bufexplorer.zip'
 Plug 'ervandew/ag'
 Plug 'tpope/vim-fugitive'
+Plug 'NLKNguyen/papercolor-theme'
 
 " Languages
 Plug 'fatih/vim-go'
@@ -58,6 +59,7 @@ Plug 'klen/python-mode'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'dag/vim2hs'
+Plug 'dag/vim-fish'
 call plug#end()
 
 " Leader commands
@@ -66,3 +68,8 @@ noremap <leader>nt :NERDTreeToggle<CR>
 noremap <leader>be :BufExplorerHorizontalSplit<CR>
 noremap <leader>sp :set paste<CR>
 noremap <leader>snp :set nopaste<CR>
+
+" Fish shell compat
+if &shell =~# 'fish$'
+  set shell=sh
+endif

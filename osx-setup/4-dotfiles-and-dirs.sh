@@ -45,3 +45,7 @@ fi
 if [ ! -f "$HOME/.gitconfig" ]; then
   cp "$HOME/dotfiles/gitconfig" "$HOME/.gitconfig"
 fi
+if [ ! -f "$HOME/.config/fish/functions/fish_prompt.fish" ]; then
+  mkdir -p "$HOME/.config/fish/functions"
+  cp "$HOME/dotfiles/conf/fish/fish_prompt.fish" "$HOME/.config/fish/functions/fish_prompt.fish"
+fi
