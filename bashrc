@@ -111,3 +111,10 @@ source $HOME/dotfiles/completion/hub.sh
 
 # Get closer to projects
 cd $HOME/code/repos
+
+# Start emacs opam
+. $HOME/.opam/opam-init/init.sh > /dev/null 2> /dev/null
+
+# Plan9 binaries
+PLAN9=/usr/local/plan9 export PLAN9
+PATH=$PATH:$PLAN9/bin export PATH

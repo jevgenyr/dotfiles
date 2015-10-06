@@ -33,6 +33,8 @@ autocmd VimResized * :wincmd = " Equalize window sizes on resize
 autocmd BufNewFile,BufRead *.md setlocal spell " Help correct my english
 autocmd BufNewFile,BufRead *.tag set ft=html " treat riot .tag as html
 autocmd BufNewFile,BufRead *.sl set ft=solo " syntax for solo's .sl
+autocmd BufNewFile,BufRead *.esl set ft=solo
+autocmd BufNewFile,BufRead *.ryl set ft=scheme
 
 " Map Ctrl+hjkl to move around splits
 nnoremap <C-H> <C-W><C-H>
