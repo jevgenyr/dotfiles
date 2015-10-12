@@ -46,6 +46,7 @@ alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C
 alias gco='git checkout'
 alias gcl='git checkout -'
 alias gcm='git checkout master'
+alias gphm='git push heroku master'
 
 #####
 # Ansible aliases
