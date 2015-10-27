@@ -7,10 +7,13 @@ fi
 
 if $osx; then
   brew tap petere/postgresql
-  brew install curl git tmux tig tree graphviz bazaar hub vim
-  brew install rabbitmq redis ansible jq rbenv nvm rethinkdb
-  brew install the_silver_searcher postgresql-9.4 sqlite httpie
-  brew install ssh-copy-id mongodb mcrypt
+  brew tap neovim/neovim
+  brew install --HEAD neovim
+  brew install curl git tmux tig tree jq graphviz hub
+  brew install postgresql-9.4 sqlite rethinkdb mongodb
+  brew install rabbitmq redis the_silver_searcher
+  brew install ssh-copy-id mcrypt ansible httpie
+  brew install chruby ruby-install nvm
 else
   if [[ `uname -r` == *"ARCH" ]]; then
     sudo pacman -S vim git curl alsa-utils tig
@@ -39,7 +42,7 @@ done
 # Go packages
 if $osx; then
   if [ ! -f "$code/dev/go/bin/go" ]; then
-    curl -o go.tar.gz https://storage.googleapis.com/golang/go1.4.2.darwin-amd64-osx10.8.tar.gz
+    curl -o go.tar.gz https://storage.googleapis.com/golang/go1.5.1.darwin-amd64.tar.gz
     tar -xzf go.tar.gz
     mv go "$code/dev"
     rm go.tar.gz
@@ -48,8 +51,7 @@ if $osx; then
   export GOROOT=$code/dev/go
   export GOPATH=$code/go
   export GOBIN=$HOME/bin
-  echo "Fetching muun, gin, goreman, hk"
-  $code/dev/go/bin/go get github.com/kiasaki/muun
+  echo "Fetching gin, goreman, hk"
   $code/dev/go/bin/go get github.com/codegangsta/gin
   $code/dev/go/bin/go get github.com/mattn/goreman
   $code/dev/go/bin/go get github.com/heroku/hk

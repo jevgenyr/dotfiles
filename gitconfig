@@ -1,3 +1,5 @@
 [user]
   name = Frederic Gingras
   email = frederic@gingras.cc
+[core]
+  excludesfile = /Users/kiasaki/.gitignore_global
