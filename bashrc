@@ -53,8 +53,12 @@ alias gphm='git push heroku master'
 
 #####
 # Tmux helpers
-tn() { [ -n "$1" ] && tmux new -s "$1" || tmux new }
-ta() { [ -n "$1" ] && tmux attach -t "$1" || tmux attach }
+function tn {
+  [ -n "$1" ] && tmux new -s "$1" || tmux new
+}
+function ta {
+  [ -n "$1" ] && tmux attach -t "$1" || tmux attach
+}
 
 #####
 # Ansible aliases
