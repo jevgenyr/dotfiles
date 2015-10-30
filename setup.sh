@@ -14,12 +14,6 @@ if $osx; then
   brew install rabbitmq redis the_silver_searcher
   brew install ssh-copy-id mcrypt ansible httpie
   brew install chruby ruby-install nvm
-else
-  if [[ `uname -r` == *"ARCH" ]]; then
-    sudo pacman -S vim git curl alsa-utils tig
-  else
-    sudo apt-get install -y curl git tmux tig tree bzr htop
-  fi
 fi
 
 for directory in "/data" "/data/db" "/data/redis" "/data/postgres"; do

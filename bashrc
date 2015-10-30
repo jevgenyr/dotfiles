@@ -1,4 +1,4 @@
-export EDITOR=nvim
+export EDITOR=vim
 export PATH="/usr/bin:/bin:/usr/local/bin:/usr/sbin:/sbin"
 export PATH=".:$HOME/bin:$PATH"
 
@@ -34,7 +34,6 @@ which setxkbmap>/dev/null && setxkbmap -option caps:ctrl_modifier
 #####
 # Aliases
 alias ll='ls -la'
-alias vim='nvim'
 alias tmux='tmux -2'
 alias xclip='xclip -selection c'
 
