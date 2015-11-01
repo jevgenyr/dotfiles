@@ -71,6 +71,9 @@ fi
 if [ ! -f "$HOME/.vim/colors/hybrid.vim" ]; then
   cp "$HOME/dotfiles/vim/hybrid.vim" "$HOME/.vim/colors/hybrid.vim"
 fi
+if [ ! -f "$HOME/.vim/colors/PaperColor.vim" ]; then
+  cp "$HOME/dotfiles/vim/hybrid.vim" "$HOME/.vim/colors/PaperColor.vim"
+fi
 if [ ! -f "$HOME/.gitconfig" ]; then
   cp "$HOME/dotfiles/gitconfig" "$HOME/.gitconfig"
 fi

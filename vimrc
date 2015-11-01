@@ -24,7 +24,8 @@ let mapleader=" "
 " Syntax highlighting, filetype indentation rules, color scheme
 syntax on
 filetype plugin indent on
-colorscheme hybrid
+set background=dark
+colorscheme PaperColor
 
 " Various auto commands
 autocmd VimResized * :wincmd = " Equalize window sizes on resize
@@ -59,6 +60,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'mephux/vim-jsfmt'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'NLKNguyen/papercolor-theme'
 
 " Languages
 Plug 'dag/vim2hs'

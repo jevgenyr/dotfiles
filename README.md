@@ -14,6 +14,16 @@ cd dotfiles
 
 That's it, that's all. You are up and running with the best config possible (for kiasaki)
 
+**Ensure homebrew is installed before**:
+
+```
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
+
+## OSX defaults
+
+For sane developer defaults on an OSX machine run `./osx`.
+
 ## Contents
 
 Mostly config for the following:
