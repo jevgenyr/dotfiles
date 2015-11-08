@@ -31,6 +31,7 @@ colorscheme PaperColor
 autocmd VimResized * :wincmd = " Equalize window sizes on resize
 autocmd BufNewFile,BufRead *.md setlocal spell " Help correct my english
 autocmd BufNewFile,BufRead *.tag set ft=html " treat riot .tag as html
+autocmd BufNewFile,BufRead *.scm set ft=racket
 
 " Map Ctrl+[hjkl] to move around splits
 nnoremap <C-h> <C-w>h
