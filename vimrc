@@ -46,7 +46,6 @@ if has("nvim") " In nvim, move out of the terminal easier
 end
 
 " Plugin options
-let g:js_fmt_autosave = 1
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git$\|node_modules',
   \ 'file': '\.exe$\|\.so$\|\.DS_Store',
