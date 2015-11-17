@@ -36,5 +36,7 @@ Mostly config for the following:
 - Bash aliases and shortcuts
 - tmux
 - Ruby
-- Python
+- MongoDB
+- PostgreSQL
+- Redis
 - Go
