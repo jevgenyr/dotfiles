@@ -13,7 +13,7 @@ if $osx; then
   brew install postgresql-9.4 sqlite rethinkdb mongodb
   brew install rabbitmq redis the_silver_searcher
   brew install ssh-copy-id mcrypt ansible httpie
-  brew install chruby ruby-install nvm
+  brew install chruby ruby-install nvm reattach-to-user-namespace
 fi
 
 for directory in "/data" "/data/db" "/data/redis" "/data/postgres"; do
@@ -52,7 +52,7 @@ if $osx; then
 fi
 
 # File symlinks
-for file in "bashrc" "bash_profile" "tmux.conf" "vimrc" "psqlrc" "ghci" "nvimrc"; do
+for file in "bashrc" "bash_profile" "zshrc" "tmux.conf" "vimrc" "psqlrc" "ghci" "nvimrc"; do
   rm -rf "$HOME/.$file"
   ln -s "$HOME/dotfiles/$file" "$HOME/.$file"
 done
@@ -74,8 +74,8 @@ fi
 if [ ! -f "$HOME/.vim/colors/hybrid.vim" ]; then
   cp "$HOME/dotfiles/vim/hybrid.vim" "$HOME/.vim/colors/hybrid.vim"
 fi
-if [ ! -f "$HOME/.vim/colors/PaperColor.vim" ]; then
-  cp "$HOME/dotfiles/vim/hybrid.vim" "$HOME/.vim/colors/PaperColor.vim"
+if [ ! -f "$HOME/.vim/colors/solarized.vim" ]; then
+  cp "$HOME/dotfiles/vim/solarized.vim" "$HOME/.vim/colors/solarized.vim"
 fi
 if [ ! -f "$HOME/.gitconfig" ]; then
   cp "$HOME/dotfiles/gitconfig" "$HOME/.gitconfig"

@@ -25,13 +25,13 @@ let mapleader=" "
 syntax on
 filetype plugin indent on
 set background=dark
-colorscheme PaperColor
+colorscheme solarized
 
 " Various auto commands
 autocmd VimResized * :wincmd = " Equalize window sizes on resize
 autocmd BufNewFile,BufRead *.md setlocal spell " Help correct my english
 autocmd BufNewFile,BufRead *.tag set ft=html " treat riot .tag as html
-autocmd BufNewFile,BufRead *.scm set ft=racket
+autocmd BufNewFile,BufRead *.scm set ft=scheme
 
 " Map Ctrl+[hjkl] to move around splits
 nnoremap <C-h> <C-w>h
@@ -70,6 +70,7 @@ Plug 'dag/vim-fish'
 Plug 'elzr/vim-json'
 Plug 'wting/rust.vim'
 Plug 'klen/python-mode'
+Plug 'wavded/vim-stylus'
 Plug 'digitaltoad/vim-jade'
 Plug 'pangloss/vim-javascript'
 Plug 'Glench/Vim-Jinja2-Syntax'
