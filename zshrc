@@ -101,9 +101,8 @@ export wdk=$GOPATH/src/github.com/kiasaki
 
 #####
 # Node.js helpers
-export NVM_DIR="$HOME/.nvm"
-[[ -f "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"
-alias dienode="ps -ax | grep node | head -1 | sed 's/^ //' | cut -d ' ' -f 1 | xargs kill | echo"
+export N_PREFIX=$HOME/n
+export PATH=$PATH:$N_PREFIX/bin
 
 #####
 # Python helpers

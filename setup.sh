@@ -5,17 +5,38 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   osx=true
 fi
 
+# Install apps via brew
 if $osx; then
   brew tap petere/postgresql
   brew tap neovim/neovim
   brew install --HEAD neovim
-  brew install curl git tmux tig tree jq graphviz hub
-  brew install postgresql-9.4 sqlite rethinkdb mongodb
-  brew install rabbitmq redis the_silver_searcher
-  brew install ssh-copy-id mcrypt ansible httpie
-  brew install chruby ruby-install nvm reattach-to-user-namespace
+  brew install curl git tmux tig tree jq httpie
+  brew install postgresql-9.5 sqlite mongodb rabbitmq redis
+  brew install reattach-to-user-namespace the_silver_searcher
+  brew install ssh-copy-id mcrypt
+  brew install chruby ruby-install
+  brew link -f postgresql-9.5
 fi
 
+# Install GUI apps via brew cask
+if $osx; then
+  brew install caskroom/cask/brew-cask
+  brew cask install google-chrome
+  brew cask install dropbox
+  brew cask install skype
+  brew cask install slack
+  brew cask install vlc
+  brew cask install caffeine
+  brew cask install the-unarchiver
+  brew cask install 1password
+  brew cask install textual
+  brew cask install virtualbox
+  brew cask install vagrant
+  brew cask install atom
+  brew cask install iterm2
+fi
+
+# DB Directories
 for directory in "/data" "/data/db" "/data/redis" "/data/postgres"; do
   if [[ ! -d $directory ]]; then
     sudo mkdir $directory
@@ -27,7 +48,8 @@ done
 code=$HOME/code
 for directory in \
   "$HOME/bin" "$code" "$code/dev" "$code/repos" "$code/venv" "$code/go" \
-  "$HOME/.vim" "$HOME/.vim/autoload" "$HOME/.vim/swaps" "$HOME/.vim/colors" "$HOME/.vim/syntax"; do
+  "$HOME/.vim" "$HOME/.vim/autoload" "$HOME/.vim/swaps" "$HOME/.vim/colors" \
+  "$HOME/.vim/syntax"; do
   if [[ ! -d $directory ]]; then
     mkdir $directory
   fi
@@ -45,14 +67,27 @@ if $osx; then
   export GOROOT=$code/dev/go
   export GOPATH=$code/go
   export GOBIN=$HOME/bin
-  echo "Fetching gin, goreman, hk"
-  $code/dev/go/bin/go get github.com/codegangsta/gin
-  $code/dev/go/bin/go get github.com/mattn/goreman
+  echo "Fetching hk, hugo, godep & goreman"
   $code/dev/go/bin/go get github.com/heroku/hk
+  $code/dev/go/bin/go get github.com/spf13/hugo
+  $code/dev/go/bin/go get github.com/tools/godep
+  $code/dev/go/bin/go get github.com/mattn/goreman
+fi
+
+# Node.js setup
+if [ ! -d "$HOME/n" ]; then
+  curl -L http://git.io/n-install | bash
+  export N_PREFIX=$HOME/n
+  export PATH=$PATH:$N_PREFIX/bin
+  npm i -g gulp
+  npm i -g bower
+  npm i -g watch
+  npm i -g http-server
 fi
 
 # File symlinks
-for file in "bashrc" "bash_profile" "zshrc" "tmux.conf" "vimrc" "psqlrc" "ghci" "nvimrc"; do
+for file in "bashrc" "bash_profile" "zshrc" "tmux.conf" "vimrc" "psqlrc" \
+  "ghci" "nvimrc"; do
   rm -rf "$HOME/.$file"
   ln -s "$HOME/dotfiles/$file" "$HOME/.$file"
 done
