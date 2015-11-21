@@ -10,7 +10,7 @@ if $osx; then
   brew tap petere/postgresql
   brew tap neovim/neovim
   brew install --HEAD neovim
-  brew install curl git tmux tig tree jq httpie
+  brew install curl git tmux tig tree jq httpie mercurial
   brew install postgresql-9.5 sqlite mongodb rabbitmq redis
   brew install reattach-to-user-namespace the_silver_searcher
   brew install ssh-copy-id mcrypt

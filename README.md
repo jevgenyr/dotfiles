@@ -75,12 +75,15 @@ Get Pages, Moom and Hues from the Mac App Store.
 
 In System Setting, set keyboard modifier key for Caps Lock to Control.
 
+While in System Setting, set keyboard shortcuts for switching spaces to `Ctrl+Shift+[hl]`.
+
 Open finder, press `cmd+,` and make sure the sidebar shows only wanted items, then, configure the toolbar to only have path, view mode & search widgets.
 
-Change default shell
+Hold shift with the mouse over the dock's resize bar and move it to the left.
+
+Change default shell:
 
 ```
 chsh -s /bin/zsh kiasaki
 ```
 
-Hold shift with the mouse over the dock's resize bar and move it to the left
