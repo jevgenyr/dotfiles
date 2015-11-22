@@ -67,6 +67,7 @@ if $osx; then
   export GOROOT=$code/dev/go
   export GOPATH=$code/go
   export GOBIN=$HOME/bin
+  mkdir -p $GOPATH/src/github.com/kiasaki
   echo "Fetching hk, hugo, godep & goreman"
   $code/dev/go/bin/go get github.com/heroku/hk
   $code/dev/go/bin/go get github.com/spf13/hugo

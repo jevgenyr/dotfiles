@@ -126,6 +126,3 @@ fi
 
 # Load computer specific config & secrets
 source $HOME/.env
-
-# Get closer to projects
-cd $HOME/code/repos
