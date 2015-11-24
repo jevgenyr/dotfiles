@@ -33,6 +33,20 @@ autocmd BufNewFile,BufRead *.md setlocal spell " Help correct my english
 autocmd BufNewFile,BufRead *.tag set ft=html " treat riot .tag as html
 autocmd BufNewFile,BufRead *.scm set ft=scheme
 
+" Angular templates
+autocmd BufNewFile *.directive.js 0r ~/.vim/templates/template.directive.js
+autocmd BufNewFile *.directive.spec.js 0r ~/.vim/templates/template.directive.spec.js
+autocmd BufNewFile *.serivce.js 0r ~/.vim/templates/template.service.js
+autocmd BufNewFile *.service.spec.js 0r ~/.vim/templates/template.service.spec.js
+autocmd BufNewFile *.api.js 0r ~/.vim/templates/template.api.js
+autocmd BufNewFile *.api.spec.js 0r ~/.vim/templates/template.api.spec.js
+autocmd BufNewFile *.model.js 0r ~/.vim/templates/template.model.js
+autocmd BufNewFile *.model.spec.js 0r ~/.vim/templates/template.model.spec.js
+autocmd BufNewFile *.controller.js 0r ~/.vim/templates/template.controller.js
+autocmd BufNewFile *.controller.spec.js 0r ~/.vim/templates/template.controller.spec.js
+autocmd BufNewFile *.filter.js 0r ~/.vim/templates/template.filter.js
+autocmd BufNewFile *.filter.spec.js 0r ~/.vim/templates/template.filter.spec.js
+
 " Map Ctrl+[hjkl] to move around splits
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -61,6 +75,7 @@ Plug 'mephux/vim-jsfmt'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'editorconfig/editorconfig-vim'
 
 " Languages
 Plug 'dag/vim2hs'
