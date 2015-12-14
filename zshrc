@@ -13,9 +13,6 @@ setopt interactive_comments
 # No.
 unsetopt beep
 
-# Vim line editing.
-bindkey -v
-
 # Initialize completion.
 autoload -Uz compinit && compinit
 
