@@ -88,7 +88,7 @@ fi
 
 # File symlinks
 for file in "bashrc" "bash_profile" "zshrc" "tmux.conf" "vimrc" "psqlrc" \
-  "ghci" "nvimrc"; do
+  "ghci" "nvimrc" "npmrc"; do
   rm -rf "$HOME/.$file"
   ln -s "$HOME/dotfiles/$file" "$HOME/.$file"
 done

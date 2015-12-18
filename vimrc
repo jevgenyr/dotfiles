@@ -25,7 +25,7 @@ let mapleader=" "
 syntax on
 filetype plugin indent on
 set background=dark
-colorscheme solarized
+colorscheme bwop " solarized
 
 " Various auto commands
 autocmd VimResized * :wincmd = " Equalize window sizes on resize
