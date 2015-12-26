@@ -52,6 +52,9 @@ export PATH="$PATH:~/bin:."
 alias ll='ls -la'
 alias tmux='tmux -2'
 alias xclip='xclip -selection c'
+uuid4() {
+  node -e 'var u = require("node-uuid");console.log(u.v4());'
+}
 
 #####
 # Git aliases
