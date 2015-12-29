@@ -89,7 +89,7 @@ chsh -s /bin/zsh kiasaki
 
 ## irssi first run
 
-`
+```
 /server add -auto -network Freenode irc.freenode.net 6667
 /network add -nick <your-nick> Freenode
 /channel add -auto #chicken Freenode
@@ -97,4 +97,4 @@ chsh -s /bin/zsh kiasaki
 /channel add -auto #go-nuts Freenode
 /channel add -auto #Node.js Freenode
 /network add -autosendcmd "/msg nickserv identify <password>; wait 2000" Freenode
-`
+```
