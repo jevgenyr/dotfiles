@@ -60,6 +60,7 @@ uuid4() {
 # Git aliases
 alias gaa='git add --all'
 alias gc='git commit'
+alias gd='git diff --color=always | less -r'
 alias gca='git commit --amend --reuse-message=HEAD'
 alias gp='git push origin HEAD'
 alias gs='git status -sb'
