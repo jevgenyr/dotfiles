@@ -72,6 +72,7 @@ Plug 'ervandew/ag'
 Plug 'bufexplorer.zip'
 Plug 'ervandew/supertab'
 Plug 'scrooloose/nerdtree'
+"Plug 'scrooloose/syntastic'
 Plug 'mephux/vim-jsfmt'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -98,3 +99,14 @@ noremap <leader>nt :NERDTreeToggle<CR>
 noremap <leader>be :BufExplorerHorizontalSplit<CR>
 noremap <leader>sp :set paste<CR>
 noremap <leader>snp :set nopaste<CR>
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
