@@ -7,11 +7,9 @@ vim/backups
 vim/.VimballRecord
 vim/plugged
 
-emacs.d/projectile.cache
-emacs.d/bookmarks
+emacs.d/config
 emacs.d/eshell
 emacs.d/elpa
-emacs.d/url
 emacs.d/var
 emacs.d/recentf
 emacs.d/projectile-bookmarks.eld

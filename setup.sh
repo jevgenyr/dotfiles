@@ -88,7 +88,7 @@ fi
 
 # File symlinks
 for file in "bashrc" "bash_profile" "zshrc" "tmux.conf" "vimrc" "psqlrc" \
-  "ghci" "nvimrc" "npmrc"; do
+  "ghci" "nvimrc" "npmrc" "emacs.d"; do
   rm -rf "$HOME/.$file"
   ln -s "$HOME/dotfiles/$file" "$HOME/.$file"
 done
@@ -107,11 +107,8 @@ fi
 if [ ! -f "$HOME/.vim/syntax/scheme.vim" ]; then
   cp "$HOME/dotfiles/vim/scheme.vim" "$HOME/.vim/syntax/scheme.vim"
 fi
-if [ ! -f "$HOME/.vim/colors/hybrid.vim" ]; then
-  cp "$HOME/dotfiles/vim/hybrid.vim" "$HOME/.vim/colors/hybrid.vim"
-fi
-if [ ! -f "$HOME/.vim/colors/solarized.vim" ]; then
-  cp "$HOME/dotfiles/vim/solarized.vim" "$HOME/.vim/colors/solarized.vim"
+if [ ! -f "$HOME/.vim/colors/bwop.vim" ]; then
+  cp "$HOME/dotfiles/vim/bwop.vim" "$HOME/.vim/colors/bwop.vim"
 fi
 if [ ! -f "$HOME/.gitconfig" ]; then
   cp "$HOME/dotfiles/gitconfig" "$HOME/.gitconfig"
