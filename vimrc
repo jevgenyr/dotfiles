@@ -78,6 +78,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
 " Languages
 Plug 'dag/vim2hs'
@@ -99,6 +100,7 @@ noremap <leader>nt :NERDTreeToggle<CR>
 noremap <leader>be :BufExplorerHorizontalSplit<CR>
 noremap <leader>sp :set paste<CR>
 noremap <leader>snp :set nopaste<CR>
+noremap <leader>f :CtrlP<CR>
 
 " Syntastic
 set statusline+=%#warningmsg#
