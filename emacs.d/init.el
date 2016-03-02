@@ -16,6 +16,9 @@
     web-mode
     scss-mode
     json-mode
+    go-mode
+    go-rename
+    go-complete
     helm
     smart-tab
     projectile
@@ -88,8 +91,9 @@
       inhibit-startup-message t)
 ; No toolbar
 (when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-; No menu bar
-(menu-bar-mode -1)
+; No menu bar (in terminal mode)
+(when (not (display-graphic-p))
+  (menu-bar-mode -1))
 ; No tabs
 (setq-default indent-tabs-mode nil)
 ; No right fringe
@@ -106,6 +110,8 @@
 (show-paren-mode 1)
 ; Highlight current line
 (global-hl-line-mode 1)
+; Make tabs 4 wide not 8
+(setq tab-width 4)
 ; Set theme
 (load-theme 'misterioso)
 
@@ -130,6 +136,17 @@
 (when is-mac
     (require 'exec-path-from-shell)
     (exec-path-from-shell-initialize))
+
+(defun set-exec-path-from-shell-PATH ()
+  (let ((path-from-shell (replace-regexp-in-string
+                          "[ \t\n]*$"
+                          ""
+                          (shell-command-to-string "$SHELL --login -i -c 'echo $PATH'"))))
+    (setenv "PATH" path-from-shell)
+    (setq eshell-path-env path-from-shell) ; for eshell users
+    (setq exec-path (split-string path-from-shell path-separator))))
+
+(when window-system (set-exec-path-from-shell-PATH))
 
 ;;;; evil
 (after "evil-autoloads"
@@ -202,9 +219,46 @@
         (setq web-mode-markup-indent-offset 4)
         (setq web-mode-css-indent-offset 4)
         (setq web-mode-code-indent-offset 4))
-    (add-hook 'web-mode-hook  'my-web-mode-hook))
 
-(add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
+    (add-hook 'web-mode-hook  'my-web-mode-hook)
+
+    (add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode)))
+
+;;;; go-mode
+(after "go-mode-autoloads"
+  (setenv "GOROOT" (concat (getenv "HOME") "/code/dev/go"))
+  (setenv "GOPATH" (concat (getenv "HOME") "/code/go"))
+
+  (defun my-go-mode-hook ()
+    ; go get golang.org/x/tools/cmd/goimports
+    (setq gofmt-command "goimports")
+
+    (add-hook 'before-save-hook 'gofmt-before-save)
+
+    (setq indent-tabs-mode t)
+    (setq tab-width 4)
+    ;(setq tab-stop-list (number-sequence 4 200 4))
+    ;(setq indent-line-function 'insert-tab)
+
+    (if (not (string-match "go" compile-command))
+        (set (make-local-variable 'compile-command)
+            "go generate && go build -v && go test -v && go vet")))
+
+  (add-hook 'go-mode-hook 'my-go-mode-hook)
+
+  (after "evil-autoloads"
+    (define-key evil-normal-state-map (kbd "SPC k") 'go-import-add)
+    (define-key evil-normal-state-map (kbd "SPC i") 'godef-jump)))
+
+
+;;;; go-complete
+(after "go-complete-autoloads"
+  (add-hook 'completion-at-point-functions 'go-complete-at-point))
+
+;;;; go-eldoc
+(after "go-eldoc-autoloads"
+  (add-hook 'go-mode-hook 'go-eldoc-setup))
+
 
 ;;;; init.el end of file
 

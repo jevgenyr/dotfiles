@@ -58,7 +58,7 @@ done
 # Go packages
 if $osx; then
   if [ ! -f "$code/dev/go/bin/go" ]; then
-    curl -o go.tar.gz https://storage.googleapis.com/golang/go1.5.1.darwin-amd64.tar.gz
+    curl -o go.tar.gz https://storage.googleapis.com/golang/go1.6.darwin-amd64.tar.gz
     tar -xzf go.tar.gz
     mv go "$code/dev"
     rm go.tar.gz
@@ -73,6 +73,9 @@ if $osx; then
   $code/dev/go/bin/go get github.com/spf13/hugo
   $code/dev/go/bin/go get github.com/tools/godep
   $code/dev/go/bin/go get github.com/mattn/goreman
+  $code/dev/go/bin/go get github.com/nsf/gocode
+  $code/dev/go/bin/go get github.com/rogpeppe/godef
+  $code/dev/go/bin/go get golang.org/x/tools/cmd/...
 fi
 
 # Node.js setup
