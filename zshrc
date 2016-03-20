@@ -125,5 +125,10 @@ if [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]; then
   fi
 fi
 
+#####
+# Docker helpers
+alias dockerstopall='docker stop $(docker ps -a -q)'
+alias dockerrmall='docker rm $(docker ps -a -q)'
+
 # Load computer specific config & secrets
 source $HOME/.env
