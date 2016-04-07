@@ -130,5 +130,17 @@ fi
 alias dockerstopall='docker stop $(docker ps -a -q)'
 alias dockerrmall='docker rm $(docker ps -a -q)'
 
+#####
+# GPG Helpers
+my-gpg-export() {
+  gpg -a --export frederic@gingras.cc > kiasaki-public-gpg.key
+  gpg -a --export-secret-keys frederic@gingras.cc > kiasaki-secret-key.key
+  gpg --export-ownertrust > kiasaki-ownertrust-gpg.txt
+}
+my-gpg-import() {
+  gpg --import kiasaki-secret-gpg.key
+  gpg --import-ownertrust kiasaki-ownertrust-gpg.txt
+}
+
 # Load computer specific config & secrets
 source $HOME/.env
