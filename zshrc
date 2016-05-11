@@ -64,7 +64,8 @@ alias gd='git diff --color=always | less -r'
 alias gca='git commit --amend --reuse-message=HEAD'
 alias gp='git push origin HEAD'
 alias gs='git status -sb'
-alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+alias glog="git log --pretty=format:'%C(yellow)%h%Creset %Cblue%an%Creset %s %Cgreen(%ar)%Creset %Cred%d%Creset'"
+alias glogl="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 alias gco='git checkout'
 alias gcl='git checkout -'
 alias gcm='git checkout master'
