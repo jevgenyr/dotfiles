@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt-get install make git emacs24-nox silversearcher-ag
+sudo apt-get install make git emacs24-nox silversearcher-ag curl
 
 # Directories
 code=$HOME/code
@@ -13,30 +13,28 @@ for directory in \
   fi
 done
 
-# Go packages
-if $osx; then
-  if [ ! -f "$code/dev/go/bin/go" ]; then
-    curl -o go.tar.gz https://storage.googleapis.com/golang/go1.6.linux-amd64.tar.gz
-    tar -xzf go.tar.gz
-    mv go "$code/dev"
-    rm go.tar.gz
-  fi
-
-  export GOROOT=$code/dev/go
-  export GOPATH=$code/go
-  export GOBIN=$HOME/bin
-  mkdir -p $GOPATH/src/github.com/kiasaki
-  echo "Fetching hk, hugo, godep & goreman"
-  $code/dev/go/bin/go get github.com/heroku/hk
-  $code/dev/go/bin/go get github.com/spf13/hugo
-  $code/dev/go/bin/go get github.com/tools/godep
-  $code/dev/go/bin/go get github.com/mattn/goreman
-  $code/dev/go/bin/go get github.com/nsf/gocode
-  $code/dev/go/bin/go get github.com/rogpeppe/godef
-  $code/dev/go/bin/go get golang.org/x/tools/cmd/...
+# Go
+if [ ! -f "$code/dev/go/bin/go" ]; then
+  curl -o go.tar.gz https://storage.googleapis.com/golang/go1.6.linux-amd64.tar.gz
+  tar -xzf go.tar.gz
+  mv go "$code/dev"
+  rm go.tar.gz
 fi
 
-# Node.js setup
+export GOROOT=$code/dev/go
+export GOPATH=$code/go
+export GOBIN=$HOME/bin
+mkdir -p $GOPATH/src/github.com/kiasaki
+echo "Fetching hk, hugo, godep & goreman"
+$code/dev/go/bin/go get github.com/heroku/hk
+$code/dev/go/bin/go get github.com/spf13/hugo
+$code/dev/go/bin/go get github.com/tools/godep
+$code/dev/go/bin/go get github.com/mattn/goreman
+$code/dev/go/bin/go get github.com/nsf/gocode
+$code/dev/go/bin/go get github.com/rogpeppe/godef
+$code/dev/go/bin/go get golang.org/x/tools/cmd/...
+
+# Node.js
 if [ ! -d "$HOME/n" ]; then
   curl -L http://git.io/n-install | bash
   export N_PREFIX=$HOME/n
@@ -47,21 +45,26 @@ if [ ! -d "$HOME/n" ]; then
   npm i -g http-server
 fi
 
-# File symlinks
+# Dotfiles
+if [ ! -d "$HOME/dotfiles" ]; then
+  git clone https://github.com/kiasaki/dotfiles.git
+fi
+
+# Dotfiles (Symlinks)
 for file in "bashrc" "bash_profile" "zshrc" "tmux.conf" "vimrc" "psqlrc" \
   "ghci" "nvimrc" "npmrc" "emacs.d"; do
   rm -rf "$HOME/.$file"
   ln -s "$HOME/dotfiles/$file" "$HOME/.$file"
 done
 
-# File creations
+# Dotfiles (Placeholders)
 for file in "$HOME/.env" "$HOME/.hushlogin"; do
   if [ ! -f $file ]; then
     touch $file
   fi
 done
 
-# File copies
+# Dotfiles (Copies)
 if [ ! -f "$HOME/.vim/autoload/plug.vim" ]; then
   cp "$HOME/dotfiles/vim/plug.vim" "$HOME/.vim/autoload/plug.vim"
 fi
@@ -74,9 +77,5 @@ fi
 if [ ! -f "$HOME/.gitconfig" ]; then
   cp "$HOME/dotfiles/gitconfig" "$HOME/.gitconfig"
 fi
-
-echo "Fetching Leiningen"
-curl -o ~/bin/lein https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
-chmod +x ~/bin/lein
 
 echo "All done!"
