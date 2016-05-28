@@ -6,7 +6,7 @@ set number cursorline showcmd
 set incsearch ignorecase smartcase hlsearch
 " Automatic indentation and adjust with tab and backspace
 set autoindent smartindent smarttab
-" Shorten messages and disable intro screen and disable audible bell
+" Shorten messages, disable intro screen and disable audible bell
 set shortmess=atI visualbell t_vb=
 " Allow backspace in insert mode, show hard tabs and trailing whitespace
 set backspace=2 list listchars=tab:>\ ,trail:·,nbsp:_
@@ -26,6 +26,15 @@ syntax on
 filetype plugin indent on
 set background=dark
 colorscheme smyck " or bwop
+
+" Status line
+hi statusline ctermbg=5 ctermfg=15
+hi statuslinenc ctermbg=8 ctermfg=15
+set statusline=\ %f
+set statusline+=\ %m
+set statusline+=\ %r
+set statusline+=%=
+set statusline+=(%c,\ %l)\ -\ %L\ 
 
 " Packages
 call plug#begin()
@@ -84,19 +93,7 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\.exe$\|\.so$\|\.DS_Store',
   \ }
 
-" Status line
-hi statusline ctermbg=5 ctermfg=15
-hi statuslinenc ctermbg=8 ctermfg=15
-set statusline=\ %f
-set statusline+=\ %m
-set statusline+=\ %r
-set statusline+=%=
-set statusline+=(%c,\ %l)\ -\ %L\ 
-
 " Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
