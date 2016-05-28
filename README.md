@@ -1,45 +1,60 @@
 dotfiles
 ========
 
-My very own dotfiles :D
+My very own dotfiles ^^,
 
-## Install on a new computer
+## Setting up a new computer
 
-```
-cd ~
-git clone git@github.com:kiasaki/dotfiles.git
-cd dotfiles
-./setup.sh
-```
-
-That's it, that's all. You are up and running with the best config possible (for kiasaki)
-
-**Ensure homebrew is installed before**:
+**Ensure homebrew is installed first**:
 
 ```
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
+Then you simply need to grab git, this repo and run `setup.sh`
+
+```
+brew install git
+git clone https://github.com/kiasaki/dotfiles.git ~/dotfiles
+cd ~/dotfiles
+./setup.sh
+```
+
+That's it, that's all. You are up and running with the best config possible (for kiasaki)
+
+
 ## OSX defaults
 
-For sane developer defaults on an OSX machine run `./osx`.
+For sane developer defaults on an OSX machine run `./setup-osx.sh`.
+
+## On a remote ubuntu server or virtual machine
+
+There is a separate `setup-server.sh` that has nothing "osx" related but still
+gives you go, nodejs, emacs, vim, psql & git config with a comfy bash shell.
+
+```
+wget https://raw.githubusercontent.com/kiasaki/dotfiles/master/setup-server.sh
+chmod +x setup-server.sh
+./setup-server.sh
+```
+
+_It'll even clone the `dotfiles` for you! Hurray for less steps and automation!_
 
 ## Contents
 
-Mostly config for the following:
+Mostly configuration for the following:
 
-- Vim
-- Emacs
-- Git
-- Git helpers
-- Bash shell
-- Bash aliases and shortcuts
+- vim
+- emacs
+- git
+- bash + aliases and helpers
+- zsh + aliases and helpers
 - tmux
-- Ruby
-- MongoDB
-- PostgreSQL
-- Redis
-- Go
+- psql
+- redis
+- go
+- nodejs
+- ruby
 
 ## Step by step new osx instructions
 
@@ -59,25 +74,24 @@ cat ~/.ssh/id_rsa.pub | pbcopy
 Clone `dotfiles` using git.
 
 ```
-cd ~
-git clone git@github.com:kiasaki/dotfiles.git
-cd dotfiles
+git clone git@github.com:kiasaki/dotfiles.git ~/dotfiles
+cd ~/dotfiles
 ```
 
-Run `setup.sh` and `osx.sh` and enter password/say yes a few times
+Run `setup.sh` and `setup-osx.sh` and enter password/say yes a few times
 
 ```
-./osx.sh
+./setup-osx.sh
 ./setup.sh
 ```
 
-Get Pages, Moom and Hues from the Mac App Store.
+Get Pages, Moom, BreakTime and Hues from the Mac App Store.
 
 In System Setting, set keyboard modifier key for Caps Lock to Control.
 
 While in System Setting, set keyboard shortcuts for switching spaces to `Ctrl+Shift+[hl]`.
 
-Open finder, press `cmd+,` and make sure the sidebar shows only wanted items, then, configure the toolbar to only have path, view mode & search widgets.
+Open finder, press `Cmd+,` and make sure the sidebar shows only wanted items, then, configure the toolbar to only have path, view mode & search widgets.
 
 Hold shift with the mouse over the dock's resize bar and move it to the left.
 

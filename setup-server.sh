@@ -37,12 +37,6 @@ $code/dev/go/bin/go get golang.org/x/tools/cmd/...
 # Node.js
 if [ ! -d "$HOME/n" ]; then
   curl -L http://git.io/n-install | bash
-  export N_PREFIX=$HOME/n
-  export PATH=$PATH:$N_PREFIX/bin
-  npm i -g gulp
-  npm i -g bower
-  npm i -g watch
-  npm i -g http-server
 fi
 
 # Dotfiles
