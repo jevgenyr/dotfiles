@@ -40,10 +40,8 @@ RPROMPT='%{$fg[blue]%}%-50<…<%~%{$fg[yellow]%}$(_prompt_git_branch)%{$reset_co
 # Print a newline before every prompt after the first one.
 _newline_precmd() { _newline_precmd() { echo } }
 
-# Color ls output
-export CLICOLOR=1
-
 export EDITOR=vim
+export CLICOLOR=1
 export PATH="/usr/bin:/bin:/usr/local/bin:/usr/sbin:/sbin"
 export PATH="$PATH:$HOME/bin:."
 
@@ -65,7 +63,6 @@ alias gca='git commit --amend --reuse-message=HEAD'
 alias gp='git push origin HEAD'
 alias gs='git status -sb'
 alias glog="git log --pretty=format:'%C(yellow)%h%Creset %Cblue%an%Creset %s %Cgreen(%ar)%Creset %Cred%d%Creset'"
-alias glogl="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 alias gco='git checkout'
 alias gcl='git checkout -'
 alias gcm='git checkout master'

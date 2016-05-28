@@ -39,8 +39,8 @@ fi
 # DB Directories
 for directory in "/data" "/data/db" "/data/redis" "/data/postgres"; do
   if [[ ! -d $directory ]]; then
-    sudo mkdir $directory
-    sudo chown $USER $directory
+    sudo mkdir "$directory"
+    sudo chown "$USER" "$directory"
   fi
 done
 
@@ -51,7 +51,7 @@ for directory in \
   "$HOME/.vim" "$HOME/.vim/autoload" "$HOME/.vim/swaps" "$HOME/.vim/colors" \
   "$HOME/.vim/syntax"; do
   if [[ ! -d $directory ]]; then
-    mkdir $directory
+    mkdir "$directory"
   fi
 done
 
@@ -68,7 +68,8 @@ if $osx; then
   export GOPATH=$code/go
   export GOBIN=$HOME/bin
   mkdir -p $GOPATH/src/github.com/kiasaki
-  echo "Fetching hk, hugo, godep & goreman"
+  echo "Fetching hk, hugo, godep, goreman, gore & al."
+  $code/dev/go/bin/go get github.com/motemen/gore
   $code/dev/go/bin/go get github.com/heroku/hk
   $code/dev/go/bin/go get github.com/spf13/hugo
   $code/dev/go/bin/go get github.com/tools/godep
@@ -81,25 +82,19 @@ fi
 # Node.js setup
 if [ ! -d "$HOME/n" ]; then
   curl -L http://git.io/n-install | bash
-  export N_PREFIX=$HOME/n
-  export PATH=$PATH:$N_PREFIX/bin
-  npm i -g gulp
-  npm i -g bower
-  npm i -g watch
-  npm i -g http-server
 fi
 
 # File symlinks
 for file in "bashrc" "bash_profile" "zshrc" "tmux.conf" "vimrc" "psqlrc" \
   "ghci" "nvimrc" "npmrc" "emacs.d"; do
   rm -rf "$HOME/.$file"
-  ln -s "$HOME/dotfiles/$file" "$HOME/.$file"
+  ln -s "$HOME/dotfiles/dotfiles/$file" "$HOME/.$file"
 done
 
 # File creations
 for file in "$HOME/.env" "$HOME/.hushlogin"; do
-  if [ ! -f $file ]; then
-    touch $file
+  if [ ! -f "$file" ]; then
+    touch "$file"
   fi
 done
 
@@ -113,12 +108,12 @@ fi
 if [ ! -f "$HOME/.vim/colors/bwop.vim" ]; then
   cp "$HOME/dotfiles/vim/bwop.vim" "$HOME/.vim/colors/bwop.vim"
 fi
+if [ ! -f "$HOME/.vim/colors/smyck.vim" ]; then
+  cp "$HOME/dotfiles/vim/smyck.vim" "$HOME/.vim/colors/smyck.vim"
+fi
 if [ ! -f "$HOME/.gitconfig" ]; then
+  # Copy not link so that secrets don't leak
   cp "$HOME/dotfiles/gitconfig" "$HOME/.gitconfig"
 fi
-
-echo "Fetching Leiningen"
-curl -o ~/bin/lein https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
-chmod +x ~/bin/lein
 
 echo "All done!"

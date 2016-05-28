@@ -12,6 +12,8 @@ xset s noexpose
 #setterm -blank 0
 #setterm -powerdown 0
 
+which setxkbmap>/dev/null && setxkbmap -option caps:ctrl_modifier
+
 # Key repeat rate
 xset r rate 340 25
 

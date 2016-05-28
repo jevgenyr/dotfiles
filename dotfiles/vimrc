@@ -25,74 +25,50 @@ let mapleader=" "
 syntax on
 filetype plugin indent on
 set background=dark
-colorscheme bwop " solarized
+colorscheme smyck " or bwop
 
-" Various auto commands
+" Packages
+call plug#begin()
+" Plugins
+Plug 'ervandew/ag'
+Plug 'bufexplorer.zip'
+Plug 'mephux/vim-jsfmt'
+Plug 'ervandew/supertab'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'airblade/vim-gitgutter'
+Plug 'editorconfig/editorconfig-vim'
+
+" Languages
+Plug 'dag/vim2hs'
+Plug 'mxw/vim-jsx'
+Plug 'fatih/vim-go'
+Plug 'elzr/vim-json'
+Plug 'wting/rust.vim'
+Plug 'klen/python-mode'
+Plug 'pangloss/vim-javascript'
+Plug 'Glench/Vim-Jinja2-Syntax'
+call plug#end()
+
+" Auto commands
 autocmd VimResized * :wincmd = " Equalize window sizes on resize
 autocmd BufNewFile,BufRead *.md setlocal spell " Help correct my english
-autocmd BufNewFile,BufRead *.tag set filetype=html " treat riot .tag as html
 autocmd BufNewFile,BufRead *.scm set filetype=scheme
 autocmd BufNewFile,BufRead *.md set filetype=markdown
-
-" Angular templates
-autocmd BufNewFile *.directive.js 0r ~/.vim/templates/template.directive.js
-autocmd BufNewFile *.directive.spec.js 0r ~/.vim/templates/template.directive.spec.js
-autocmd BufNewFile *.serivce.js 0r ~/.vim/templates/template.service.js
-autocmd BufNewFile *.service.spec.js 0r ~/.vim/templates/template.service.spec.js
-autocmd BufNewFile *.api.js 0r ~/.vim/templates/template.api.js
-autocmd BufNewFile *.api.spec.js 0r ~/.vim/templates/template.api.spec.js
-autocmd BufNewFile *.model.js 0r ~/.vim/templates/template.model.js
-autocmd BufNewFile *.model.spec.js 0r ~/.vim/templates/template.model.spec.js
-autocmd BufNewFile *.controller.js 0r ~/.vim/templates/template.controller.js
-autocmd BufNewFile *.controller.spec.js 0r ~/.vim/templates/template.controller.spec.js
-autocmd BufNewFile *.filter.js 0r ~/.vim/templates/template.filter.js
-autocmd BufNewFile *.filter.spec.js 0r ~/.vim/templates/template.filter.spec.js
 
 " Map Ctrl+[hjkl] to move around splits
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-if has("nvim") " In nvim, move out of the terminal easier
+if has("nvim") " In neovim, move out of the terminal easier
   tnoremap <C-h> <C-\><C-n><C-w>h
   tnoremap <C-j> <C-\><C-n><C-w>j
   tnoremap <C-k> <C-\><C-n><C-w>k
   tnoremap <C-l> <C-\><C-n><C-w>l
 end
-
-" Plugin options
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|node_modules',
-  \ 'file': '\.exe$\|\.so$\|\.DS_Store',
-  \ }
-
-call plug#begin()
-" Plugins
-Plug 'ervandew/ag'
-Plug 'bufexplorer.zip'
-Plug 'ervandew/supertab'
-Plug 'scrooloose/nerdtree'
-"Plug 'scrooloose/syntastic'
-Plug 'mephux/vim-jsfmt'
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'ctrlpvim/ctrlp.vim'
-
-" Languages
-Plug 'dag/vim2hs'
-Plug 'mxw/vim-jsx'
-Plug 'fatih/vim-go'
-Plug 'dag/vim-fish'
-Plug 'elzr/vim-json'
-Plug 'wting/rust.vim'
-Plug 'klen/python-mode'
-Plug 'wavded/vim-stylus'
-Plug 'digitaltoad/vim-jade'
-Plug 'pangloss/vim-javascript'
-Plug 'Glench/Vim-Jinja2-Syntax'
-call plug#end()
 
 " Leader commands
 nmap <leader>n :nohlsearch<CR>
@@ -102,11 +78,25 @@ noremap <leader>sp :set paste<CR>
 noremap <leader>snp :set nopaste<CR>
 noremap <leader>f :CtrlP<CR>
 
+" Plugin options
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|node_modules',
+  \ 'file': '\.exe$\|\.so$\|\.DS_Store',
+  \ }
+
+" Status line
+hi statusline ctermbg=5 ctermfg=15
+hi statuslinenc ctermbg=8 ctermfg=15
+set statusline=\ %f
+set statusline+=\ %m
+set statusline+=\ %r
+set statusline+=%=
+set statusline+=(%c,\ %l)\ -\ %L\ 
+
 " Syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
