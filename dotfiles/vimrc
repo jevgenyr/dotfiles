@@ -18,6 +18,8 @@ set clipboard=unnamed
 set wildmenu wildmode=list:longest
 " Color line 80
 set colorcolumn=80
+" Fold on {{{
+set foldmethod=marker
 " Use space as leader
 let mapleader=" "
 
