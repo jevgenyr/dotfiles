@@ -17,6 +17,7 @@
     web-mode
     scss-mode
     json-mode
+    yaml-mode
     go-mode
     go-rename
     go-complete
