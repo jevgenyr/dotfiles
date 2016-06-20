@@ -4,9 +4,6 @@
 # Disable transparency (menu bar & more)
 defaults write com.apple.universalaccess reduceTransparency -bool true
 
-# Set highlight color to green
-defaults write NSGlobalDomain AppleHighlightColor -string "0.764700 0.976500 0.568600"
-
 # Always show scrollbars
 defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 

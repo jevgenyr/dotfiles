@@ -1,4 +1,0 @@
-background-color: #f2f0ec //R:242 G:240 B:236
-foreground-color: #515151 //R:81 G:81 B:81
-cursor-color:     #515151 //R:81 G:81 B:81
-color-palette-override: {"0":"#2d2d2d","1":"#f2777a","2":"#99cc99","3":"#ffcc66","4":"#6699cc","5":"#cc99cc","6":"#66cccc","7":"#d3d0c8","8":"#747369","9":"#f2777a","10":"#99cc99","11":"#ffcc66","12":"#6699cc","13":"#cc99cc","14":"#66cccc","15":"#f2f0ec"}

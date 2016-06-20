@@ -8,112 +8,81 @@ fi
 # Install apps via brew
 if $osx; then
   brew tap petere/postgresql
-  brew tap neovim/neovim
-  brew install --HEAD neovim
-  brew install curl git tmux tig tree jq httpie mercurial
-  brew install postgresql-9.5 sqlite mongodb rabbitmq redis
+  brew install postgresql-9.5 sqlite redis
+  brew install curl git tmux tig tree jq httpie mercurial vim
   brew install reattach-to-user-namespace the_silver_searcher
-  brew install ssh-copy-id mcrypt
-  brew install chruby ruby-install
   brew link -f postgresql-9.5
+else
+  sudo apt-get install make git emacs24-nox silversearcher-ag curl tmux
 fi
 
-# Install GUI apps via brew cask
-if $osx; then
-  brew install caskroom/cask/brew-cask
-  brew cask install google-chrome
-  brew cask install dropbox
-  brew cask install skype
-  brew cask install slack
-  brew cask install vlc
-  brew cask install caffeine
-  brew cask install the-unarchiver
-  brew cask install 1password
-  brew cask install textual
-  brew cask install virtualbox
-  brew cask install vagrant
-  brew cask install atom
-  brew cask install iterm2
+# Clone dotfiles in case we just curl'ed the setup.sh file
+if [ ! -d "$HOME/dotfiles" ]; then
+  git clone https://github.com/kiasaki/dotfiles.git
 fi
 
-# DB Directories
-for directory in "/data" "/data/db" "/data/redis" "/data/postgres"; do
-  if [[ ! -d $directory ]]; then
-    sudo mkdir "$directory"
-    sudo chown "$USER" "$directory"
-  fi
-done
+# Directories: Create
+sudo mkdir -p /data/db
+sudo chown "$USER" /data/db
+sudo mkdir -p /data/redis
+sudo chown "$USER" /data/redis
+sudo mkdir -p /data/postgres
+sudo chown "$USER" /data/postgres
+mkdir -p ~/bin ~/code ~/.vim
+mkdir -p ~/code/dev ~/code/repos ~/code/venv ~/code/go
+mkdir -p ~/.vim/autoload ~/.vim/swaps ~/.vim/colors ~/.vim/syntax
+mkdir -p ~/.atom
 
-# Directories
-code=$HOME/code
-for directory in \
-  "$HOME/bin" "$code" "$code/dev" "$code/repos" "$code/venv" "$code/go" \
-  "$HOME/.vim" "$HOME/.vim/autoload" "$HOME/.vim/swaps" "$HOME/.vim/colors" \
-  "$HOME/.vim/syntax"; do
-  if [[ ! -d $directory ]]; then
-    mkdir "$directory"
-  fi
-done
+# Files: Symlinks
+dotfiles=~/dotfiles/dotfiles
+rm -rf ~/.bashrc ~/.bash_profile ~/.zshrc ~/.tmux.conf ~/.vimrc ~/.psqlrc ~/.ghci ~/.emacs.d ~/.npmrc
+ln -s $dotfiles/bashrc ~/.bashrc
+ln -s $dotfiles/bash_profile ~/.bash_profile
+ln -s $dotfiles/zshrc ~/.zshrc
+ln -s $dotfiles/vimrc ~/.vimrc
+ln -s $dotfiles/emacs.d ~/.emacs.d
+ln -s $dotfiles/tmux.conf ~/.tmux.conf
+ln -s $dotfiles/ghci ~/.ghci
+ln -s $dotfiles/psqlrc ~/.psqlrc
+ln -s $dotfiles/npmrc ~/.npmrc
 
-# Go packages
-if $osx; then
-  if [ ! -f "$code/dev/go/bin/go" ]; then
+# Files: Creations
+[ ! -f ~/.env ] && touch ~/.env
+[ ! -f ~/.hushlogin ] && touch ~/.hushlogin
+
+# Files: Copies
+[ ! -f ~/.vim/autoload/plug.vim ] && cp ~/dotfiles/vim/plug.vim ~/.vim/autoload/plug.vim
+[ ! -f ~/.gitconfig ] && cp ~/dotfiles/dotfiles/.gitconfig ~/.gitconfig
+[ ! -f ~/.atom/config.cson ] && cp $dotfiles/atom/config.cson ~/.atom/config.cson
+[ ! -f ~/.atom/keymap.cson ] && cp $dotfiles/atom/keymap.cson ~/.atom/keymap.cson
+
+# Language: Go
+if [ ! -f $HOME/code/dev/go/bin/go ]; then
+  if $osx; then
     curl -o go.tar.gz https://storage.googleapis.com/golang/go1.6.darwin-amd64.tar.gz
-    tar -xzf go.tar.gz
-    mv go "$code/dev"
-    rm go.tar.gz
+  else
+    curl -o go.tar.gz https://storage.googleapis.com/golang/go1.6.linux-amd64.tar.gz
   fi
-
-  export GOROOT=$code/dev/go
-  export GOPATH=$code/go
-  export GOBIN=$HOME/bin
-  mkdir -p $GOPATH/src/github.com/kiasaki
-  echo "Fetching hk, hugo, godep, goreman, gore & al."
-  $code/dev/go/bin/go get github.com/motemen/gore
-  $code/dev/go/bin/go get github.com/heroku/hk
-  $code/dev/go/bin/go get github.com/spf13/hugo
-  $code/dev/go/bin/go get github.com/tools/godep
-  $code/dev/go/bin/go get github.com/mattn/goreman
-  $code/dev/go/bin/go get github.com/nsf/gocode
-  $code/dev/go/bin/go get github.com/rogpeppe/godef
-  $code/dev/go/bin/go get golang.org/x/tools/cmd/...
+  tar -xzf go.tar.gz
+  mv go ~/code/dev
+  rm go.tar.gz
 fi
+export GOROOT=~/code/dev/go
+export GOPATH=~/code/go
+export GOBIN=$HOME/bin
+mkdir -p $GOPATH/src/github.com/kiasaki
+echo "Fetching hk, hugo, godep, gore & others"
+$GOROOT/bin/go get github.com/motemen/gore
+$GOROOT/bin/go get github.com/heroku/hk
+$GOROOT/bin/go get github.com/spf13/hugo
+$GOROOT/bin/go get github.com/tools/godep
+$GOROOT/bin/go get github.com/nsf/gocode
+$GOROOT/bin/go get github.com/rogpeppe/godef
+$GOROOT/bin/go get golang.org/x/tools/cmd/...
 
-# Node.js setup
+# Language: Node.js
 if [ ! -d "$HOME/n" ]; then
-  curl -L http://git.io/n-install | bash
-fi
-
-# File symlinks
-for file in "bashrc" "bash_profile" "zshrc" "tmux.conf" "vimrc" "psqlrc" \
-  "ghci" "nvimrc" "npmrc" "emacs.d"; do
-  rm -rf "$HOME/.$file"
-  ln -s "$HOME/dotfiles/dotfiles/$file" "$HOME/.$file"
-done
-
-# File creations
-for file in "$HOME/.env" "$HOME/.hushlogin"; do
-  if [ ! -f "$file" ]; then
-    touch "$file"
-  fi
-done
-
-# File copies
-if [ ! -f "$HOME/.vim/autoload/plug.vim" ]; then
-  cp "$HOME/dotfiles/vim/plug.vim" "$HOME/.vim/autoload/plug.vim"
-fi
-if [ ! -f "$HOME/.vim/syntax/scheme.vim" ]; then
-  cp "$HOME/dotfiles/vim/scheme.vim" "$HOME/.vim/syntax/scheme.vim"
-fi
-if [ ! -f "$HOME/.vim/colors/bwop.vim" ]; then
-  cp "$HOME/dotfiles/vim/bwop.vim" "$HOME/.vim/colors/bwop.vim"
-fi
-if [ ! -f "$HOME/.vim/colors/smyck.vim" ]; then
-  cp "$HOME/dotfiles/vim/smyck.vim" "$HOME/.vim/colors/smyck.vim"
-fi
-if [ ! -f "$HOME/.gitconfig" ]; then
-  # Copy not link so that secrets don't leak
-  cp "$HOME/dotfiles/gitconfig" "$HOME/.gitconfig"
+  curl -L http://git.io/n-install | bash -s -- -n -y
 fi
 
 echo "All done!"
