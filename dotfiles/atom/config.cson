@@ -1,0 +1,28 @@
+# Packages:
+#
+# - editorconfig
+# - vim-mode
+# - ex-mode
+# - sort-lines
+# - webbox-colors
+# - language-babel
+# - language-ocaml
+# - linter
+# - linter-eslint
+# - linter-flow
+# - linter-pep8
+#
+"*":
+  core:
+    themes: [
+      "one-light-ui"
+      "one-light-syntax"
+    ]
+  editor:
+    scrollPastEnd: true
+    showIndentGuide: true
+    showInvisibles: true
+  "tree-view":
+    hideIgnoredNames: true
+  welcome:
+    showOnStartup: false

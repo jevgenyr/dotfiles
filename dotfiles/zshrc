@@ -50,6 +50,7 @@ export PATH="$PATH:$HOME/bin:."
 alias ll='ls -la'
 alias tmux='tmux -2'
 alias xclip='xclip -selection c'
+alias e='emacs'
 uuid4() {
   node -e 'var u = require("node-uuid");console.log(u.v4());'
 }
@@ -128,6 +129,7 @@ fi
 # Docker helpers
 alias dockerstopall='docker stop $(docker ps -a -q)'
 alias dockerrmall='docker rm $(docker ps -a -q)'
+alias dockercleanuntagged='docker rmi $(docker images | grep "^<none>" | tr -s " " | cut -d " " -f 3)'
 
 #####
 # GPG Helpers

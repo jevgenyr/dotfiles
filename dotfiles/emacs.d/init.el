@@ -18,16 +18,20 @@
     scss-mode
     json-mode
     yaml-mode
+    typescript-mode
+    tss
     go-mode
     go-rename
     go-complete
     helm
     smart-tab
+    auto-complete
     projectile
     helm-projectile
     magit
     evil-magit
     flycheck
+    flycheck-flow
     exec-path-from-shell
     arjen-grey-theme))
 
@@ -117,7 +121,8 @@
 ; Set theme
 ;(load-theme 'misterioso)
 ;(load-theme 'quasi-monochrome t)
-(load-theme 'smyx t)
+;(load-theme 'smyx t)
+(load-theme 'github t)
 
 
 ;;;; keybindings
@@ -190,15 +195,31 @@
 
 ;;;; smart-tab
 (after "smart-tab-autoloads"
-    (global-smart-tab-mode 1))
+    ;(global-smart-tab-mode 1)
+    )
+
+(after "tss-autoloads"
+  (tss-config-default))
+
+(after "auto-complete-autoloads"
+    (ac-config-default)
+    ;(setq-default ac-sources '(ac-source-words-in-all-buffer))
+    (setq ac-use-menu-map t)
+    (define-key ac-mode-map (kbd "C-TAB") 'auto-complete)
+    (define-key ac-completing-map "\C-n" 'ac-next)
+    (define-key ac-completing-map "\C-p" 'ac-previous)
+    )
 
 ;;;; flycheck
+(require 'flycheck-flow)
 (after "flycheck-autoloads"
     (global-flycheck-mode)
     (setq-default flycheck-temp-prefix ".flycheck")
     (setq-default flycheck-disabled-checkers
         (append flycheck-disabled-checkers '(javascript-jshint json-jsonlist)))
-    (flycheck-add-mode 'javascript-eslint 'web-mode))
+    (flycheck-add-mode 'javascript-eslint 'web-mode)
+    (flycheck-add-mode 'javascript-flow 'web-mode)
+    (flycheck-add-next-checker 'javascript-eslint 'javascript-flow))
 
 ;;;; magit
 (after "magit-autoloads"
@@ -211,6 +232,10 @@
     (evil-magit-init)
     (setq evil-magit-want-horizontal-movement t)
     (setq evil-magit-state 'motion))
+
+;;;; typescript-mode
+(after "typescript-mode-autoloads"
+    (add-to-list 'auto-mode-alist '("\\.tsx?$" . typescript-mode)))
 
 ;;;; j2-mode
 (after "js2-mode-autoloads"
