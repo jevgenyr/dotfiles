@@ -32,10 +32,11 @@ mkdir -p ~/bin ~/code ~/.vim
 mkdir -p ~/code/dev ~/code/repos ~/code/venv ~/code/go
 mkdir -p ~/.vim/autoload ~/.vim/swaps ~/.vim/colors ~/.vim/syntax
 mkdir -p ~/.atom
+mkdir -p ~/.config/nvim ~/.config/nvim/autoload ~/.config/nvim/colors
 
 # Files: Symlinks
 dotfiles=~/dotfiles/dotfiles
-rm -rf ~/.bashrc ~/.bash_profile ~/.zshrc ~/.tmux.conf ~/.vimrc ~/.psqlrc ~/.ghci ~/.emacs.d ~/.npmrc
+rm -rf ~/.bashrc ~/.bash_profile ~/.zshrc ~/.tmux.conf ~/.vimrc ~/.psqlrc ~/.ghci ~/.emacs.d ~/.npmrc ~/.config/nvim/init.vim
 ln -s $dotfiles/bashrc ~/.bashrc
 ln -s $dotfiles/bash_profile ~/.bash_profile
 ln -s $dotfiles/zshrc ~/.zshrc
@@ -45,6 +46,7 @@ ln -s $dotfiles/tmux.conf ~/.tmux.conf
 ln -s $dotfiles/ghci ~/.ghci
 ln -s $dotfiles/psqlrc ~/.psqlrc
 ln -s $dotfiles/npmrc ~/.npmrc
+ln -s $dotfiles/vimrc ~/.config/nvim/init.vim
 
 # Files: Creations
 [ ! -f ~/.env ] && touch ~/.env
@@ -55,6 +57,8 @@ ln -s $dotfiles/npmrc ~/.npmrc
 [ ! -f ~/.gitconfig ] && cp ~/dotfiles/dotfiles/.gitconfig ~/.gitconfig
 [ ! -f ~/.atom/config.cson ] && cp $dotfiles/atom/config.cson ~/.atom/config.cson
 [ ! -f ~/.atom/keymap.cson ] && cp $dotfiles/atom/keymap.cson ~/.atom/keymap.cson
+[ ! -f ~/.config/nvim/colors/smyck.vim ] && cp ~/dotfiles/vim/smyck.vim ~/.config/nvim/colors/smyck.vim
+[ ! -f ~/.config/nvim/autoload/plug.vim ] && cp ~/dotfiles/vim/plug.vim ~/.config/nvim/autoload/plug.vim
 
 # Language: Go
 if [ ! -f $HOME/code/dev/go/bin/go ]; then
