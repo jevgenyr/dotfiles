@@ -14,7 +14,7 @@ export PROMPT_COMMAND="history -a"      # update histfile after every command
 
 # Ls
 platform=$(uname)
-if [[ $platform == 'linux' ]]; then
+if [[ $platform == 'Linux' ]]; then
   alias ls='ls --color=auto -p'
 elif [[ $platform == 'Darwin' ]]; then
   alias ls='ls -Gp'
