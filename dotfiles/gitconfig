@@ -3,3 +3,8 @@
   email = frederic@gingras.cc
 [core]
   excludesfile = /Users/kiasaki/.gitignore_global
+[mergetool]
+	prompt = false
+[merge]
+	conflictstyle = diff3
+	tool = vimdiff

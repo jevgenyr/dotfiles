@@ -16,8 +16,8 @@ set tabstop=4 expandtab shiftwidth=2 shiftround
 set clipboard=unnamed
 " Show tab-complete suggestions and complete longest substring.
 set wildmenu wildmode=list:longest
-" Color line 80
-set colorcolumn=80
+" Color line 100
+set colorcolumn=100
 " Fold on { { {
 set foldmethod=marker
 " Use space as leader
