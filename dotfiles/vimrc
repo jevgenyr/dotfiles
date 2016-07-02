@@ -29,7 +29,7 @@ set shell=zsh
 syntax on
 filetype plugin indent on
 set background=dark
-colorscheme smyck " delek " or bwop
+colorscheme smyck " or delek or bwop
 
 " Status line
 hi statusline ctermbg=5 ctermfg=15
@@ -56,6 +56,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'mxw/vim-jsx'
 Plug 'fatih/vim-go'
 Plug 'elzr/vim-json'
+Plug 'kiasaki/vim-eth'
 Plug 'klen/python-mode'
 Plug 'pangloss/vim-javascript'
 Plug 'glench/vim-jinja2-syntax'
@@ -66,6 +67,7 @@ autocmd VimResized * :wincmd = " Equalize window sizes on resize
 autocmd BufNewFile,BufRead *.md setlocal spell " Help correct my english
 autocmd BufNewFile,BufRead *.md set filetype=markdown
 autocmd BufNewFile,BufRead *.scm set filetype=scheme
+autocmd BufNewFile,BufRead *.eth setfiletype eth
 
 " Map Ctrl+[hjkl] to move around splits
 nnoremap <C-h> <C-w>h
@@ -91,6 +93,11 @@ noremap <leader>sp :set paste<CR>
 noremap <leader>snp :set nopaste<CR>
 noremap <leader>f :CtrlP<CR>
 
+" Inspect sym at cursor
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
 " CtrlP
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git$\|node_modules',
@@ -104,3 +111,6 @@ if has("nvim")
   hi NeomakeErrorSign ctermfg=black ctermbg=red
   hi NeomakeWarningSign ctermfg=black ctermbg=yellow
 end
+
+" Javascript
+let g:javascript_plugin_jsdoc = 1
