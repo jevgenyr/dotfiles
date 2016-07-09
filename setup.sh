@@ -13,7 +13,7 @@ if $osx; then
   brew install reattach-to-user-namespace the_silver_searcher
   brew link -f postgresql-9.5
 else
-  sudo apt-get install make git emacs24-nox silversearcher-ag curl tmux
+  sudo apt-get install -y make git emacs24-nox silversearcher-ag curl tmux
 fi
 
 # Clone dotfiles in case we just curl'ed the setup.sh file
