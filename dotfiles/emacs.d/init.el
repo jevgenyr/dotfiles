@@ -121,8 +121,8 @@
 ; Set theme
 ;(load-theme 'misterioso)
 ;(load-theme 'quasi-monochrome t)
-;(load-theme 'smyx t)
-(load-theme 'github t)
+(load-theme 'smyx t)
+;(load-theme 'github t)
 
 
 ;;;; keybindings

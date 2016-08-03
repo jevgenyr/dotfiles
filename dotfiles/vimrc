@@ -28,12 +28,12 @@ set shell=zsh
 " Syntax highlighting, filetype indentation rules, color scheme
 syntax on
 filetype plugin indent on
-set background=dark
-colorscheme smyck " or delek or bwop
+set background=light
+colorscheme solarized " smyck " or delek or bwop
 
 " Status line
-hi statusline ctermbg=5 ctermfg=15
-hi statuslinenc ctermbg=8 ctermfg=15
+hi statusline ctermbg=15 ctermfg=5
+hi statuslinenc ctermbg=15 ctermfg=6
 set statusline=\ %f
 set statusline+=\ %m
 set statusline+=\ %r
@@ -51,6 +51,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'airblade/vim-gitgutter'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'altercation/vim-colors-solarized'
 
 " Languages
 Plug 'mxw/vim-jsx'
