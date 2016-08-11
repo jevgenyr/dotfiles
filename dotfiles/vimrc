@@ -12,8 +12,10 @@ set shortmess=atI visualbell t_vb=
 set backspace=2 list listchars=tab:>\ ,trail:·,nbsp:_
 " Show hard tabs as 4 wide, use 2 space indentation rounded to multiples
 set tabstop=4 expandtab shiftwidth=2 shiftround
-" Use mac's clipboard
-set clipboard=unnamed
+" Use os's clipboard
+if (executable('pbcopy') || executable('xclip') || executable('xsel')) && has('clipboard')
+  set clipboard=unnamed
+endif
 " Show tab-complete suggestions and complete longest substring.
 set wildmenu wildmode=list:longest
 " Color line 100
