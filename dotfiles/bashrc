@@ -117,6 +117,12 @@ if [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]; then
   fi
 fi
 
+#####
+# Docker helpers
+alias dockerstopall='docker stop $(docker ps -a -q)'
+alias dockerrmall='docker rm $(docker ps -a -q)'
+alias dockercleanuntagged='docker rmi $(docker images | grep "^<none>" | tr -s " " | cut -d " " -f 3)'
+
 
 # Status line
 export PS1="\[\e[0;36m\]\W>\[\e[0m\] "
