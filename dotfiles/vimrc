@@ -48,6 +48,7 @@ Plug 'kiasaki/vim-eth'
 Plug 'klen/python-mode'
 Plug 'pangloss/vim-javascript'
 Plug 'glench/vim-jinja2-syntax'
+Plug 'wavded/vim-stylus'
 call plug#end()
 
 " Syntax highlighting, filetype indentation rules, color scheme
@@ -110,11 +111,13 @@ let g:ctrlp_custom_ignore = {
 
 " Neomake
 let g:neomake_javascript_enabled_makers = ['eslint']
-if has("nvim")
-  autocmd BufWritePost * Neomake
-  hi NeomakeErrorSign ctermfg=black ctermbg=red
-  hi NeomakeWarningSign ctermfg=black ctermbg=yellow
-end
+autocmd BufWritePost * Neomake
+hi NeomakeErrorSign ctermfg=black ctermbg=red
+hi NeomakeWarningSign ctermfg=black ctermbg=yellow
 
 " Javascript
 let g:javascript_plugin_jsdoc = 1
+
+" Tmux
+autocmd BufEnter * call system("tmux rename-window " . expand("%:t"))
+autocmd VimLeave * call system("tmux setw automatic-rename")

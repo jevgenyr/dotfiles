@@ -40,10 +40,10 @@ RPROMPT='%{$fg[blue]%}%-50<…<%~%{$fg[yellow]%}$(_prompt_git_branch)%{$reset_co
 # Print a newline before every prompt after the first one.
 _newline_precmd() { _newline_precmd() { echo } }
 
-export EDITOR=nvim
+export EDITOR=vim
 export CLICOLOR=1
 export PATH="/usr/bin:/bin:/usr/local/bin:/usr/sbin:/sbin"
-export PATH="$PATH:$HOME/bin:."
+export PATH="$HOME/bin:.:$PATH"
 
 #####
 # Aliases
@@ -51,7 +51,6 @@ alias ll='ls -la'
 alias tmux='tmux -2'
 alias xclip='xclip -selection c'
 alias e='emacs'
-alias vim='nvim'
 uuid4() {
   node -e 'var u = require("node-uuid");console.log(u.v4());'
 }
