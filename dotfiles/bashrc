@@ -123,7 +123,6 @@ export PS1="\[\e[0;36m\]\W>\[\e[0m\] "
 
 # Completion
 source "$HOME/dotfiles/completion/git.sh"
-source "$HOME/dotfiles/completion/hub.sh"
 
 # Computer specific config & secrets
 source "$HOME/.env"

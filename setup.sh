@@ -28,11 +28,11 @@ sudo mkdir -p /data/redis
 sudo chown "$USER" /data/redis
 sudo mkdir -p /data/postgres
 sudo chown "$USER" /data/postgres
-mkdir -p ~/bin ~/code ~/.vim
-mkdir -p ~/code/dev ~/code/repos ~/code/venv ~/code/go
-mkdir -p ~/.vim/autoload ~/.vim/swaps ~/.vim/colors ~/.vim/syntax
+mkdir -p ~/bin
 mkdir -p ~/.atom
-mkdir -p ~/.config/nvim ~/.config/nvim/autoload ~/.config/nvim/colors
+mkdir -p ~/code/{dev,repos,venv,go}
+mkdir -p ~/.vim/{autoload,swaps,colors,syntax}
+mkdir -p ~/.config/nvim/{autoload,colors}
 
 # Files: Symlinks
 dotfiles=~/dotfiles/dotfiles
@@ -52,20 +52,29 @@ ln -s $dotfiles/vimrc ~/.config/nvim/init.vim
 [ ! -f ~/.hushlogin ] && touch ~/.hushlogin
 
 # Files: Copies
-[ ! -f ~/.vim/autoload/plug.vim ] && cp ~/dotfiles/vim/plug.vim ~/.vim/autoload/plug.vim
-[ ! -f ~/.gitconfig ] && cp ~/dotfiles/dotfiles/gitconfig ~/.npmrc
-[ ! -f ~/.npmrc ] && cp ~/dotfiles/dotfiles/npmrc ~/.npmrc
-[ ! -f ~/.atom/config.cson ] && cp $dotfiles/atom/config.cson ~/.atom/config.cson
-[ ! -f ~/.atom/keymap.cson ] && cp $dotfiles/atom/keymap.cson ~/.atom/keymap.cson
-[ ! -f ~/.config/nvim/colors/smyck.vim ] && cp ~/dotfiles/vim/smyck.vim ~/.config/nvim/colors/smyck.vim
-[ ! -f ~/.config/nvim/autoload/plug.vim ] && cp ~/dotfiles/vim/plug.vim ~/.config/nvim/autoload/plug.vim
+[ ! -f ~/.vim/autoload/plug.vim ] && \
+  cp ~/dotfiles/vim/plug.vim ~/.vim/autoload/plug.vim
+[ ! -f ~/.vim/colors/solarized.vim ] && \
+  cp ~/dotfiles/vim/solarized.vim ~/.vim/autoload/solarized.vim
+[ ! -f ~/.config/nvim/autoload/plug.vim ] && \
+  cp ~/dotfiles/vim/plug.vim ~/.config/nvim/autoload/plug.vim
+[ ! -f ~/.config/nvim/colors/solarized.vim ] && \
+  cp ~/dotfiles/vim/solarized.vim ~/.config/nvim/colors/solarized.vim
+[ ! -f ~/.gitconfig ] && \
+  cp $dotfiles/gitconfig ~/.npmrc
+[ ! -f ~/.npmrc ] && \
+  cp $dotfiles/npmrc ~/.npmrc
+[ ! -f ~/.atom/config.cson ] && \
+  cp $dotfiles/atom/config.cson ~/.atom/config.cson
+[ ! -f ~/.atom/keymap.cson ] && \
+  cp $dotfiles/atom/keymap.cson ~/.atom/keymap.cson
 
 # Language: Go
 if [ ! -f $HOME/code/dev/go/bin/go ]; then
   if $osx; then
-    curl -o go.tar.gz https://storage.googleapis.com/golang/go1.6.darwin-amd64.tar.gz
+    curl -o go.tar.gz https://storage.googleapis.com/golang/go1.7.1.darwin-amd64.tar.gz
   else
-    curl -o go.tar.gz https://storage.googleapis.com/golang/go1.6.linux-amd64.tar.gz
+    curl -o go.tar.gz https://storage.googleapis.com/golang/go1.7.1.linux-amd64.tar.gz
   fi
   tar -xzf go.tar.gz
   mv go ~/code/dev
