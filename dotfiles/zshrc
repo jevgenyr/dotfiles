@@ -20,22 +20,19 @@ autoload -Uz compinit && compinit
 # red after a failed command. Directory and git branch on the right.
 setopt prompt_subst
 autoload colors && colors
-[[ -n "$SSH_CLIENT" ]] && _prompt_ssh_color="$fg[magenta]"
-_prompt_git_branch() {
-  [[ -f .git/HEAD ]] || return 0
-  local head
-  read head < .git/HEAD
+[[ -n "$SSH_CLIENT" ]] && _prompt_ssh='%F{magenta}'
+_prompt_git() {
+  local dotgit=.git head
+  [[ -d "$dotgit" ]] || dotgit=../.git
+  [[ -d "$dotgit" ]] || return 0
+  read head < "$dotgit/HEAD"
   case "$head" in
-    ref:*)
-      echo ":${head#*/*/}"
-      ;;
-    *)
-      echo ":${head:0:7}"
-      ;;
+    ref:*) echo ":${head#*/*/}";;
+    *) echo ":${head:0:7}";;
   esac
 }
-PROMPT='%{%(?.$fg[green]$_prompt_ssh_color.$fg[red])%}»%{$reset_color%} '
-RPROMPT='%{$fg[blue]%}%-50<…<%~%{$fg[yellow]%}$(_prompt_git_branch)%{$reset_color%}'
+PROMPT="%(?.%F{green}$_prompt_ssh.%F{red})»%f "
+RPROMPT='%F{blue}%50<…<%~%F{yellow}$(_prompt_git)%f'
 
 # Print a newline before every prompt after the first one.
 _newline_precmd() { _newline_precmd() { echo } }
