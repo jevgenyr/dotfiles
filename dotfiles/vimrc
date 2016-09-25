@@ -38,7 +38,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'airblade/vim-gitgutter'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'altercation/vim-colors-solarized'
 
 " Languages
 Plug 'mxw/vim-jsx'
@@ -55,11 +54,11 @@ call plug#end()
 syntax on
 filetype plugin indent on
 set background=light
-colorscheme solarized " smyck " or delek or bwop
+colorscheme dracula " solarized " smyck " or delek or bwop
 
 " Status line
-hi statusline ctermbg=15 ctermfg=5
-hi statuslinenc ctermbg=15 ctermfg=6
+hi statusline ctermfg=0 ctermbg=5
+hi statuslinenc ctermfg=0 ctermbg=6
 set statusline=\ %f
 set statusline+=\ %m
 set statusline+=\ %r
@@ -79,7 +78,8 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-w>n <ESC>:tabnext<CR>
-if has("nvim") " In neovim, move out of the terminal easier
+if has("nvim")
+  " Make moving out of the terminal easier
   tnoremap <C-h> <C-\><C-n><C-w>h
   tnoremap <C-j> <C-\><C-n><C-w>j
   tnoremap <C-k> <C-\><C-n><C-w>k
@@ -96,11 +96,6 @@ noremap <leader>be :BufExplorerHorizontalSplit<CR>
 noremap <leader>sp :set paste<CR>
 noremap <leader>snp :set nopaste<CR>
 noremap <leader>f :CtrlP<CR>
-
-" Inspect sym at cursor
-map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 " CtrlP
 let g:ctrlp_root_markers = ['node_modules']
