@@ -1,5 +1,8 @@
 #!/bin/bash
+set -x
+
 pushd ~ >/dev/null
+
 
 # Install deps for building suckless apps
 sudo apt-get install xorg-dev
@@ -20,7 +23,8 @@ cd ~/code/repos/slock
 sudo make clean install
 
 # Install Input font
-cp ~/dotfiles/support/input_font /usr/share/fonts/truetype/Input
+sudo cp -r ~/dotfiles/support/input_font /usr/share/fonts/truetype/input
 fc-cache -f -v
+
 
 popd >/dev/null
