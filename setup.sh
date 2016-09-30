@@ -56,10 +56,14 @@ ln -s $dotfiles/vimrc ~/.config/nvim/init.vim
   cp ~/dotfiles/vim/plug.vim ~/.vim/autoload/plug.vim
 [ ! -f ~/.vim/colors/solarized.vim ] && \
   cp ~/dotfiles/vim/solarized.vim ~/.vim/autoload/solarized.vim
+[ ! -f ~/.vim/colors/dracula.vim ] && \
+  cp ~/dotfiles/vim/dracula.vim ~/.vim/autoload/dracula.vim
 [ ! -f ~/.config/nvim/autoload/plug.vim ] && \
   cp ~/dotfiles/vim/plug.vim ~/.config/nvim/autoload/plug.vim
 [ ! -f ~/.config/nvim/colors/solarized.vim ] && \
   cp ~/dotfiles/vim/solarized.vim ~/.config/nvim/colors/solarized.vim
+[ ! -f ~/.config/nvim/colors/dracula.vim ] && \
+  cp ~/dotfiles/vim/dracula.vim ~/.config/nvim/colors/dracula.vim
 [ ! -f ~/.gitconfig ] && \
   cp $dotfiles/gitconfig ~/.npmrc
 [ ! -f ~/.npmrc ] && \

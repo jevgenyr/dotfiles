@@ -80,6 +80,27 @@ wget https://raw.githubusercontent.com/kiasaki/dotfiles/master/setup.sh
 ./setup.sh
 ```
 
+## Installing (ElementaryOS)
+
+```
+sudo apt-get install software-properties-common vim git zsh xclip gdebi
+sudo apt-get install python-dev python-pip python3-dev python3-pip
+sudo add-apt-repository ppa:neovim-ppa/unstable
+sudo apt-get update
+sudo apt-get install neovim
+chsh -s /bin/zsh
+ssh-keygen -t rsa -b 2048
+cat ~/.ssh/id_rsa.pub | xclip -i
+# Install Chrome using Epiphany & `sudo gdebi ~/Downloads/chrome.deb`
+# Add new SSH key to GitHub
+git clone git@github.com:kiasaki/dotfiles.sh
+cd dotfiles
+./setup.sh
+./setup-ubuntu.sh
+```
+
+
+
 ## License
 
 MIT
