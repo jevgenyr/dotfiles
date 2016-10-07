@@ -12,10 +12,6 @@ set shortmess=atI visualbell t_vb=
 set backspace=2 list listchars=tab:>\ ,trail:·,nbsp:_
 " Show hard tabs as 4 wide, use 2 space indentation rounded to multiples
 set tabstop=4 expandtab shiftwidth=2 shiftround
-" Use os's clipboard
-if (executable('pbcopy') || executable('xclip') || executable('xsel')) && has('clipboard')
-  set clipboard=unnamed
-endif
 " Show tab-complete suggestions and complete longest substring.
 set wildmenu wildmode=list:longest
 " Color line 100
@@ -24,6 +20,10 @@ set colorcolumn=100
 set foldmethod=marker
 " Use space as leader
 let mapleader=" "
+" Use os's clipboard
+if (executable('pbcopy') || executable('xclip') || executable('xsel')) && has('clipboard')
+  set clipboard=unnamed
+endif
 " Use zsh
 set shell=zsh
 
@@ -45,16 +45,16 @@ Plug 'fatih/vim-go'
 Plug 'elzr/vim-json'
 Plug 'kiasaki/vim-eth'
 Plug 'klen/python-mode'
+Plug 'wavded/vim-stylus'
 Plug 'pangloss/vim-javascript'
 Plug 'glench/vim-jinja2-syntax'
-Plug 'wavded/vim-stylus'
 call plug#end()
 
 " Syntax highlighting, filetype indentation rules, color scheme
 syntax on
 filetype plugin indent on
 set background=light
-colorscheme dracula " solarized " smyck " or delek or bwop
+colorscheme solarized " dracula smyck or delek or bwop
 
 " Status line
 hi statusline ctermfg=0 ctermbg=5
@@ -70,7 +70,7 @@ autocmd VimResized * :wincmd = " Equalize window sizes on resize
 autocmd BufNewFile,BufRead *.md setlocal spell " Help correct my english
 autocmd BufNewFile,BufRead *.md set filetype=markdown
 autocmd BufNewFile,BufRead *.scm set filetype=scheme
-autocmd BufNewFile,BufRead *.eth setfiletype eth
+autocmd BufNewFile,BufRead *.eth set filetype=eth
 
 " Map Ctrl+[hjkl] to move around splits
 nnoremap <C-h> <C-w>h
@@ -91,10 +91,10 @@ end
 
 " Leader commands
 nmap <leader>n :nohlsearch<CR>
-noremap <leader>nt :NERDTreeToggle<CR>
-noremap <leader>be :BufExplorerHorizontalSplit<CR>
 noremap <leader>sp :set paste<CR>
 noremap <leader>snp :set nopaste<CR>
+noremap <leader>nt :NERDTreeToggle<CR>
+noremap <leader>be :BufExplorerHorizontalSplit<CR>
 noremap <leader>f :CtrlP<CR>
 
 " CtrlP
@@ -112,7 +112,3 @@ hi NeomakeWarningSign ctermfg=black ctermbg=yellow
 
 " Javascript
 let g:javascript_plugin_jsdoc = 1
-
-" Tmux
-autocmd BufEnter * call system("tmux rename-window " . expand("%:t"))
-autocmd VimLeave * call system("tmux setw automatic-rename")
