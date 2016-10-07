@@ -9,9 +9,31 @@ fi
 if $osx; then
   brew tap petere/postgresql
   brew install postgresql-9.5 sqlite redis
-  brew install curl git tmux tig tree jq httpie mercurial vim
+  brew install curl git tmux tig tree jq httpie mercurial vim htop
   brew install reattach-to-user-namespace the_silver_searcher
   brew link -f postgresql-9.5
+
+  brew tap caskroom/cask
+  brew cask install google-chrome
+  brew cask install iterm2
+  brew cask install dropbox
+  brew cask install atom
+  brew cask install gimp
+  brew cask install vlc
+  brew cask install virtualbox
+  brew cask install vagrant
+  brew cask install textual
+  brew cask install the-unarchiver
+  brew cask install flux
+  brew cask install licecap
+  brew cask install caffeine
+  brew cask install colorpicker
+  brew cask install xquartz
+
+  vagrant plugin install vagrant-vbguest
+  vagrant plugin install vagrant-bindfs
+
+  compaudit | xargs chmod g-w
 else
   sudo apt-get install -y make git emacs24-nox silversearcher-ag curl tmux
 fi
