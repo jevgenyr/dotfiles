@@ -1,0 +1,21 @@
+# ush config
+
+## OS
+setenv EDITOR "vim"
+setenv CLICOLOR "1"
+setenv PATH "/usr/bin:/bin:/usr/local/bin:/usr/sbin:/sbin"
+setenv PATH "$HOME/bin:.:$PATH"
+
+## Go
+setenv GOPATH "$HOME/code/go"
+setenv GOROOT "$HOME/code/dev/go"
+setenv PATH "$PATH:$GOROOT/bin:$GOPATH/bin"
+setenv wd "$GOPATH/src/github.com"
+setenv wdk "$GOPATH/src/github.com/kiasaki"
+
+## Node.js
+setenv N_PREFIX "$HOME/n"
+setenv PATH "$PATH:$N_PREFIX/bin"
+
+## Shell Secrets
+source "$HOME/.ushenv"

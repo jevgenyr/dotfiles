@@ -30,7 +30,6 @@ set shell=zsh
 " Packages
 call plug#begin()
 " Plugins
-Plug 'ervandew/ag'
 Plug 'neomake/neomake'
 Plug 'bufexplorer.zip'
 Plug 'ervandew/supertab'
@@ -54,7 +53,7 @@ call plug#end()
 syntax on
 filetype plugin indent on
 set background=light
-colorscheme solarized " dracula smyck or delek or bwop
+colorscheme dracula " solarized smyck delek bwop
 
 " Status line
 hi statusline ctermfg=0 ctermbg=5
@@ -109,6 +108,10 @@ let g:neomake_javascript_enabled_makers = ['eslint']
 autocmd BufWritePost * Neomake
 hi NeomakeErrorSign ctermfg=black ctermbg=red
 hi NeomakeWarningSign ctermfg=black ctermbg=yellow
+
+" Ag
+set grepprg=ag\ --vimgrep\ $*
+set grepformat=%f:%l:%c:%m
 
 " Javascript
 let g:javascript_plugin_jsdoc = 1

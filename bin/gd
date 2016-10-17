@@ -1,0 +1,2 @@
+#!/bin/sh
+git diff --color=always | less -r

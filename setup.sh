@@ -58,7 +58,7 @@ mkdir -p ~/.config/nvim/{autoload,colors}
 
 # Files: Symlinks
 dotfiles=~/dotfiles/dotfiles
-rm -rf ~/.bashrc ~/.bash_profile ~/.zshrc ~/.tmux.conf ~/.vimrc ~/.psqlrc ~/.ghci ~/.emacs.d ~/.config/nvim/init.vim
+rm -rf ~/.bashrc ~/.bash_profile ~/.zshrc ~/.ushrc ~/.tmux.conf ~/.vimrc ~/.psqlrc ~/.ghci ~/.emacs.d ~/.config/nvim/init.vim
 ln -s $dotfiles/bashrc ~/.bashrc
 ln -s $dotfiles/bash_profile ~/.bash_profile
 ln -s $dotfiles/zshrc ~/.zshrc
@@ -66,6 +66,7 @@ ln -s $dotfiles/vimrc ~/.vimrc
 ln -s $dotfiles/emacs.d ~/.emacs.d
 ln -s $dotfiles/tmux.conf ~/.tmux.conf
 ln -s $dotfiles/ghci ~/.ghci
+ln -s $dotfiles/ushrc ~/.ushrc
 ln -s $dotfiles/psqlrc ~/.psqlrc
 ln -s $dotfiles/vimrc ~/.config/nvim/init.vim
 
@@ -94,6 +95,8 @@ ln -s $dotfiles/vimrc ~/.config/nvim/init.vim
   cp $dotfiles/atom/config.cson ~/.atom/config.cson
 [ ! -f ~/.atom/keymap.cson ] && \
   cp $dotfiles/atom/keymap.cson ~/.atom/keymap.cson
+
+cp $dotfiles/bin/* $HOME/bin
 
 # Language: Go
 if [ ! -f $HOME/code/dev/go/bin/go ]; then

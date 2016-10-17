@@ -1,0 +1,2 @@
+#!/bin/sh
+postgres -D /data/postgres -h 0.0.0.0
