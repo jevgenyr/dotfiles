@@ -127,8 +127,5 @@ alias dockercleanuntagged='docker rmi $(docker images | grep "^<none>" | tr -s "
 # Status line
 export PS1="\[\e[0;36m\]\W>\[\e[0m\] "
 
-# Completion
-source "$HOME/dotfiles/completion/git.sh"
-
 # Computer specific config & secrets
 source "$HOME/.env"
