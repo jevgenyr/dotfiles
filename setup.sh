@@ -118,6 +118,7 @@ $GOROOT/bin/go get github.com/motemen/gore
 $GOROOT/bin/go get github.com/heroku/hk
 $GOROOT/bin/go get github.com/spf13/hugo
 $GOROOT/bin/go get github.com/tools/godep
+$GOROOT/bin/go get github.com/FiloSottile/gvt
 $GOROOT/bin/go get github.com/nsf/gocode
 $GOROOT/bin/go get github.com/rogpeppe/godef
 $GOROOT/bin/go get golang.org/x/tools/cmd/...
@@ -125,6 +126,25 @@ $GOROOT/bin/go get golang.org/x/tools/cmd/...
 # Language: Node.js
 if [ ! -d "$HOME/n" ]; then
   curl -L http://git.io/n-install | bash -s -- -n -y
+fi
+
+# Language: Ruby
+if $osx; then
+  brew install ruby-install chruby
+else
+  wget -O chruby-0.3.9.tar.gz https://github.com/postmodern/chruby/archive/v0.3.9.tar.gz
+  tar -xzvf chruby-0.3.9.tar.gz
+  cd chruby-0.3.9/
+  sudo make install
+  cd ..
+  rm chruby-0.3.9/ chruby-0.3.9.tar.gz
+
+  wget -O ruby-install-0.6.0.tar.gz https://github.com/postmodern/ruby-install/archive/v0.6.0.tar.gz
+  tar -xzvf ruby-install-0.6.0.tar.gz
+  cd ruby-install-0.6.0/
+  sudo make install
+  cd ..
+  rm ruby-install-0.6.0/ ruby-install-0.6.0.tar.gz
 fi
 
 echo "All done!"
