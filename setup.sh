@@ -122,6 +122,7 @@ $GOROOT/bin/go get github.com/FiloSottile/gvt
 $GOROOT/bin/go get github.com/nsf/gocode
 $GOROOT/bin/go get github.com/rogpeppe/godef
 $GOROOT/bin/go get golang.org/x/tools/cmd/...
+$GOROOT/bin/go get github.com/jteeuwen/go-bindata/...
 
 # Language: Node.js
 if [ ! -d "$HOME/n" ]; then
