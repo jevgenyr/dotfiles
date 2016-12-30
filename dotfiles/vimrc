@@ -47,6 +47,7 @@ Plug 'klen/python-mode'
 Plug 'wavded/vim-stylus'
 Plug 'pangloss/vim-javascript'
 Plug 'glench/vim-jinja2-syntax'
+Plug 'mustache/vim-mustache-handlebars'
 call plug#end()
 
 " Syntax highlighting, filetype indentation rules, color scheme
