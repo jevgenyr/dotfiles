@@ -45,6 +45,7 @@ Plug 'elzr/vim-json'
 Plug 'kiasaki/vim-eth'
 Plug 'klen/python-mode'
 Plug 'wavded/vim-stylus'
+Plug 'rhysd/vim-crystal'
 Plug 'pangloss/vim-javascript'
 Plug 'glench/vim-jinja2-syntax'
 Plug 'mustache/vim-mustache-handlebars'
@@ -71,6 +72,7 @@ autocmd BufNewFile,BufRead *.md setlocal spell " Help correct my english
 autocmd BufNewFile,BufRead *.md set filetype=markdown
 autocmd BufNewFile,BufRead *.scm set filetype=scheme
 autocmd BufNewFile,BufRead *.eth set filetype=eth
+autocmd BufWrite *.cr CrystalFormat
 
 " Map Ctrl+[hjkl] to move around splits
 nnoremap <C-h> <C-w>h
