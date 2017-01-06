@@ -37,7 +37,7 @@ RPROMPT='%F{blue}%50<…<%~%F{yellow}$(_prompt_git)%f'
 # Print a newline before every prompt after the first one.
 _newline_precmd() { _newline_precmd() { echo } }
 
-export EDITOR=vim
+export EDITOR=nvim
 export CLICOLOR=1
 export PATH="/usr/bin:/bin:/usr/local/bin:/usr/sbin:/sbin"
 export PATH="$HOME/bin:.:$PATH"
@@ -48,6 +48,7 @@ alias ll='ls -la'
 alias tmux='tmux -2'
 alias xclip='xclip -selection c'
 alias e='nvim'
+alias vim='nvim'
 uuid4() {
   node -e 'var u = require("node-uuid");console.log(u.v4());'
 }
@@ -121,6 +122,10 @@ if [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]; then
     source /usr/local/share/chruby/auto.sh
   fi
 fi
+
+#####
+## Rust helpers
+export PATH="$HOME/.cargo/bin:$PATH"
 
 #####
 # Docker helpers

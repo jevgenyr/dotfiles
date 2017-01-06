@@ -58,7 +58,7 @@ mkdir -p ~/.config/nvim/{autoload,colors}
 
 # Files: Symlinks
 dotfiles=~/dotfiles/dotfiles
-rm -rf ~/.bashrc ~/.bash_profile ~/.zshrc ~/.ushrc ~/.tmux.conf ~/.vimrc ~/.psqlrc ~/.ghci ~/.emacs.d ~/.config/nvim/init.vim
+rm -rf ~/.bashrc ~/.bash_profile ~/.zshrc ~/.ushrc ~/.tmux.conf ~/.vimrc ~/.psqlrc ~/.ghci ~/.emacs.d ~/.config/nvim/init.vim ~/.alacritty.yml
 ln -s $dotfiles/bashrc ~/.bashrc
 ln -s $dotfiles/bash_profile ~/.bash_profile
 ln -s $dotfiles/zshrc ~/.zshrc
@@ -69,6 +69,7 @@ ln -s $dotfiles/ghci ~/.ghci
 ln -s $dotfiles/ushrc ~/.ushrc
 ln -s $dotfiles/psqlrc ~/.psqlrc
 ln -s $dotfiles/vimrc ~/.config/nvim/init.vim
+ln -s $dotfiles/alacritty.yml ~/.alacritty.yml
 
 # Files: Creations
 [ ! -f ~/.env ] && touch ~/.env
@@ -138,14 +139,14 @@ else
   cd chruby-0.3.9/
   sudo make install
   cd ..
-  rm chruby-0.3.9/ chruby-0.3.9.tar.gz
+  rm -r chruby-0.3.9/ chruby-0.3.9.tar.gz
 
   wget -O ruby-install-0.6.0.tar.gz https://github.com/postmodern/ruby-install/archive/v0.6.0.tar.gz
   tar -xzvf ruby-install-0.6.0.tar.gz
   cd ruby-install-0.6.0/
   sudo make install
   cd ..
-  rm ruby-install-0.6.0/ ruby-install-0.6.0.tar.gz
+  rm -r ruby-install-0.6.0/ ruby-install-0.6.0.tar.gz
 fi
 
 echo "All done!"
