@@ -1,11 +1,12 @@
 #!/bin/bash
+set -e
 
 osx=false
 if [[ "$OSTYPE" == "darwin"* ]]; then
   osx=true
 fi
 
-# Install apps via brew
+# Install libs and apps
 if $osx; then
   brew tap petere/postgresql
   brew install postgresql-9.5 sqlite redis
@@ -35,12 +36,51 @@ if $osx; then
 
   compaudit | xargs chmod g-w
 else
-  sudo apt-get install -y make git emacs24-nox silversearcher-ag curl tmux
+  if ! [ -x "$(command -v nvim)" ]; then
+    sudo apt-get install -qq -y python-software-properties python-dev python-pip python3-dev python3-pip
+    sudo add-apt-repository ppa:neovim-ppa/unstable
+    sudo apt-get update
+    sudo apt-get install neovim
+  fi
+
+  if ! [ -x "$(command -v psql)" ]; then
+    sudo apt-get install postgresql
+    sudo -u postgres psql -c "create user $USER with superuser;";
+    sudo -u postgres psql -c "create database $USER with owner $USER;"
+  fi
+
+  libs="build-essential libfreetype6-dev"
+  pkgs=()
+  which make >/dev/null || pkgs+=(make)
+  which cmake >/dev/null || pkgs+=(cmake)
+  which fc-cache >/dev/null || pkgs+=(fontconfig)
+  which git >/dev/null || pkgs+=(git)
+  which htop >/dev/null || pkgs+=(htop)
+  which xclip >/dev/null || pkgs+=(xclip)
+  which mosh >/dev/null || pkgs+=(mosh)
+  which tmux >/dev/null || pkgs+=(tmux)
+  which curl >/dev/null || pkgs+=(curl)
+  which jq >/dev/null || pkgs+=(jq)
+  which emacs >/dev/null || pkgs+=(emacs24-nox)
+  which ag >/dev/null || pkgs+=(silversearcher-ag)
+
+  if [ ! -z "${pkgs}" ]; then
+    sudo apt-get install -qq -y "${pkgs[@]}" $libs
+  fi
 fi
 
 # Clone dotfiles in case we just curl'ed the setup.sh file
 if [ ! -d "$HOME/dotfiles" ]; then
   git clone https://github.com/kiasaki/dotfiles.git
+fi
+
+
+if [ ! $osx ]; then
+  $HOME/dotfiles/support/install-source-code-pro-font.sh
+fi
+
+if [ ! -d "$HOME/.rustup" ]; then
+  curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path --default-toolchain nightly
 fi
 
 # Directories: Create
@@ -97,8 +137,6 @@ ln -s $dotfiles/alacritty.yml ~/.alacritty.yml
 [ ! -f ~/.atom/keymap.cson ] && \
   cp $dotfiles/atom/keymap.cson ~/.atom/keymap.cson
 
-cp $dotfiles/bin/* $HOME/bin
-
 # Language: Go
 if [ ! -f $HOME/code/dev/go/bin/go ]; then
   if $osx; then
@@ -128,25 +166,30 @@ $GOROOT/bin/go get github.com/jteeuwen/go-bindata/...
 # Language: Node.js
 if [ ! -d "$HOME/n" ]; then
   curl -L http://git.io/n-install | bash -s -- -n -y
+  npm i -g yarn
+  npm i -g eslint
 fi
 
 # Language: Ruby
-if $osx; then
-  brew install ruby-install chruby
-else
-  wget -O chruby-0.3.9.tar.gz https://github.com/postmodern/chruby/archive/v0.3.9.tar.gz
-  tar -xzvf chruby-0.3.9.tar.gz
-  cd chruby-0.3.9/
-  sudo make install
-  cd ..
-  rm -r chruby-0.3.9/ chruby-0.3.9.tar.gz
 
-  wget -O ruby-install-0.6.0.tar.gz https://github.com/postmodern/ruby-install/archive/v0.6.0.tar.gz
-  tar -xzvf ruby-install-0.6.0.tar.gz
-  cd ruby-install-0.6.0/
-  sudo make install
-  cd ..
-  rm -r ruby-install-0.6.0/ ruby-install-0.6.0.tar.gz
+if ! [ -x "$(command -v chruby)" ]; then
+  if $osx; then
+    brew install ruby-install chruby
+  else
+    wget -O chruby-0.3.9.tar.gz https://github.com/postmodern/chruby/archive/v0.3.9.tar.gz
+    tar -xzvf chruby-0.3.9.tar.gz
+    cd chruby-0.3.9/
+    sudo make install
+    cd ..
+    rm -r chruby-0.3.9/ chruby-0.3.9.tar.gz
+
+    wget -O ruby-install-0.6.0.tar.gz https://github.com/postmodern/ruby-install/archive/v0.6.0.tar.gz
+    tar -xzvf ruby-install-0.6.0.tar.gz
+    cd ruby-install-0.6.0/
+    sudo make install
+    cd ..
+    rm -r ruby-install-0.6.0/ ruby-install-0.6.0.tar.gz
+  fi
 fi
 
 echo "All done!"
