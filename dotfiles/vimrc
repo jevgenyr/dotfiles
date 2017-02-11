@@ -73,6 +73,7 @@ autocmd VimResized * :wincmd = " Equalize window sizes on resize
 autocmd BufNewFile,BufRead *.md setlocal spell " Help correct my english
 autocmd BufNewFile,BufRead *.md set filetype=markdown
 autocmd BufNewFile,BufRead *.scm set filetype=scheme
+autocmd BufNewFile,BufRead *.shi set filetype=shi
 autocmd BufNewFile,BufRead *.eth set filetype=eth
 autocmd BufWrite *.cr CrystalFormat
 
@@ -124,3 +125,6 @@ let g:javascript_plugin_jsdoc = 1
 " Go
 let g:go_fmt_command = "goimports"
 let g:go_list_type = "quickfix"
+
+" Rust
+let g:rustfmt_autosave = 1
