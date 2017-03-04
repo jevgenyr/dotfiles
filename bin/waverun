@@ -1,0 +1,16 @@
+#!/bin/sh
+
+app="$1"
+appfolder="$app"
+
+if test -z "$app"; then
+  echo "Need an app name"
+  exit 1
+fi
+
+if test "accounting" = "$appfolder"; then
+  appfolder="waveaccounting"
+fi
+
+cd ~/wave
+vagrant ssh -- -t "/bin/bash -lic 'workon $app; cd $appfolder; honcho start; /bin/bash'"

@@ -10,9 +10,23 @@ fi
 if $osx; then
   brew tap petere/postgresql
   brew install postgresql-9.5 sqlite redis
-  brew install curl git tmux tig tree jq httpie mercurial vim htop
   brew install reattach-to-user-namespace the_silver_searcher
   brew link -f postgresql-9.5
+
+  pkgs=()
+  which jq >/dev/null || pkgs+=(jq)
+  which tig >/dev/null || pkgs+=(tig)
+  which tree >/dev/null || pkgs+=(tree)
+  which tmux >/dev/null || pkgs+=(tmux)
+  which curl >/dev/null || pkgs+=(curl)
+  which htop >/dev/null || pkgs+=(htop)
+  which http >/dev/null || pkgs+=(httpie)
+  which git >/dev/null || pkgs+=(git)
+  which hg >/dev/null || pkgs+=(mercurial)
+  which vim >/dev/null || pkgs+=(vim)
+  if test -n "$pkgs"; then
+    brew install "${pkgs[@]}"
+  fi
 
   brew tap caskroom/cask
   brew cask install google-chrome
@@ -98,7 +112,7 @@ mkdir -p ~/.config/nvim/{autoload,colors}
 
 # Files: Symlinks
 dotfiles=~/dotfiles/dotfiles
-rm -rf ~/.bashrc ~/.bash_profile ~/.zshrc ~/.ushrc ~/.tmux.conf ~/.vimrc ~/.psqlrc ~/.ghci ~/.emacs.d ~/.config/nvim/init.vim ~/.alacritty.yml
+rm -rf ~/.bashrc ~/.bash_profile ~/.zshrc ~/.ushrc ~/.tmux.conf ~/.vimrc ~/.psqlrc ~/.ghci ~/.emacs.d ~/.config/nvim/init.vim ~/.alacritty.yml ~/bin/wave ~/bin/waverun
 ln -s $dotfiles/bashrc ~/.bashrc
 ln -s $dotfiles/bash_profile ~/.bash_profile
 ln -s $dotfiles/zshrc ~/.zshrc
@@ -110,6 +124,8 @@ ln -s $dotfiles/ushrc ~/.ushrc
 ln -s $dotfiles/psqlrc ~/.psqlrc
 ln -s $dotfiles/vimrc ~/.config/nvim/init.vim
 ln -s $dotfiles/alacritty.yml ~/.alacritty.yml
+ln -s $HOME/dotfiles/bin/wave ~/bin/wave
+ln -s $HOME/dotfiles/bin/waverun ~/bin/waverun
 
 # Files: Creations
 [ ! -f ~/.env ] && touch ~/.env
