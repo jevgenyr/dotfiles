@@ -37,6 +37,7 @@ RPROMPT='%F{blue}%50<…<%~%F{yellow}$(_prompt_git)%f'
 # Print a newline before every prompt after the first one.
 _newline_precmd() { _newline_precmd() { echo } }
 
+export TZ=:/etc/localtime
 export EDITOR=nvim
 export CLICOLOR=1
 export PATH="/usr/bin:/bin:/usr/local/bin:/usr/sbin:/sbin"
