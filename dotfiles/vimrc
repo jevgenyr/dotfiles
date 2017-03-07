@@ -32,6 +32,7 @@ call plug#begin()
 " Plugins
 Plug 'neomake/neomake'
 Plug 'bufexplorer.zip'
+Plug 'nvie/vim-flake8'
 Plug 'ervandew/supertab'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
@@ -111,10 +112,11 @@ let g:ctrlp_custom_ignore = {
   \ }
 
 " Neomake
-let g:neomake_javascript_enabled_makers = ['eslint']
 autocmd BufWritePost * Neomake
 hi NeomakeErrorSign ctermfg=black ctermbg=red
 hi NeomakeWarningSign ctermfg=black ctermbg=yellow
+let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_javascript_eslint_exe = system('PATH=$(npm bin):$PATH && which eslint | tr -d "\n"')
 
 " Ag
 set grepprg=ag\ --vimgrep\ $*

@@ -50,6 +50,8 @@ alias tmux='tmux -2'
 alias xclip='xclip -selection c'
 alias e='nvim'
 alias vim='nvim'
+alias ag='ag --path-to-ignore=~/.agignore'
+alias p='pygmentize '
 uuid4() {
   node -e 'var u = require("node-uuid");console.log(u.v4());'
 }
