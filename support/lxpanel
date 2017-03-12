@@ -2,33 +2,34 @@
 # Use preference dialog in lxpanel to adjust config when you can.
 
 Global {
-  edge=bottom
+  edge=top
   allign=left
   margin=0
   widthtype=percent
   width=100
-  height=32
+  height=24
   transparent=1
   tintcolor=#eeeeee
   alpha=255
   setdocktype=1
   setpartialstrut=1
   usefontcolor=1
-  fontcolor=#444444
+  fontcolor=#333333
   background=0
-  backgroundfile=/usr/share/lxpanel/images/lubuntu-background.png
-  iconsize=24
+  backgroundfile=/home/kiasaki/Pictures/montreal1.jpg
+  iconsize=20
+  autohide=1
 }
 Plugin {
   type=space
   Config {
-    Size=18
+    Size=4
   }
 }
 Plugin {
   type=menu
   Config {
-    image=/home/kiasaki/Documents/logo_color_256.png
+    image=/home/kiasaki/Pictures/logo_color_256.png
     system {
     }
     separator {
@@ -47,12 +48,7 @@ Plugin {
 Plugin {
   type=space
   Config {
-    Size=18
-  }
-}
-Plugin {
-  type=wincmd
-  Config {
+    Size=4
   }
 }
 Plugin {
@@ -67,15 +63,12 @@ Plugin {
     Button {
       id=menu://applications/Other/Alacritty.desktop
     }
-    Button {
-      id=menu://applications/Graphics/gimp.desktop
-    }
   }
 }
 Plugin {
   type=space
   Config {
-    Size=20
+    Size=16
   }
 }
 Plugin {
@@ -90,9 +83,11 @@ Plugin {
     ShowAllDesks=0
     UseMouseWheel=1
     UseUrgencyHint=1
-    FlatButton=0
-    MaxTaskWidth=150
-    spacing=1
+    FlatButton=1
+    MaxTaskWidth=160
+    spacing=0
+    GroupedTasks=0
+    DisableUpscale=0
   }
 }
 Plugin {
