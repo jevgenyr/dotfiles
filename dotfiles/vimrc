@@ -103,6 +103,7 @@ noremap <leader>snp :set nopaste<CR>
 noremap <leader>nt :NERDTreeToggle<CR>
 noremap <leader>be :BufExplorerHorizontalSplit<CR>
 noremap <leader>f :CtrlP<CR>
+cmap w!! w !sudo tee % > /dev/null
 
 " CtrlP
 let g:ctrlp_root_markers = ['node_modules']
