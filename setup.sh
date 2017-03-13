@@ -6,91 +6,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   osx=true
 fi
 
-# Install libs and apps
-if $osx; then
-  brew tap petere/postgresql
-  brew install postgresql-9.5 sqlite redis
-  brew install reattach-to-user-namespace the_silver_searcher
-  brew link -f postgresql-9.5
-
-  pkgs=()
-  which jq >/dev/null || pkgs+=(jq)
-  which tig >/dev/null || pkgs+=(tig)
-  which tree >/dev/null || pkgs+=(tree)
-  which tmux >/dev/null || pkgs+=(tmux)
-  which curl >/dev/null || pkgs+=(curl)
-  which htop >/dev/null || pkgs+=(htop)
-  which http >/dev/null || pkgs+=(httpie)
-  which git >/dev/null || pkgs+=(git)
-  which hg >/dev/null || pkgs+=(mercurial)
-  which vim >/dev/null || pkgs+=(vim)
-  if test -n "$pkgs"; then
-    brew install "${pkgs[@]}"
-  fi
-
-  brew tap caskroom/cask
-  brew cask install google-chrome
-  brew cask install iterm2
-  brew cask install dropbox
-  brew cask install atom
-  brew cask install gimp
-  brew cask install vlc
-  brew cask install virtualbox
-  brew cask install vagrant
-  brew cask install textual
-  brew cask install the-unarchiver
-  brew cask install flux
-  brew cask install licecap
-  brew cask install caffeine
-  brew cask install colorpicker
-  brew cask install xquartz
-
-  vagrant plugin install vagrant-vbguest
-  vagrant plugin install vagrant-bindfs
-
-  compaudit | xargs chmod g-w
-else
-  if ! [ -x "$(command -v nvim)" ]; then
-    sudo apt-get install -qq -y python-software-properties python-dev python-pip python3-dev python3-pip
-    sudo add-apt-repository ppa:neovim-ppa/unstable
-    sudo apt-get update
-    sudo apt-get install neovim
-  fi
-
-  if ! [ -x "$(command -v psql)" ]; then
-    sudo apt-get install postgresql
-    sudo -u postgres psql -c "create user $USER with superuser;";
-    sudo -u postgres psql -c "create database $USER with owner $USER;"
-  fi
-
-  libs="build-essential libfreetype6-dev"
-  pkgs=()
-  which make >/dev/null || pkgs+=(make)
-  which cmake >/dev/null || pkgs+=(cmake)
-  which fc-cache >/dev/null || pkgs+=(fontconfig)
-  which git >/dev/null || pkgs+=(git)
-  which htop >/dev/null || pkgs+=(htop)
-  which xclip >/dev/null || pkgs+=(xclip)
-  which mosh >/dev/null || pkgs+=(mosh)
-  which tmux >/dev/null || pkgs+=(tmux)
-  which curl >/dev/null || pkgs+=(curl)
-  which jq >/dev/null || pkgs+=(jq)
-  which emacs >/dev/null || pkgs+=(emacs24-nox)
-  which ag >/dev/null || pkgs+=(silversearcher-ag)
-
-  if [ ! -z "${pkgs}" ]; then
-    sudo apt-get install -qq -y "${pkgs[@]}" $libs
-  fi
-fi
-
 # Clone dotfiles in case we just curl'ed the setup.sh file
 if [ ! -d "$HOME/dotfiles" ]; then
   git clone https://github.com/kiasaki/dotfiles.git
-fi
-
-
-if [ ! $osx ]; then
-  $HOME/dotfiles/support/install-source-code-pro-font.sh
 fi
 
 if [ ! -d "$HOME/.rustup" ]; then
@@ -182,8 +100,8 @@ $GOROOT/bin/go get github.com/jteeuwen/go-bindata/...
 # Language: Node.js
 if [ ! -d "$HOME/n" ]; then
   curl -L http://git.io/n-install | bash -s -- -n -y
-  npm i -g yarn
-  npm i -g eslint
+  $HOME/n/bin/npm i -g yarn
+  $HOME/n/bin/npm i -g eslint
 fi
 
 # Language: Ruby
