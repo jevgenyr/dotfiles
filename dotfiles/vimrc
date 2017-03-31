@@ -31,7 +31,7 @@ set shell=zsh
 call plug#begin()
 " Plugins
 Plug 'neomake/neomake'
-Plug 'bufexplorer.zip'
+" Plug 'bufexplorer.zip'
 Plug 'nvie/vim-flake8'
 Plug 'ervandew/supertab'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -40,19 +40,20 @@ Plug 'airblade/vim-gitgutter'
 Plug 'editorconfig/editorconfig-vim'
 
 " Languages
+" Plug 'patmok/qvim'
 Plug 'mxw/vim-jsx'
 Plug 'fatih/vim-go'
-Plug 'elzr/vim-json'
+" Plug 'elzr/vim-json'
 Plug 'kiasaki/vim-eth'
 Plug 'cespare/vim-toml'
 Plug 'klen/python-mode'
-Plug 'wavded/vim-stylus'
-Plug 'rhysd/vim-crystal'
-Plug 'rust-lang/rust.vim'
-Plug 'wlangstroth/vim-racket'
+" Plug 'wavded/vim-stylus'
+" Plug 'rhysd/vim-crystal'
+" Plug 'rust-lang/rust.vim'
+" Plug 'wlangstroth/vim-racket'
 Plug 'pangloss/vim-javascript'
-Plug 'glench/vim-jinja2-syntax'
-Plug 'mustache/vim-mustache-handlebars'
+" Plug 'glench/vim-jinja2-syntax'
+" Plug 'mustache/vim-mustache-handlebars'
 call plug#end()
 
 " Syntax highlighting, filetype indentation rules, color scheme
@@ -117,7 +118,7 @@ autocmd BufWritePost * Neomake
 hi NeomakeErrorSign ctermfg=black ctermbg=red
 hi NeomakeWarningSign ctermfg=black ctermbg=yellow
 let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_javascript_eslint_exe = system('PATH=$(npm bin):$PATH && which eslint | tr -d "\n"')
+" let g:neomake_javascript_eslint_exe = system('which eslint | tr -d "\n"')
 
 " Ag
 set grepprg=ag\ --vimgrep\ $*

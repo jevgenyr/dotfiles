@@ -13,4 +13,4 @@ if test "accounting" = "$appfolder"; then
 fi
 
 cd ~/wave
-vagrant ssh -- -t "/bin/bash -lic 'workon $app; cd $appfolder; honcho start; /bin/bash'"
+vagrant ssh -- -t "/bin/bash -lic 'workon $app; cd $appfolder; /bin/bash'"

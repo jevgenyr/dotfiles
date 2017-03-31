@@ -3,6 +3,8 @@ HISTSIZE=5000
 SAVEHIST=5000
 HISTFILE=~/.history
 setopt inc_append_history hist_ignore_dups
+bindkey -v
+bindkey '^R' history-incremental-search-backward
 
 # Error if glob does not match.
 setopt nomatch
@@ -65,6 +67,7 @@ alias gcl='git checkout -'
 alias gcm='git checkout master'
 alias gco='git checkout'
 alias gd='git diff --color=always | less -r'
+alias gdh='git diff --color=always HEAD | less -r'
 alias gp='git push origin HEAD'
 alias gphm='git push heroku master'
 alias gs='git status -sb'
