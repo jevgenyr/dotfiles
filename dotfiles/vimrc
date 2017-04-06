@@ -31,54 +31,34 @@ set shell=zsh
 call plug#begin()
 " Plugins
 Plug 'neomake/neomake'
-" Plug 'bufexplorer.zip'
 Plug 'nvie/vim-flake8'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-vinegar'
 Plug 'ervandew/supertab'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'scrooloose/nerdtree'
-Plug 'airblade/vim-gitgutter'
+Plug 'jlanzarotta/bufexplorer'
 Plug 'editorconfig/editorconfig-vim'
 
 " Languages
-" Plug 'patmok/qvim'
 Plug 'mxw/vim-jsx'
 Plug 'fatih/vim-go'
-" Plug 'elzr/vim-json'
-Plug 'kiasaki/vim-eth'
-Plug 'cespare/vim-toml'
 Plug 'klen/python-mode'
-" Plug 'wavded/vim-stylus'
-" Plug 'rhysd/vim-crystal'
-" Plug 'rust-lang/rust.vim'
-" Plug 'wlangstroth/vim-racket'
 Plug 'pangloss/vim-javascript'
-" Plug 'glench/vim-jinja2-syntax'
-" Plug 'mustache/vim-mustache-handlebars'
 call plug#end()
 
 " Syntax highlighting, filetype indentation rules, color scheme
 syntax on
 filetype plugin indent on
-set background=light
 colorscheme dracula " solarized smyck delek bwop
 
 " Status line
 hi statusline ctermfg=0 ctermbg=5
 hi statuslinenc ctermfg=0 ctermbg=6
-set statusline=\ %f
-set statusline+=\ %m
-set statusline+=\ %r
-set statusline+=%=
-set statusline+=(%c,\ %l)\ -\ %L\ 
+set statusline=\ %f\ %m\ %r%=(%c,\ %l)\ -\ %l\ 
 
 " Auto commands
 autocmd VimResized * :wincmd = " Equalize window sizes on resize
 autocmd BufNewFile,BufRead *.md setlocal spell " Help correct my english
-autocmd BufNewFile,BufRead *.md set filetype=markdown
-autocmd BufNewFile,BufRead *.scm set filetype=scheme
-autocmd BufNewFile,BufRead *.shi set filetype=shi
-autocmd BufNewFile,BufRead *.eth set filetype=eth
-autocmd BufWrite *.cr CrystalFormat
 
 " Map Ctrl+[hjkl] to move around splits
 nnoremap <C-h> <C-w>h
@@ -87,45 +67,29 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-w>n <ESC>:tabnext<CR>
 if has("nvim")
-  " Make moving out of the terminal easier
-  tnoremap <C-h> <C-\><C-n><C-w>h
-  tnoremap <C-j> <C-\><C-n><C-w>j
-  tnoremap <C-k> <C-\><C-n><C-w>k
-  tnoremap <C-l> <C-\><C-n><C-w>l
-  " Hack to get C-h working in neovim
-  nmap <BS> <C-W>h
+  nmap <BS> <C-W>h " Hack to get C-h working in neovim
   tnoremap <Esc> <C-\><C-n>
 end
 
 " Leader commands
 nmap <leader>n :nohlsearch<CR>
-noremap <leader>sp :set paste<CR>
-noremap <leader>snp :set nopaste<CR>
-noremap <leader>nt :NERDTreeToggle<CR>
 noremap <leader>be :BufExplorerHorizontalSplit<CR>
 noremap <leader>f :CtrlP<CR>
 cmap w!! w !sudo tee % > /dev/null
 
 " CtrlP
 let g:ctrlp_root_markers = ['node_modules']
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|node_modules',
-  \ 'file': '\.exe$\|\.so$\|\.DS_Store|.*\.pyc',
-  \ }
+let g:ctrlp_custom_ignore = { 'dir':  '\.git$\|node_modules', 'file': '\.exe$\|\.so$\|\.DS_Store|.*\.pyc', }
 
 " Neomake
 autocmd BufWritePost * Neomake
 hi NeomakeErrorSign ctermfg=black ctermbg=red
 hi NeomakeWarningSign ctermfg=black ctermbg=yellow
 let g:neomake_javascript_enabled_makers = ['eslint']
-" let g:neomake_javascript_eslint_exe = system('which eslint | tr -d "\n"')
 
 " Ag
 set grepprg=ag\ --vimgrep\ $*
 set grepformat=%f:%l:%c:%m
-
-" Javascript
-let g:javascript_plugin_jsdoc = 1
 
 " Go
 let g:go_fmt_command = "goimports"
