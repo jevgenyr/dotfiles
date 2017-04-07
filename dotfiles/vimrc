@@ -17,7 +17,7 @@ set wildmenu wildmode=list:longest
 " Color line 100
 set colorcolumn=100
 " Fold on { { {
-set foldmethod=marker
+set foldmethod=marker foldlevelstart=10
 " Use space as leader
 let mapleader=" "
 " Use os's clipboard
@@ -49,7 +49,8 @@ call plug#end()
 " Syntax highlighting, filetype indentation rules, color scheme
 syntax on
 filetype plugin indent on
-colorscheme dracula " solarized smyck delek bwop
+set background=light
+colorscheme solarized " dracula smyck delek bwop
 
 " Status line
 hi statusline ctermfg=0 ctermbg=5
@@ -74,8 +75,14 @@ end
 " Leader commands
 nmap <leader>n :nohlsearch<CR>
 noremap <leader>b :BufExplorer<CR>
-noremap <leader>f :CtrlP<CR>
+noremap <leader>f :execute 'edit %:h/'<CR>
+noremap <leader>t :CtrlP<CR>
 cmap w!! w !sudo tee % > /dev/null
+
+augroup vinergar_custom
+  autocmd!
+  autocmd FileType netrw nnoremap <buffer> <silent> <Esc> :bdelete<CR>
+augroup END
 
 " CtrlP
 let g:ctrlp_root_markers = ['node_modules']

@@ -30,11 +30,12 @@ mkdir -p ~/.config/nvim/{autoload,colors}
 
 # Files: Symlinks
 dotfiles=~/dotfiles/dotfiles
-rm -rf ~/.mkshrc ~/.bashrc ~/.bash_profile ~/.zshrc ~/.ushrc ~/.tmux.conf ~/.vimrc ~/.psqlrc ~/.ghci ~/.emacs.d ~/.config/nvim/init.vim ~/.alacritty.yml ~/bin/wave ~/bin/waverun
+rm -rf ~/.mkshrc ~/.bashrc ~/.bash_profile ~/.zshrc ~/.ushrc ~/.flake8 ~/.tmux.conf ~/.vimrc ~/.psqlrc ~/.ghci ~/.emacs.d ~/.config/nvim/init.vim ~/.alacritty.yml ~/bin/wave ~/bin/waverun
 ln -s $dotfiles/mkshrc ~/.mkshrc
 ln -s $dotfiles/bashrc ~/.bashrc
 ln -s $dotfiles/bash_profile ~/.bash_profile
 ln -s $dotfiles/zshrc ~/.zshrc
+ln -s $dotfiles/flake8 ~/.flake8
 ln -s $dotfiles/vimrc ~/.vimrc
 ln -s $dotfiles/emacs.d ~/.emacs.d
 ln -s $dotfiles/tmux.conf ~/.tmux.conf
