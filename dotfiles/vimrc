@@ -73,7 +73,7 @@ end
 
 " Leader commands
 nmap <leader>n :nohlsearch<CR>
-noremap <leader>be :BufExplorerHorizontalSplit<CR>
+noremap <leader>b :BufExplorer<CR>
 noremap <leader>f :CtrlP<CR>
 cmap w!! w !sudo tee % > /dev/null
 
