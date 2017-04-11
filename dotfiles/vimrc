@@ -31,7 +31,6 @@ set shell=zsh
 call plug#begin()
 " Plugins
 Plug 'neomake/neomake'
-Plug 'nvie/vim-flake8'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-vinegar'
 Plug 'ervandew/supertab'
@@ -42,7 +41,6 @@ Plug 'editorconfig/editorconfig-vim'
 " Languages
 Plug 'mxw/vim-jsx'
 Plug 'fatih/vim-go'
-Plug 'klen/python-mode'
 Plug 'pangloss/vim-javascript'
 call plug#end()
 
@@ -86,13 +84,23 @@ augroup END
 
 " CtrlP
 let g:ctrlp_root_markers = ['node_modules']
-let g:ctrlp_custom_ignore = { 'dir':  '\.git$\|node_modules', 'file': '\.exe$\|\.so$\|\.DS_Store|.*\.pyc', }
+let g:ctrlp_custom_ignore = { 'dir': '\.git$\|node_modules', 'file': '\.exe$\|\.so$\|\.DS_Store|.*\.pyc', }
 
 " Neomake
 autocmd BufWritePost * Neomake
 hi NeomakeErrorSign ctermfg=black ctermbg=red
 hi NeomakeWarningSign ctermfg=black ctermbg=yellow
 let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_python_enabled_makers = ['flake8']
+let g:neomake_python_flake8_maker = {
+    \ 'exe': 'python3',
+    \ 'args': [systemlist('which flake8')[0], '--format=default'],
+    \ 'errorformat':
+        \ '%E%f:%l: could not compile,%-Z%p^,' .
+        \ '%A%f:%l:%c: %t%n %m,' .
+        \ '%A%f:%l: %t%n %m,' .
+        \ '%-G%.%#',
+    \ }
 
 " Ag
 set grepprg=ag\ --vimgrep\ $*
