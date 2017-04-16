@@ -84,7 +84,9 @@ augroup END
 
 " CtrlP
 let g:ctrlp_root_markers = ['node_modules']
-let g:ctrlp_custom_ignore = { 'dir': '\.git$\|node_modules', 'file': '\.exe$\|\.so$\|\.DS_Store|.*\.pyc', }
+let g:ctrlp_match_window = 'bottom,order:ttb'
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
 " Neomake
 autocmd BufWritePost * Neomake
