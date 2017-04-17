@@ -48,11 +48,9 @@ call plug#end()
 syntax on
 filetype plugin indent on
 set background=light
-colorscheme solarized " dracula smyck delek bwop
+colorscheme u
 
 " Status line
-hi statusline ctermfg=0 ctermbg=5
-hi statuslinenc ctermfg=0 ctermbg=6
 set statusline=\ %f\ %m\ %r%=(%c,\ %l)\ -\ %l\ 
 
 " Auto commands

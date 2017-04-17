@@ -30,7 +30,7 @@ mkdir -p ~/.config/nvim/{autoload,colors}
 
 # Files: Symlinks
 dotfiles=~/dotfiles/dotfiles
-rm -rf ~/.mkshrc ~/.bashrc ~/.bash_profile ~/.zshrc ~/.ushrc ~/.flake8 ~/.tmux.conf ~/.vimrc ~/.psqlrc ~/.ghci ~/.emacs.d ~/.config/nvim/init.vim ~/.alacritty.yml ~/bin/wave ~/bin/waverun
+rm -rf ~/.mkshrc ~/.bashrc ~/.bash_profile ~/.zshrc ~/.ushrc ~/.flake8 ~/.tmux.conf ~/.vimrc ~/.psqlrc ~/.ghci ~/.emacs.d ~/.config/nvim/init.vim ~/.alacritty.yml ~/bin/colors ~/.vim/colors/u.vim ~/.config/nvim/colors/u.vim ~/bin/waves
 ln -s $dotfiles/mkshrc ~/.mkshrc
 ln -s $dotfiles/bashrc ~/.bashrc
 ln -s $dotfiles/bash_profile ~/.bash_profile
@@ -44,8 +44,10 @@ ln -s $dotfiles/ushrc ~/.ushrc
 ln -s $dotfiles/psqlrc ~/.psqlrc
 ln -s $dotfiles/vimrc ~/.config/nvim/init.vim
 ln -s $dotfiles/alacritty.yml ~/.alacritty.yml
-ln -s $HOME/dotfiles/bin/wave ~/bin/wave
-ln -s $HOME/dotfiles/bin/waverun ~/bin/waverun
+ln -s $HOME/dotfiles/vim/u.vim ~/.vim/colors/u.vim
+ln -s $HOME/dotfiles/vim/u.vim ~/.config/nvim/colors/u.vim
+ln -s $HOME/dotfiles/bin/colors ~/bin/colors
+ln -s $HOME/dotfiles/bin/waves ~/bin/waves
 
 # Files: Creations
 [ ! -f ~/.env ] && touch ~/.env
