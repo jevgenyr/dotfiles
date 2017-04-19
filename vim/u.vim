@@ -24,6 +24,7 @@ hi WarningMsg   cterm=standout                      ctermfg=NONE
 hi WildMenu     cterm=standout                      ctermfg=NONE
 hi Folded       cterm=standout                      ctermfg=NONE
 hi FoldColumn   cterm=standout                      ctermfg=NONE
+hi SignColumn   cterm=NONE          ctermbg=NONE    ctermfg=3
 hi DiffLine     cterm=NONE                          ctermfg=4
 hi DiffAdded    cterm=NONE                          ctermfg=2
 hi DiffRemoved  cterm=NONE                          ctermfg=1

@@ -1,2 +1,0 @@
-#!/bin/sh
-git log --pretty=format:'%C(yellow)%h%Creset %Cblue%an%Creset %s %Cgreen(%ar)%Creset %Cred%d%Creset'

@@ -51,13 +51,13 @@ set background=light
 colorscheme u
 
 " Status line
-set statusline=\ %f\ %m\ %r%=(%c,\ %l)\ -\ %l\ 
+set statusline=\ %f\ %m\ %r%=(%c,\ %l)\ 
 
 " Auto commands
 autocmd VimResized * :wincmd = " Equalize window sizes on resize
-autocmd BufNewFile,BufRead *.md setlocal spell " Help correct my english
+autocmd BufNewFile,BufRead *.md setlocal spell " Help correct my English
 
-" Map Ctrl+[hjkl] to move around splits
+" Split movement
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -73,12 +73,6 @@ nmap <leader>n :nohlsearch<CR>
 noremap <leader>b :BufExplorer<CR>
 noremap <leader>f :execute 'edit %:h/'<CR>
 noremap <leader>t :CtrlP<CR>
-cmap w!! w !sudo tee % > /dev/null
-
-augroup vinergar_custom
-  autocmd!
-  autocmd FileType netrw nnoremap <buffer> <silent> <Esc> :bdelete<CR>
-augroup END
 
 " CtrlP
 let g:ctrlp_root_markers = ['node_modules']
@@ -88,8 +82,8 @@ let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
 " Neomake
 autocmd BufWritePost * Neomake
-hi NeomakeErrorSign ctermfg=black ctermbg=red
-hi NeomakeWarningSign ctermfg=black ctermbg=yellow
+hi NeomakeErrorSign ctermfg=red
+hi NeomakeWarningSign ctermfg=yellow
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_python_enabled_makers = ['flake8']
 let g:neomake_python_flake8_maker = {
@@ -102,7 +96,7 @@ let g:neomake_python_flake8_maker = {
         \ '%-G%.%#',
     \ }
 
-" Ag
+" Vimgrap -> Ag
 set grepprg=ag\ --vimgrep\ $*
 set grepformat=%f:%l:%c:%m
 
