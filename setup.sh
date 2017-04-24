@@ -78,9 +78,9 @@ ln -s $HOME/dotfiles/bin/waves ~/bin/waves
 # Language: Go
 if [ ! -f $HOME/code/dev/go/bin/go ]; then
   if $osx; then
-    curl -o go.tar.gz https://storage.googleapis.com/golang/go1.7.1.darwin-amd64.tar.gz
+    curl -o go.tar.gz https://storage.googleapis.com/golang/go1.8.1.darwin-amd64.tar.gz
   else
-    curl -o go.tar.gz https://storage.googleapis.com/golang/go1.7.1.linux-amd64.tar.gz
+    curl -o go.tar.gz https://storage.googleapis.com/golang/go1.8.1.linux-amd64.tar.gz
   fi
   tar -xzf go.tar.gz
   mv go ~/code/dev
