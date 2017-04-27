@@ -1,26 +1,13 @@
 # vim: ft=sh
+if test "${SHELL}" = "mksh"; then
+  bind -m '^L'='tput clear^J'
+fi
 
 export PAGER=less
 export EDITOR=vim
 export CLICOLOR=1
 export PATH=".:$HOME/bin:/usr/bin:/bin:/usr/local/bin:/usr/sbin:/sbin"
 
-bind -m '^L'='tput clear^J'
-
-_prompt_git() {
-  local dotgit=.git head
-  [[ -d "$dotgit" ]] || dotgit=../.git
-  [[ -d "$dotgit" ]] || return 0
-  read head < "$dotgit/HEAD"
-  case "$head" in
-    ref:*) echo "${head#*/*/}";;
-    *) echo "${head:0:7}";;
-  esac
-}
-# del=$(print \\001)
-# export PS1='$del$(tput setab 3)$(tput setaf 0)$del $(basename $(pwd)) $del$(tput setab 6)$del $(_prompt_git) $del$(tput sgr0)$del
-# $del$(tput setab $([[ $? = 0 ]] && print 5 || print 1))$(tput setaf 0)$del \$ $del$(tput sgr0)$del '
-export PS1='$(basename $(pwd)):$(_prompt_git)$ '
 
 platform=$(uname)
 if [[ $platform == 'Linux' ]]; then
@@ -42,6 +29,7 @@ uuid4() {
   node -e 'var u = require("node-uuid");console.log(u.v4());'
 }
 
+
 # Git helpers
 alias gaa='git add --all'
 alias gc='git commit'
@@ -57,6 +45,13 @@ alias gs='git status -sb'
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 alias gfco="git branch | sed 's/^[ *]*//' | vis-menu | xargs git checkout"
 
+
+# Database helpers
+alias pgup="postgres -D /data/postgres -h 0.0.0.0"
+alias redisup="redis-server ${HOME}/dotfiles/conf/redis.conf"
+alias influxup="influxd -config /usr/local/etc/influxdb.conf"
+
+
 # Go helpers
 export GOPATH=$HOME/code/go
 export GOROOT=$HOME/code/dev/go
@@ -64,12 +59,15 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 export wd=$GOPATH/src/github.com
 export wdk=$GOPATH/src/github.com/kiasaki
 
+
 # Rust helpers
 export PATH="$HOME/.cargo/bin:$PATH"
+
 
 # Node.js helpers
 export N_PREFIX=$HOME/n
 export PATH=$PATH:$N_PREFIX/bin
+
 
 # Python helpers
 export VENV_PYTHON=$(which python)
@@ -83,6 +81,18 @@ function venva {
 }
 # Deactivate shortcut
 alias venvd='deactivate'
+
+
+# Ansible helpers
+alias asv='ansible-vault '
+alias asp='ansible-playbook --ask-vault-pass -v '
+
+
+# Docker helpers
+alias dockerstopall='docker stop $(docker ps -a -q)'
+alias dockerrmall='docker rm $(docker ps -a -q)'
+alias dockercleanuntagged='docker rmi $(docker images | grep "^<none>" | tr -s " " | cut -d " " -f 3)'
+
 
 # Tmux helpers
 function tn {
@@ -101,12 +111,20 @@ function ta {
 }
 alias tls='tmux ls'
 
-function setenv {
-	if [[ $# ]]; then
-		eval '\\builtin export "$1"="${2:-}"'
-	else
-		typeset -x
-	fi
-}
 
+# Prompt
+_prompt_git() {
+  local dotgit=.git head
+  [[ -d "$dotgit" ]] || dotgit=../.git
+  [[ -d "$dotgit" ]] || return 0
+  read head < "$dotgit/HEAD"
+  case "$head" in
+    ref:*) echo "${head#*/*/}";;
+    *) echo "${head:0:7}";;
+  esac
+}
+export PS1='$(basename $(pwd)):$(_prompt_git)$ '
+
+
+# Computer specific config & secrets
 source "$HOME/.env"
