@@ -1,82 +1,49 @@
 #!/bin/bash
 set -e
 
+log() {
+  echo "----> $1"
+}
+
 osx=false
-if [[ "$OSTYPE" == "darwin"* ]]; then
+if [[ "$(uname)" == "Darwin" ]]; then
   osx=true
 fi
 
-# Clone dotfiles in case we just curl'ed the setup.sh file
-if [ ! -d "$HOME/dotfiles" ]; then
-  git clone https://github.com/kiasaki/dotfiles.git
-fi
+log "Directories"
+sudo mkdir -p /data/db  && sudo chown "$USER" /data/db
+sudo mkdir -p /data/redis && sudo chown "$USER" /data/redis
+sudo mkdir -p /data/postgres && sudo chown "$USER" /data/postgres
+mkdir -p ~/bin ~/code/{dev,repos,venv,go}
+mkdir -p ~/.vim/{autoload,colors,syntax} ~/.config/nvim/{autoload,colors,syntax}
 
-if [ ! -d "$HOME/.rustup" ]; then
-  curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path --default-toolchain nightly
-fi
+log "Files: Symlinks"
+rm -rf ~/.vimrc                    && ln -s $HOME/dotfiles/dotfiles/vimrc ~/.vimrc
+rm -rf ~/.mkshrc                   && ln -s $HOME/dotfiles/dotfiles/mkshrc ~/.mkshrc
+rm -rf ~/.bashrc                   && ln -s $HOME/dotfiles/dotfiles/bashrc ~/.bashrc
+rm -rf ~/.flake8                   && ln -s $HOME/dotfiles/dotfiles/flake8 ~/.flake8
+rm -rf ~/.psqlrc                   && ln -s $HOME/dotfiles/dotfiles/psqlrc ~/.psqlrc
+rm -rf ~/bin/waves                 && ln -s $HOME/dotfiles/bin/waves ~/bin/waves
+rm -rf ~/bin/colors                && ln -s $HOME/dotfiles/bin/colors ~/bin/colors
+rm -rf ~/.tmux.conf                && ln -s $HOME/dotfiles/dotfiles/tmux.conf ~/.tmux.conf
+rm -rf ~/.alacritty.yml            && ln -s $HOME/dotfiles/dotfiles/alacritty.yml ~/.alacritty.yml
+rm -rf ~/.vim/colors/u.vim         && ln -s $HOME/dotfiles/vim/u.vim ~/.vim/colors/u.vim
+rm -rf ~/.config/nvim/init.vim     && ln -s $HOME/dotfiles/dotfiles/vimrc ~/.config/nvim/init.vim
+rm -rf ~/.config/nvim/colors/u.vim && ln -s $HOME/dotfiles/vim/u.vim ~/.config/nvim/colors/u.vim
 
-# Directories: Create
-sudo mkdir -p /data/db
-sudo chown "$USER" /data/db
-sudo mkdir -p /data/redis
-sudo chown "$USER" /data/redis
-sudo mkdir -p /data/postgres
-sudo chown "$USER" /data/postgres
-mkdir -p ~/bin
-mkdir -p ~/.atom
-mkdir -p ~/code/{dev,repos,venv,go}
-mkdir -p ~/.vim/{autoload,swaps,colors,syntax}
-mkdir -p ~/.config/nvim/{autoload,colors}
-
-# Files: Symlinks
-dotfiles=~/dotfiles/dotfiles
-rm -rf ~/.mkshrc ~/.bashrc ~/.bash_profile ~/.zshrc ~/.ushrc ~/.flake8 ~/.tmux.conf ~/.vimrc ~/.psqlrc ~/.ghci ~/.emacs.d ~/.config/nvim/init.vim ~/.alacritty.yml ~/bin/colors ~/.vim/colors/u.vim ~/.config/nvim/colors/u.vim ~/bin/waves
-ln -s $dotfiles/mkshrc ~/.mkshrc
-ln -s $dotfiles/bashrc ~/.bashrc
-ln -s $dotfiles/bash_profile ~/.bash_profile
-ln -s $dotfiles/zshrc ~/.zshrc
-ln -s $dotfiles/flake8 ~/.flake8
-ln -s $dotfiles/vimrc ~/.vimrc
-ln -s $dotfiles/emacs.d ~/.emacs.d
-ln -s $dotfiles/tmux.conf ~/.tmux.conf
-ln -s $dotfiles/ghci ~/.ghci
-ln -s $dotfiles/ushrc ~/.ushrc
-ln -s $dotfiles/psqlrc ~/.psqlrc
-ln -s $dotfiles/vimrc ~/.config/nvim/init.vim
-ln -s $dotfiles/alacritty.yml ~/.alacritty.yml
-ln -s $HOME/dotfiles/vim/u.vim ~/.vim/colors/u.vim
-ln -s $HOME/dotfiles/vim/u.vim ~/.config/nvim/colors/u.vim
-ln -s $HOME/dotfiles/bin/colors ~/bin/colors
-ln -s $HOME/dotfiles/bin/waves ~/bin/waves
-
-# Files: Creations
+log "Files: Creations"
 [ ! -f ~/.env ] && touch ~/.env
 [ ! -f ~/.hushlogin ] && touch ~/.hushlogin
 
-# Files: Copies
-[ ! -f ~/.vim/autoload/plug.vim ] && \
-  cp ~/dotfiles/vim/plug.vim ~/.vim/autoload/plug.vim
-[ ! -f ~/.vim/colors/solarized.vim ] && \
-  cp ~/dotfiles/vim/solarized.vim ~/.vim/colors/solarized.vim
-[ ! -f ~/.vim/colors/dracula.vim ] && \
-  cp ~/dotfiles/vim/dracula.vim ~/.vim/colors/dracula.vim
-[ ! -f ~/.config/nvim/autoload/plug.vim ] && \
-  cp ~/dotfiles/vim/plug.vim ~/.config/nvim/autoload/plug.vim
-[ ! -f ~/.config/nvim/colors/solarized.vim ] && \
-  cp ~/dotfiles/vim/solarized.vim ~/.config/nvim/colors/solarized.vim
-[ ! -f ~/.config/nvim/colors/dracula.vim ] && \
-  cp ~/dotfiles/vim/dracula.vim ~/.config/nvim/colors/dracula.vim
-[ ! -f ~/.gitconfig ] && \
-  cp $dotfiles/gitconfig ~/.gitconfig
-[ ! -f ~/.npmrc ] && \
-  cp $dotfiles/npmrc ~/.npmrc
-[ ! -f ~/.atom/config.cson ] && \
-  cp $dotfiles/atom/config.cson ~/.atom/config.cson
-[ ! -f ~/.atom/keymap.cson ] && \
-  cp $dotfiles/atom/keymap.cson ~/.atom/keymap.cson
+log "Files: Copies"
+[ ! -f ~/.npmrc ] && cp $dotfiles/npmrc ~/.npmrc
+[ ! -f ~/.gitconfig ] && cp $dotfiles/gitconfig ~/.gitconfig
+[ ! -f ~/.vim/autoload/plug.vim ] && cp ~/dotfiles/vim/plug.vim ~/.vim/autoload/plug.vim
+[ ! -f ~/.config/nvim/autoload/plug.vim ] && cp ~/dotfiles/vim/plug.vim ~/.config/nvim/autoload/plug.vim
 
-# Language: Go
+log "Language: Go"
 if [ ! -f $HOME/code/dev/go/bin/go ]; then
+  log "Language: Go: Fetching binaries"
   if $osx; then
     curl -o go.tar.gz https://storage.googleapis.com/golang/go1.8.1.darwin-amd64.tar.gz
   else
@@ -88,29 +55,31 @@ if [ ! -f $HOME/code/dev/go/bin/go ]; then
 fi
 export GOROOT=~/code/dev/go
 export GOPATH=~/code/go
-export GOBIN=$HOME/bin
+export GOBIN=~/bin
 mkdir -p $GOPATH/src/github.com/kiasaki
-echo "Fetching hk, hugo, godep, gore & others"
-$GOROOT/bin/go get github.com/motemen/gore
-$GOROOT/bin/go get github.com/heroku/hk
+log "Language: Go: Installing hugo, godep, gore & others"
 $GOROOT/bin/go get github.com/spf13/hugo
 $GOROOT/bin/go get github.com/tools/godep
-$GOROOT/bin/go get github.com/FiloSottile/gvt
-$GOROOT/bin/go get github.com/nsf/gocode
-$GOROOT/bin/go get github.com/rogpeppe/godef
+$GOROOT/bin/go get github.com/motemen/gore
 $GOROOT/bin/go get golang.org/x/tools/cmd/...
 $GOROOT/bin/go get github.com/jteeuwen/go-bindata/...
 
-# Language: Node.js
+log "Language: Rust"
+if [ ! -d "$HOME/.rustup" ]; then
+  curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path --default-toolchain nightly
+fi
+
+log "Language: Node.js"
 if [ ! -d "$HOME/n" ]; then
+  log "Language: Node.js: Fetching binaries"
   curl -L http://git.io/n-install | bash -s -- -n -y
   $HOME/n/bin/npm i -g yarn
   $HOME/n/bin/npm i -g eslint
 fi
 
-# Language: Ruby
-
+log "Language: Ruby"
 if ! [ -x "$(command -v chruby)" ]; then
+  log "Language: Ruby: Installing chruby"
   if $osx; then
     brew install ruby-install chruby
   else
@@ -130,4 +99,4 @@ if ! [ -x "$(command -v chruby)" ]; then
   fi
 fi
 
-echo "All done!"
+log "DONE!"
