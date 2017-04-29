@@ -1,5 +1,5 @@
 # vim: ft=sh
-if test "${SHELL}" = "/bin/mksh"; then
+if test "${SHELL}" = $(which mksh); then
   bind -m '^L'='tput clear^J'
 fi
 
