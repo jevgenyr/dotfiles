@@ -12,6 +12,7 @@ alias e "nvim"
 alias vim "nvim"
 alias tmux "tmux -2"
 alias xclip "xclip -selection c"
+alias r "source ~/.ushrc"
 alias ag "ag --path-to-ignore=$HOME/.agignore"
 
 ## Git
@@ -32,7 +33,7 @@ alias gfco "git branch | sed 's/^[ *]*//' | vis-menu | xargs git checkout"
 ## Tmux
 alias tls "tmux ls"
 alias tn "tmux new -s"
-alias ta "tmux attach"
+alias ta "tmux attach -t"
 
 ## Go
 set GOPATH "$HOME/code/go"
