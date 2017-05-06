@@ -18,6 +18,7 @@ mkdir -p ~/bin ~/code/{dev,repos,venv,go}
 mkdir -p ~/.vim/{autoload,colors,syntax} ~/.config/nvim/{autoload,colors,syntax}
 
 log "Files: Symlinks"
+rm -rf ~/.ghci                    && ln -s $HOME/dotfiles/dotfiles/ghci ~/.ghci
 rm -rf ~/.vimrc                    && ln -s $HOME/dotfiles/dotfiles/vimrc ~/.vimrc
 rm -rf ~/.mkshrc                   && ln -s $HOME/dotfiles/dotfiles/mkshrc ~/.mkshrc
 rm -rf ~/.bashrc                   && ln -s $HOME/dotfiles/dotfiles/bashrc ~/.bashrc
