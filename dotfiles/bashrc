@@ -1,6 +1,7 @@
 # Bash specifics
 stty start undef
 stty stop undef
+export SHELL=/bin/bash
 export HISTSIZE=5000
 export HISTFILESIZE=10000
 export HISTCONTROL=ignoreboth:erasedups # no duplicate entries

@@ -25,7 +25,10 @@ if (executable('pbcopy') || executable('xclip') || executable('xsel')) && has('c
   set clipboard=unnamed
 endif
 " Use zsh
-set shell=zsh
+set shell=mksh
+
+let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+execute "set rtp+=" . g:opamshare . "/merlin/vim"
 
 " Packages
 call plug#begin()
@@ -42,6 +45,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'mxw/vim-jsx'
 Plug 'fatih/vim-go'
 Plug 'pangloss/vim-javascript'
+Plug 'reasonml/vim-reason-loader'
 call plug#end()
 
 " Syntax highlighting, filetype indentation rules, color scheme
