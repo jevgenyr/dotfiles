@@ -14,8 +14,8 @@ set backspace=2 list listchars=tab:>\ ,trail:·,nbsp:_
 set tabstop=4 expandtab shiftwidth=2 shiftround
 " Show tab-complete suggestions and complete longest substring.
 set wildmenu wildmode=list:longest
-" Color line 100
-set colorcolumn=100
+" Color line 80
+set colorcolumn=80
 " Fold on { { {
 set foldmethod=marker foldlevelstart=10
 " Use space as leader
@@ -24,21 +24,18 @@ let mapleader=" "
 if (executable('pbcopy') || executable('xclip') || executable('xsel')) && has('clipboard')
   set clipboard=unnamed
 endif
-" Use zsh
+" Use mksh
 set shell=mksh
-
-let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-execute "set rtp+=" . g:opamshare . "/merlin/vim"
 
 " Packages
 call plug#begin()
 " Plugins
 Plug 'neomake/neomake'
-Plug 'tpope/vim-eunuch'
+" Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-vinegar'
 Plug 'ervandew/supertab'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'jlanzarotta/bufexplorer'
+" Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'jlanzarotta/bufexplorer'
 Plug 'editorconfig/editorconfig-vim'
 
 " Languages
@@ -68,6 +65,10 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-w>n <ESC>:tabnext<CR>
 if has("nvim")
+  tnoremap <C-h> <C-\><C-n><C-w>h
+  tnoremap <C-j> <C-\><C-n><C-w>j
+  tnoremap <C-k> <C-\><C-n><C-w>k
+  tnoremap <C-l> <C-\><C-n><C-w>l
   nmap <BS> <C-W>h " Hack to get C-h working in neovim
   tnoremap <Esc> <C-\><C-n>
 end
@@ -108,5 +109,6 @@ set grepformat=%f:%l:%c:%m
 let g:go_fmt_command = "goimports"
 let g:go_list_type = "quickfix"
 
-" Rust
-let g:rustfmt_autosave = 1
+" OCaml
+let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+execute "set rtp+=" . g:opamshare . "/merlin/vim"

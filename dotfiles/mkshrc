@@ -1,6 +1,6 @@
 # vim: ft=sh
 if test "${SHELL}" = $(which mksh); then
-  bind -m '^L'='tput clear^J'
+  bind -m '^L'='clear^J'
 fi
 
 export PAGER=less
@@ -69,7 +69,7 @@ export PATH=$PATH:$N_PREFIX/bin
 
 
 # Python helpers
-export VENV_PYTHON=$(which python)
+export VENV_PYTHON=$(which python3)
 export VENV_HOME=$HOME/code/venv
 function venvn {
   (cd $VENV_HOME && virtualenv --python=$VENV_PYTHON $1)

@@ -34,7 +34,7 @@ hi Number       cterm=NONE          ctermbg=NONE    ctermfg=3
 hi Char         cterm=NONE          ctermbg=NONE    ctermfg=NONE
 hi Format       cterm=NONE          ctermbg=NONE    ctermfg=NONE
 hi Special      cterm=NONE          ctermbg=NONE    ctermfg=5
-hi Constant     cterm=NONE          ctermbg=NONE    ctermfg=NONE
+hi Constant     cterm=NONE          ctermbg=NONE    ctermfg=2
 hi Directive    cterm=NONE          ctermbg=NONE    ctermfg=NONE
 hi Comment      cterm=NONE          ctermbg=NONE    ctermfg=8
 hi Func         cterm=NONE          ctermbg=NONE    ctermfg=2
