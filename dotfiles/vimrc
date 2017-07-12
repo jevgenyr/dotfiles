@@ -110,5 +110,5 @@ let g:go_fmt_command = "goimports"
 let g:go_list_type = "quickfix"
 
 " OCaml
-let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-execute "set rtp+=" . g:opamshare . "/merlin/vim"
+"let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+"execute "set rtp+=" . g:opamshare . "/merlin/vim"
