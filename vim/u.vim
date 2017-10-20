@@ -7,16 +7,16 @@ endif
 
 let colors_name = "u"
 
-hi Normal       cterm=NONE          ctermbg=NONE    ctermfg=NONE
+hi Normal       cterm=NONE         ctermbg=NONE     ctermfg=NONE
 hi SpecialKey   cterm=bold                          ctermfg=NONE
 hi IncSearch    cterm=reverse                       ctermfg=NONE
 hi Search       cterm=reverse                       ctermfg=NONE
 hi MoreMsg      cterm=bold                          ctermfg=NONE
 hi ModeMsg      cterm=bold                          ctermfg=NONE
 hi LineNr       cterm=NONE                          ctermfg=6
-hi StatusLine   cterm=NONE          ctermbg=5       ctermfg=0
-hi StatusLineNC cterm=NONE          ctermbg=6       ctermfg=0
-hi VertSplit    cterm=reverse                       ctermfg=NONE
+hi StatusLine   cterm=NONE         ctermbg=5        ctermfg=0
+hi StatusLineNC cterm=NONE         ctermbg=6        ctermfg=0
+hi VertSplit    cterm=NONE         ctermbg=6        ctermfg=0
 hi Title        cterm=bold                          ctermfg=NONE
 hi Visual       cterm=NONE         ctermbg=0        ctermfg=15
 hi VisualNOS    cterm=NONE         ctermbg=0        ctermfg=15
