@@ -30,7 +30,8 @@ set shell=mksh
 " Packages
 call plug#begin()
 " Plugins
-Plug 'neomake/neomake'
+" Plug 'neomake/neomake'
+Plug 'w0rp/ale'
 " Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-vinegar'
 Plug 'ervandew/supertab'
@@ -85,21 +86,19 @@ let g:ctrlp_match_window = 'bottom,order:ttb'
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
-" Neomake
-autocmd BufWritePost * Neomake
-hi NeomakeErrorSign ctermfg=red
-hi NeomakeWarningSign ctermfg=yellow
-let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_python_enabled_makers = ['flake8']
-let g:neomake_python_flake8_maker = {
-    \ 'exe': 'python3',
-    \ 'args': [systemlist('which flake8')[0], '--format=default'],
-    \ 'errorformat':
-        \ '%E%f:%l: could not compile,%-Z%p^,' .
-        \ '%A%f:%l:%c: %t%n %m,' .
-        \ '%A%f:%l: %t%n %m,' .
-        \ '%-G%.%#',
-    \ }
+" Ale
+let g:ale_sign_error = 'X'
+let g:ale_sign_warning = '-'
+hi ALEErrorSign ctermfg=red
+hi ALEWarningSign ctermfg=yellow
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_linters = {
+  \ 'py': ['flake8'],
+  \ 'javascript': ['eslint'],
+  \ }
+let g:ale_fixers = {
+  \ 'javascript': ['prettier'],
+  \ }
 
 " Vimgrap -> Ag
 set grepprg=ag\ --vimgrep\ $*
