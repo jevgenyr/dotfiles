@@ -37,8 +37,8 @@ log "Files: Creations"
 [ ! -f ~/.hushlogin ] && touch ~/.hushlogin
 
 log "Files: Copies"
-[ ! -f ~/.npmrc ] && cp $dotfiles/npmrc ~/.npmrc
-[ ! -f ~/.gitconfig ] && cp $dotfiles/gitconfig ~/.gitconfig
+[ ! -f ~/.npmrc ] && cp $HOME/dotfiles/dotfiles/npmrc ~/.npmrc
+[ ! -f ~/.gitconfig ] && cp $HOME/dotfiles/dotfiles/gitconfig ~/.gitconfig
 [ ! -f ~/.vim/autoload/plug.vim ] && cp ~/dotfiles/vim/plug.vim ~/.vim/autoload/plug.vim
 [ ! -f ~/.config/nvim/autoload/plug.vim ] && cp ~/dotfiles/vim/plug.vim ~/.config/nvim/autoload/plug.vim
 
@@ -46,9 +46,9 @@ log "Language: Go"
 if [ ! -f $HOME/code/dev/go/bin/go ]; then
   log "Language: Go: Fetching binaries"
   if $osx; then
-    curl -o go.tar.gz https://storage.googleapis.com/golang/go1.8.1.darwin-amd64.tar.gz
+    curl -o go.tar.gz https://storage.googleapis.com/golang/go1.9.1.darwin-amd64.tar.gz
   else
-    curl -o go.tar.gz https://storage.googleapis.com/golang/go1.8.1.linux-amd64.tar.gz
+    curl -o go.tar.gz https://storage.googleapis.com/golang/go1.9.1.linux-amd64.tar.gz
   fi
   tar -xzf go.tar.gz
   mv go ~/code/dev
