@@ -118,7 +118,7 @@ alias tls='tmux ls'
 
 
 # Prompt
-_prompt_git() {
+function _prompt_git {
   local dotgit=.git head
   [[ -d "$dotgit" ]] || dotgit=../.git
   [[ -d "$dotgit" ]] || return 0
