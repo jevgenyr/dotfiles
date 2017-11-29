@@ -58,6 +58,7 @@ set statusline=\ %f\ %m\ %r%=(%c,\ %l)\
 " Auto commands
 autocmd VimResized * :wincmd = " Equalize window sizes on resize
 autocmd BufNewFile,BufRead *.md setlocal spell " Help correct my English
+autocmd BufWritePre *.go call ale#fix#Fix()
 
 " Split movement
 nnoremap <C-h> <C-w>h
@@ -95,9 +96,11 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_linters = {
   \ 'py': ['flake8'],
   \ 'javascript': ['eslint'],
+  \ 'go': ['gofmt', 'golint', 'go vet', 'go build'],
   \ }
 let g:ale_fixers = {
   \ 'javascript': ['prettier'],
+  \ 'go': ['gofmt'],
   \ }
 
 " Vimgrap -> Ag
