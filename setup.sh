@@ -18,10 +18,10 @@ mkdir -p ~/bin ~/code/{dev,repos,venv,go}
 mkdir -p ~/.vim/{autoload,colors,syntax} ~/.config/nvim/{autoload,colors,syntax}
 
 log "Files: Symlinks"
-rm -rf ~/.ghci                    && ln -s $HOME/dotfiles/dotfiles/ghci ~/.ghci
 rm -rf ~/.vimrc                    && ln -s $HOME/dotfiles/dotfiles/vimrc ~/.vimrc
-rm -rf ~/.kshrc                   && ln -s $HOME/dotfiles/dotfiles/kshrc ~/.kshrc
-rm -rf ~/.ushrc                   && ln -s $HOME/dotfiles/dotfiles/ushrc ~/.ushrc
+rm -rf ~/.kshrc                    && ln -s $HOME/dotfiles/dotfiles/kshrc ~/.kshrc
+rm -rf ~/.mkshrc                   && ln -s $HOME/dotfiles/dotfiles/kshrc ~/.mkshrc
+rm -rf ~/.ushrc                    && ln -s $HOME/dotfiles/dotfiles/ushrc ~/.ushrc
 rm -rf ~/.bashrc                   && ln -s $HOME/dotfiles/dotfiles/bashrc ~/.bashrc
 rm -rf ~/.flake8                   && ln -s $HOME/dotfiles/dotfiles/flake8 ~/.flake8
 rm -rf ~/.psqlrc                   && ln -s $HOME/dotfiles/dotfiles/psqlrc ~/.psqlrc

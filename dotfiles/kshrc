@@ -15,13 +15,14 @@ elif [[ $platform == 'Darwin' ]]; then
   alias ls='ls -Gp'
 fi
 
-alias r='exec mksh'
+# Common aliases
+alias r='exec $SHELL'
 alias she='$EDITOR ~/.mkshrc'
 alias ll='ls -la'
-alias tmux='tmux -2'
-alias xclip='xclip -selection c'
 alias e='nvim'
 alias vim='nvim'
+alias tmux='tmux -2'
+alias xclip='xclip -selection c'
 alias ag='ag --path-to-ignore=~/.agignore'
 alias p='pygmentize '
 alias uuid='node -e "var UUIDv4 = function b(a){return a?(a^Math.random()*16>>a/4).toString(16):([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g,b)};console.log(UUIDv4());"'
@@ -30,8 +31,6 @@ alias uuid='node -e "var UUIDv4 = function b(a){return a?(a^Math.random()*16>>a/
 if hash setxkbmap 2>/dev/null; then
   setxkbmap -layout us -option ctrl:nocaps
 fi
-
-
 
 # Git helpers
 alias gaa='git add --all'

@@ -4,13 +4,13 @@ stty stop undef
 export SHELL=/bin/bash
 export HISTSIZE=5000
 export HISTFILESIZE=10000
-export HISTCONTROL=ignoreboth:erasedups # no duplicate entries
-shopt -s histappend                     # append history file
-export PROMPT_COMMAND="history -a"      # update histfile after every command
+export HISTCONTROL=ignoreboth:erasedups
+shopt -s histappend
 
 
 # Use mkshrc for most config
 source $HOME/.mkshrc
+
 
 # Ruby helpers
 if [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]; then
@@ -20,5 +20,22 @@ if [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]; then
   fi
 fi
 
+
 # Status line
-export PS1="\[\e[0;36m\]\W>\[\e[0m\] "
+function _prompt_exit {
+  if [ $1 == 0 ]; then
+    echo "\[\e[1;35m\]"
+  else
+    echo "\[\e[0;31m\]"
+  fi
+}
+function _prompt {
+  PS1=""
+  PS1+="$(_prompt_exit $?)"
+  PS1+="$(basename $(pwd))<"
+  PS1+="\[\e[0;32m\]"
+  PS1+="$(_prompt_git)"
+  PS1+="$(_prompt_exit $?)"
+  PS1+="> \[\e[0m\]"
+}
+PROMPT_COMMAND=_prompt
