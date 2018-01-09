@@ -39,3 +39,5 @@ function _prompt {
   PS1+="> \[\e[0m\]"
 }
 PROMPT_COMMAND=_prompt
+
+~/dotfiles/support/mtm_status.py &

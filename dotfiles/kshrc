@@ -120,6 +120,7 @@ alias tls='tmux ls'
 function _prompt_git {
   local dotgit=.git head
   [[ -d "$dotgit" ]] || dotgit=../.git
+  [[ -d "$dotgit" ]] || dotgit=../../.git
   [[ -d "$dotgit" ]] || return 0
   read head < "$dotgit/HEAD"
   case "$head" in
