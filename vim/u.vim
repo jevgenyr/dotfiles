@@ -29,21 +29,21 @@ hi DiffLine     cterm=NONE                          ctermfg=4
 hi DiffAdded    cterm=NONE                          ctermfg=2
 hi DiffRemoved  cterm=NONE                          ctermfg=1
 hi DiffText     cterm=reverse                       ctermfg=NONE
-hi Keyword      cterm=NONE          ctermbg=NONE    ctermfg=NONE
+hi Keyword      cterm=NONE          ctermbg=NONE    ctermfg=8 " 2
 hi Number       cterm=NONE          ctermbg=NONE    ctermfg=3
 hi Char         cterm=NONE          ctermbg=NONE    ctermfg=NONE
 hi Format       cterm=NONE          ctermbg=NONE    ctermfg=NONE
-hi Special      cterm=NONE          ctermbg=NONE    ctermfg=5
-hi Constant     cterm=NONE          ctermbg=NONE    ctermfg=2
+hi Special      cterm=NONE          ctermbg=NONE    ctermfg=NONE " 5
+hi Constant     cterm=NONE          ctermbg=NONE    ctermfg=NONE " 2
 hi Directive    cterm=NONE          ctermbg=NONE    ctermfg=NONE
 hi Comment      cterm=NONE          ctermbg=NONE    ctermfg=8
-hi Func         cterm=NONE          ctermbg=NONE    ctermfg=2
-hi Type         cterm=NONE          ctermbg=NONE    ctermfg=2
+hi Func         cterm=NONE          ctermbg=NONE    ctermfg=NONE " 2
+hi Type         cterm=NONE          ctermbg=NONE    ctermfg=8 " 2
 hi Identifier   cterm=NONE          ctermbg=NONE    ctermfg=NONE
-hi PreProc      cterm=NONE                          ctermfg=2
-hi Statement    cterm=NONE          ctermbg=NONE    ctermfg=2
-hi Conditional  cterm=NONE          ctermbg=NONE    ctermfg=2
-hi Noise        cterm=NONE          ctermbg=NONE    ctermfg=8
+hi PreProc      cterm=NONE                          ctermfg=NONE " 2
+hi Statement    cterm=NONE          ctermbg=NONE    ctermfg=8 " 2
+hi Conditional  cterm=NONE          ctermbg=NONE    ctermfg=8 " 2
+hi Noise        cterm=NONE          ctermbg=NONE    ctermfg=NONE " 8
 hi Ignore       cterm=bold                          ctermfg=NONE
 hi String       cterm=NONE                          ctermfg=4
 hi ErrorMsg     cterm=reverse       ctermbg=15      ctermfg=9
@@ -53,4 +53,4 @@ hi MatchParen   cterm=bold          ctermbg=250     ctermfg=NONE
 hi ColorColumn                      ctermbg=250
 
 " Helper for determining highlight group under cursor when developing theme
-" map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>

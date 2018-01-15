@@ -52,7 +52,7 @@ alias gfco="git branch | sed 's/^[ *]*//' | vis-menu | xargs git checkout"
 
 # Database helpers
 alias pgup="postgres -D /data/postgres -h 0.0.0.0"
-alias redisup="redis-server ${HOME}/dotfiles/conf/redis.conf"
+alias redisup="redis-server ${HOME}/dotfiles/support/redis.conf"
 alias influxup="influxd -config /usr/local/etc/influxdb.conf"
 
 

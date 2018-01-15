@@ -43,7 +43,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'mxw/vim-jsx'
 Plug 'fatih/vim-go'
 Plug 'pangloss/vim-javascript'
-Plug 'reasonml/vim-reason-loader'
+Plug 'leafgarland/typescript-vim'
 call plug#end()
 
 " Syntax highlighting, filetype indentation rules, color scheme

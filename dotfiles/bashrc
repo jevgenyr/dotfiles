@@ -20,6 +20,10 @@ if [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]; then
   fi
 fi
 
+if [ -f /usr/local/etc/bash_completion ]; then
+  . /usr/local/etc/bash_completion
+fi
+
 
 # Status line
 function _prompt_exit {
