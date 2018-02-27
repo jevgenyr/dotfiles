@@ -24,8 +24,8 @@ let mapleader=" "
 if (executable('pbcopy') || executable('xclip') || executable('xsel')) && has('clipboard')
   set clipboard=unnamed
 endif
-" Use mksh
-set shell=mksh
+" Use bash
+set shell=bash
 
 " Packages
 call plug#begin()
@@ -58,7 +58,7 @@ set statusline=\ %f\ %m\ %r%=(%c,\ %l)\
 " Auto commands
 autocmd VimResized * :wincmd = " Equalize window sizes on resize
 autocmd BufNewFile,BufRead *.md setlocal spell " Help correct my English
-autocmd BufWritePre *.go call ale#fix#Fix()
+autocmd BufWritePre *.js call ale#fix#Fix()
 
 " Split movement
 nnoremap <C-h> <C-w>h
@@ -100,7 +100,6 @@ let g:ale_linters = {
   \ }
 let g:ale_fixers = {
   \ 'javascript': ['prettier'],
-  \ 'go': ['gofmt'],
   \ }
 
 " Vimgrap -> Ag
