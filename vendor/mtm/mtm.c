@@ -82,7 +82,7 @@ static void setupevents(NODE *n);
 static void reshape(NODE *n, int y, int x, int h, int w);
 static void draw(NODE *n);
 static void reshapechildren(NODE *n);
-static const char *term = "eterm-color";
+static const char *term = "screen-256color";
 static void freenode(NODE *n, bool recursive);
 static void updatetitle(void);
 static void updatestatus(void);
