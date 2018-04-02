@@ -32,7 +32,7 @@ static float chscale = 1.0;
  *
  * More advanced example: " `'\"()[]{}"
  */
-char *worddelimiters = " ";
+char *worddelimiters = " `'\"()[]{}";
 
 /* selection timeouts (in milliseconds) */
 static unsigned int doubleclicktimeout = 300;
@@ -84,7 +84,7 @@ unsigned int tabspaces = 8;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-	/* 8 normal colors */
+    /* Dracula theme
 	"#000000",
 	"#FF5555",
 	"#50FA7B",
@@ -94,7 +94,6 @@ static const char *colorname[] = {
 	"#8BE9FD",
 	"#BFBFBF",
 
-	/* 8 bright colors */
 	"#4D4D4D",
 	"#FF6E67",
 	"#5AF78E",
@@ -103,12 +102,34 @@ static const char *colorname[] = {
 	"#FF92D0",
 	"#9AEDFE",
 	"#E6E6E6",
+    */
+
+    /* u theme */
+	/* 8 normal colors */
+	"#1D1F21",
+	"#CC6666",
+	"#B5BD68",
+	"#F0C674",
+	"#81A2BE",
+	"#B294BB",
+	"#8ABEB7",
+	"#C5C8C6",
+
+	/* 8 bright colors */
+	"#969896",
+	"#CC6666",
+	"#B5BD68",
+	"#F0C674",
+	"#81A2BE",
+	"#B294BB",
+	"#8ABEB7",
+	"#FFFFFF",
 
 	[255] = 0,
 
 	/* more colors can be added after 255 to use with DefaultXX */
-	"#F8F8F2", /* bg */
-	"#282A36", /* fg */
+	"#FFFFFF", /* bg */
+	"#373B41", /* fg */
 };
 
 
