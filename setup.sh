@@ -75,6 +75,7 @@ log "Language: Node.js"
 if [ ! -d "$HOME/n" ]; then
   log "Language: Node.js: Fetching binaries"
   curl -L http://git.io/n-install | bash -s -- -n -y
+  export PATH="$PATH:$HOME/n/bin"
   $HOME/n/bin/npm i -g yarn
   $HOME/n/bin/npm i -g eslint
 fi
