@@ -16,7 +16,7 @@ Global {
   usefontcolor=1
   fontcolor=#333333
   background=0
-  backgroundfile=/home/kiasaki/Pictures/montreal1.jpg
+  backgroundfile=/home/kiasaki/dotfiles/support/wallpaper.jpg
   iconsize=20
   autohide=1
 }
@@ -58,10 +58,13 @@ Plugin {
       id=menu://applications/Accessories/pcmanfm.desktop
     }
     Button {
+      id=lxde-x-www-browser.desktop
+    }
+    Button {
       id=menu://applications/Internet/chromium-browser.desktop
     }
     Button {
-      id=menu://applications/Other/Alacritty.desktop
+      id=menu://applications/Other/st.desktop
     }
   }
 }

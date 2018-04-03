@@ -1,17 +1,17 @@
 #!/bin/bash
-set -x
+set -xe
 
 pushd ~ >/dev/null
 
 # Install source code pro font
-$HOME/dotfiles/support/install-source-code-pro-font.sh
+#$HOME/dotfiles/support/install-source-code-pro-font.sh
 
 # Install applications and libraries
 if ! [ -x "$(command -v nvim)" ]; then
   sudo apt-get install -qq -y python-software-properties python-dev python-pip python3-dev python3-pip
   sudo add-apt-repository ppa:neovim-ppa/unstable
   sudo apt-get update
-  sudo apt-get install neovim
+  sudo apt-get install -qq -y neovim
 fi
 
 if ! [ -x "$(command -v psql)" ]; then
@@ -23,6 +23,7 @@ fi
 libs="build-essential libfreetype6-dev"
 pkgs=()
 which make >/dev/null || pkgs+=(make)
+which curl >/dev/null || pkgs+=(curl)
 which cmake >/dev/null || pkgs+=(cmake)
 which fc-cache >/dev/null || pkgs+=(fontconfig)
 which git >/dev/null || pkgs+=(git)
@@ -32,7 +33,6 @@ which mosh >/dev/null || pkgs+=(mosh)
 which tmux >/dev/null || pkgs+=(tmux)
 which curl >/dev/null || pkgs+=(curl)
 which jq >/dev/null || pkgs+=(jq)
-which emacs >/dev/null || pkgs+=(emacs24-nox)
 which ag >/dev/null || pkgs+=(silversearcher-ag)
 
 if [ ! -z "${pkgs}" ]; then
@@ -41,12 +41,13 @@ fi
 
 
 # Install deps for building suckless apps
-sudo apt-get install xorg-dev
+sudo apt-get install -qq -y xorg-dev
 
 # Install st
 if [ ! -d $HOME/code/repos/st ]; then
   git clone git://git.suckless.org/st ~/code/repos/st
 fi
+rm -f ~/code/repos/st/config.h
 ln -s ~/dotfiles/support/st-config.h ~/code/repos/st/config.h
 cd ~/code/repos/st
 sudo make clean install
@@ -59,7 +60,8 @@ cd ~/code/repos/slock
 sudo make clean install
 
 # Install Input font
-sudo cp -r ~/dotfiles/support/input_font /usr/share/fonts/truetype/input
+sudo cp -r ~/dotfiles/support/fonts/go /usr/share/fonts/truetype/go
+sudo cp -r ~/dotfiles/support/fonts/input /usr/share/fonts/truetype/input
 fc-cache -f -v
 
 

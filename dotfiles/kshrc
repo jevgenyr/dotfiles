@@ -4,7 +4,7 @@ if test "$SHELL" = "$(which mksh)"; then
 fi
 
 export PAGER=less
-export EDITOR=vim
+export EDITOR=nvim
 export CLICOLOR=1
 export PATH=".:$HOME/bin:$HOME/.local/bin:/usr/bin:/bin:/usr/local/bin:/usr/sbin:/sbin"
 
