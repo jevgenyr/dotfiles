@@ -1,91 +1,44 @@
-" Don't bother supporting vi, update window title, no ~file
-set nocompatible title nobackup noswapfile
-" Show line number, current line and current command
-set number cursorline showcmd
-" Search incrementally with smart case sensitivity, highlight all matches
-set incsearch ignorecase smartcase hlsearch
-" Automatic indentation and adjust with tab and backspace
-set autoindent smartindent smarttab
-" Shorten messages, disable intro screen and disable audible bell
-set shortmess=atI visualbell t_vb=
-" Allow backspace in insert mode, show hard tabs and trailing whitespace
-set backspace=2 list listchars=tab:>\ ,trail:·,nbsp:_
-" Show hard tabs as 4 wide, use 2 space indentation rounded to multiples
+set hidden undofile shortmess=atI
+set wildmode=list:longest
+set splitbelow splitright
 set tabstop=4 expandtab shiftwidth=2 shiftround
-" Show tab-complete suggestions and complete longest substring.
-set wildmenu wildmode=list:longest
-" Color line 80
-set colorcolumn=80
-" Fold on { { {
-set foldmethod=marker foldlevelstart=10
-" Use space as leader
-let mapleader=" "
-" Use os's clipboard
-if (executable('pbcopy') || executable('xclip') || executable('xsel')) && has('clipboard')
-  set clipboard=unnamed
-endif
-" Use bash
-set shell=bash
-
-" Packages
-call plug#begin()
-" Plugins
-" Plug 'neomake/neomake'
-Plug 'w0rp/ale'
-" Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-vinegar'
-Plug 'ervandew/supertab'
-" Plug 'ctrlpvim/ctrlp.vim'
-" Plug 'jlanzarotta/bufexplorer'
-Plug 'editorconfig/editorconfig-vim'
-
-" Languages
-Plug 'mxw/vim-jsx'
-Plug 'fatih/vim-go'
-Plug 'pangloss/vim-javascript'
-Plug 'leafgarland/typescript-vim'
-call plug#end()
-
-" Syntax highlighting, filetype indentation rules, color scheme
-syntax on
-filetype plugin indent on
-set background=light
-colorscheme u
-
-" Status line
+set smartindent cinoptions=l1(sU1m1
+set ignorecase smartcase inccommand=nosplit
+set foldmethod=syntax foldlevel=99
 set statusline=\ %f\ %m\ %r%=(%c,\ %l)\ 
 
-" Auto commands
-autocmd VimResized * :wincmd = " Equalize window sizes on resize
-autocmd BufNewFile,BufRead *.md setlocal spell " Help correct my English
-autocmd BufWritePre *.js call ale#fix#Fix()
+set title scrolloff=1
+set number colorcolumn=80,100
+set list listchars=tab:»\ ,trail:·
+let mapleader=" "
+colorscheme u
 
-" Split movement
+nmap <leader><leader> :nohlsearch<CR>
+tmap <C-w> <C-\><C-n><C-w>
+tnoremap <Esc> <C-\><C-n>
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-w>n <ESC>:tabnext<CR>
-if has("nvim")
-  tnoremap <C-h> <C-\><C-n><C-w>h
-  tnoremap <C-j> <C-\><C-n><C-w>j
-  tnoremap <C-k> <C-\><C-n><C-w>k
-  tnoremap <C-l> <C-\><C-n><C-w>l
-  nmap <BS> <C-W>h " Hack to get C-h working in neovim
-  tnoremap <Esc> <C-\><C-n>
-end
-
-" Leader commands
-nmap <leader>n :nohlsearch<CR>
-noremap <leader>b :BufExplorer<CR>
 noremap <leader>f :execute 'edit %:h/'<CR>
-noremap <leader>t :CtrlP<CR>
+autocmd VimResized * :wincmd =
+autocmd TermOpen * setlocal nonumber statusline=%{b:term_title}
+"let g:clipboard = {'copy':{'+':'pbcopy'},'paste':{'+':'pbpaste'}}
 
-" CtrlP
-let g:ctrlp_root_markers = ['node_modules']
-let g:ctrlp_match_window = 'bottom,order:ttb'
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+call plug#begin()
+Plug 'w0rp/ale'
+Plug 'tpope/vim-vinegar'
+Plug 'ervandew/supertab'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'mxw/vim-jsx'
+Plug 'fatih/vim-go'
+Plug 'pangloss/vim-javascript'
+call plug#end()
+
+" Go
+let g:go_fmt_command = "goimports"
+let g:go_list_type = "quickfix"
 
 " Ale
 let g:ale_sign_error = 'X'
@@ -101,15 +54,3 @@ let g:ale_linters = {
 let g:ale_fixers = {
   \ 'javascript': ['prettier'],
   \ }
-
-" Vimgrap -> Ag
-set grepprg=ag\ --vimgrep\ $*
-set grepformat=%f:%l:%c:%m
-
-" Go
-let g:go_fmt_command = "goimports"
-let g:go_list_type = "quickfix"
-
-" OCaml
-"let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-"execute "set rtp+=" . g:opamshare . "/merlin/vim"
