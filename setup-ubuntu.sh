@@ -8,7 +8,7 @@ pushd ~ >/dev/null
 
 # Install applications and libraries
 if ! [ -x "$(command -v nvim)" ]; then
-  sudo apt-get install -qq -y python-software-properties python-dev python-pip python3-dev python3-pip
+  sudo apt-get install -qq -y python-dev python-pip python3-dev python3-pip
   sudo add-apt-repository ppa:neovim-ppa/unstable
   sudo apt-get update
   sudo apt-get install -qq -y neovim
