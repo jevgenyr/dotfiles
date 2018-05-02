@@ -1,56 +1,27 @@
-set hidden undofile shortmess=atI
-set wildmode=list:longest
-set splitbelow splitright
-set tabstop=4 expandtab shiftwidth=2 shiftround
-set smartindent cinoptions=l1(sU1m1
-set ignorecase smartcase inccommand=nosplit
-set foldmethod=syntax foldlevel=99
 set statusline=\ %f\ %m\ %r%=(%c,\ %l)\ 
-
-set title scrolloff=1
-set number colorcolumn=80,100
-set list listchars=tab:»\ ,trail:·
-let mapleader=" "
+set number ruler cursorline shortmess=atI foldmethod=syntax foldlevel=99
+set lisp autoindent cindent expandtab tabstop=2 shiftwidth=4 wildmode=list:longest
+syntax on
 colorscheme u
-
+let mapleader=" "
 nmap <leader><leader> :nohlsearch<CR>
-tmap <C-w> <C-\><C-n><C-w>
-tnoremap <Esc> <C-\><C-n>
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-nnoremap <C-w>n <ESC>:tabnext<CR>
-noremap <leader>f :execute 'edit %:h/'<CR>
 autocmd VimResized * :wincmd =
-autocmd TermOpen * setlocal nonumber statusline=%{b:term_title}
-"let g:clipboard = {'copy':{'+':'pbcopy'},'paste':{'+':'pbpaste'}}
 
 call plug#begin()
 Plug 'w0rp/ale'
 Plug 'tpope/vim-vinegar'
 Plug 'ervandew/supertab'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'mxw/vim-jsx'
 Plug 'fatih/vim-go'
-Plug 'pangloss/vim-javascript'
 call plug#end()
 
-" Go
 let g:go_fmt_command = "goimports"
 let g:go_list_type = "quickfix"
-
-" Ale
-let g:ale_sign_error = 'X'
-let g:ale_sign_warning = '-'
-hi ALEErrorSign ctermfg=red
-hi ALEWarningSign ctermfg=yellow
+let g:ale_fix_on_save = 1
 let g:ale_lint_on_text_changed = 'never'
-let g:ale_linters = {
-  \ 'py': ['flake8'],
-  \ 'javascript': ['eslint'],
-  \ 'go': ['gofmt', 'golint', 'go vet', 'go build'],
-  \ }
-let g:ale_fixers = {
-  \ 'javascript': ['prettier'],
-  \ }
+let g:ale_fixers = {'javascript': ['prettier']}
+let g:ale_linters = {'javascript': ['eslint'],'go': ['gofmt', 'golint']}
