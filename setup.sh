@@ -47,9 +47,9 @@ log "Language: Go"
 if [ ! -f $HOME/code/dev/go/bin/go ]; then
   log "Language: Go: Fetching binaries"
   if $osx; then
-    curl -o go.tar.gz https://storage.googleapis.com/golang/go1.10.darwin-amd64.tar.gz
+    curl -o go.tar.gz https://storage.googleapis.com/golang/go1.11.darwin-amd64.tar.gz
   else
-    curl -o go.tar.gz https://storage.googleapis.com/golang/go1.10.linux-amd64.tar.gz
+    curl -o go.tar.gz https://storage.googleapis.com/golang/go1.11.linux-amd64.tar.gz
   fi
   tar -xzf go.tar.gz
   mv go ~/code/dev
@@ -61,6 +61,7 @@ export GOBIN=~/bin
 mkdir -p $GOPATH/src/github.com/kiasaki
 log "Language: Go: Installing hugo, godep, gore & others"
 $GOROOT/bin/go get -u github.com/golang/dep/cmd/dep
+$GOROOT/bin/go get -u github.com/tools/godep
 $GOROOT/bin/go get -u github.com/spf13/hugo
 $GOROOT/bin/go get -u github.com/motemen/gore
 $GOROOT/bin/go get -u golang.org/x/tools/cmd/...

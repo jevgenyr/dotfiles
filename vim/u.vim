@@ -46,6 +46,7 @@ hi Conditional  cterm=NONE          ctermbg=NONE    ctermfg=8 " 2
 hi Noise        cterm=NONE          ctermbg=NONE    ctermfg=NONE " 8
 hi Ignore       cterm=bold                          ctermfg=NONE
 hi String       cterm=NONE                          ctermfg=4
+hi netrwDir     cterm=NONE                          ctermfg=4
 hi ErrorMsg     cterm=reverse       ctermbg=15      ctermfg=9
 hi Error        cterm=reverse       ctermbg=15      ctermfg=9
 hi Todo         cterm=bold,standout ctermbg=0       ctermfg=11

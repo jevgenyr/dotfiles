@@ -2,7 +2,7 @@ set nobackup noswapfile
 set scrolloff=1 colorcolumn=80,100 list listchars=tab:»\ ,trail:·
 set splitbelow splitright statusline=\ %f\ %m\ %r%=(%c,\ %l)\ 
 set number ruler cursorline shortmess=atI foldmethod=marker foldlevelstart=10
-set lisp autoindent cindent expandtab tabstop=2 shiftwidth=4 wildmode=list:longest
+set lisp autoindent cindent expandtab tabstop=2 shiftwidth=2 wildmode=list:longest
 syntax on
 colorscheme u
 let mapleader=" "
@@ -19,6 +19,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'ervandew/supertab'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'fatih/vim-go'
+Plug 'leafgarland/typescript-vim'
 call plug#end()
 
 let g:go_fmt_command = "goimports"
