@@ -46,9 +46,11 @@ hi Conditional  cterm=NONE          ctermbg=NONE    ctermfg=8 " 2
 hi Noise        cterm=NONE          ctermbg=NONE    ctermfg=NONE " 8
 hi Ignore       cterm=bold                          ctermfg=NONE
 hi String       cterm=NONE                          ctermfg=4
+hi Underlined   cterm=underline                     ctermfg=4
 hi netrwDir     cterm=NONE                          ctermfg=4
-hi ErrorMsg     cterm=reverse       ctermbg=15      ctermfg=9
-hi Error        cterm=reverse       ctermbg=15      ctermfg=9
+hi Error        cterm=NONE          ctermbg=9       ctermfg=15
+hi ErrorMsg     cterm=NONE          ctermbg=9       ctermfg=15
+hi ALEError     cterm=NONE          ctermbg=9       ctermfg=15
 hi Todo         cterm=bold,standout ctermbg=0       ctermfg=11
 hi MatchParen   cterm=bold          ctermbg=250     ctermfg=NONE
 hi ColorColumn                      ctermbg=250
