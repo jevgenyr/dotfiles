@@ -59,7 +59,7 @@ alias influxup="influxd -config /usr/local/etc/influxdb.conf"
 # Go helpers
 export GOPATH=$HOME/code/go
 export GOROOT=$HOME/code/dev/go
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
 export wd=$GOPATH/src/github.com
 export wdk=$GOPATH/src/github.com/kiasaki
 
