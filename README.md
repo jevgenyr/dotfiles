@@ -73,6 +73,28 @@ Open finder, press `Cmd+,` and make sure the sidebar shows only wanted items, th
 
 Hold shift with the mouse over the dock's resize bar and move it to the left.
 
+## Installing (Ubuntu server)
+
+```
+ssh-keygen -t rsa -b 4096
+cat ~/.ssh/id_rsa.pub
+# add to github
+sudo apt install make git mosh neovim curl htop tmux jq silversearcher-ag ranger redis-server
+sudo add-apt-repository ppa:neovim-ppa/unstable
+sudo apt-get update
+sudo apt-get install -qq -y neovim
+git clone git@github.com:kiasaki/dotfiles.git
+cd dotfiles
+./setup.sh
+sudo apt install postgresql
+sudo -u postgres psql -c "create user $USER with superuser with login;";
+sudo -u postgres psql -c "create database $USER with owner $USER;"
+sudo apt-get update && sudo apt-get install -y apt-transport-https
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
+sudo apt-get update && sudo apt-get install -y kubectl
+```
+
 ## Installing (Ubuntu)
 
 ```
