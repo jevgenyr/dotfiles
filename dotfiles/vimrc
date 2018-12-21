@@ -21,6 +21,7 @@ Plug 'ervandew/supertab'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'fatih/vim-go'
 Plug 'leafgarland/typescript-vim'
+Plug 'b4b4r07/vim-hcl'
 call plug#end()
 
 let g:go_fmt_command = "goimports"
