@@ -15,7 +15,7 @@ if ! [ -x "$(command -v nvim)" ]; then
 fi
 
 if ! [ -x "$(command -v psql)" ]; then
-  sudo apt-get install postgresql
+  sudo apt-get install -qq -y postgresql
   sudo -u postgres psql -c "create user $USER with superuser;";
   sudo -u postgres psql -c "create database $USER with owner $USER;"
 fi
@@ -34,6 +34,7 @@ which tmux >/dev/null || pkgs+=(tmux)
 which curl >/dev/null || pkgs+=(curl)
 which jq >/dev/null || pkgs+=(jq)
 which ag >/dev/null || pkgs+=(silversearcher-ag)
+which redis-cli >/dev/null || pkgs+=(redis-server)
 
 if [ ! -z "${pkgs}" ]; then
   sudo apt-get install -qq -y "${pkgs[@]}" $libs
