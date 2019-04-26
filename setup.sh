@@ -47,9 +47,9 @@ log "Language: Go"
 if [ ! -f $HOME/code/dev/go/bin/go ]; then
   log "Language: Go: Fetching binaries"
   if $osx; then
-    curl -o go.tar.gz https://storage.googleapis.com/golang/go1.11.darwin-amd64.tar.gz
+    curl -o go.tar.gz https://storage.googleapis.com/golang/go1.12.4.darwin-amd64.tar.gz
   else
-    curl -o go.tar.gz https://storage.googleapis.com/golang/go1.11.linux-amd64.tar.gz
+    curl -o go.tar.gz http://storage.googleapis.com/golang/go1.12.4.linux-amd64.tar.gz
   fi
   tar -xzf go.tar.gz
   mv go ~/code/dev
