@@ -59,13 +59,9 @@ export GOROOT=~/code/dev/go
 export GOPATH=~/code/go
 export GOBIN=~/bin
 mkdir -p $GOPATH/src/github.com/kiasaki
-log "Language: Go: Installing hugo, godep, gore & others"
-$GOROOT/bin/go get -u github.com/golang/dep/cmd/dep
-$GOROOT/bin/go get -u github.com/tools/godep
+log "Language: Go: Installing tools"
 $GOROOT/bin/go get -u github.com/spf13/hugo
 $GOROOT/bin/go get -u github.com/motemen/gore
-$GOROOT/bin/go get -u golang.org/x/tools/cmd/...
-$GOROOT/bin/go get -u github.com/jteeuwen/go-bindata/...
 
 log "Language: Rust"
 if [ ! -d "$HOME/.rustup" ]; then
