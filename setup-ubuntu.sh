@@ -6,6 +6,8 @@ pushd ~ >/dev/null
 # Install source code pro font
 #$HOME/dotfiles/support/install-source-code-pro-font.sh
 
+sudo apt-get install software-properties-common
+
 # Install applications and libraries
 if ! [ -x "$(command -v nvim)" ]; then
   sudo apt-get install -qq -y python-dev python-pip python3-dev python3-pip
@@ -35,6 +37,7 @@ which curl >/dev/null || pkgs+=(curl)
 which jq >/dev/null || pkgs+=(jq)
 which ag >/dev/null || pkgs+=(silversearcher-ag)
 which redis-cli >/dev/null || pkgs+=(redis-server)
+which postgresql-10 >/dev/null || pkgs+=(postgresql-10)
 
 if [ ! -z "${pkgs}" ]; then
   sudo apt-get install -qq -y "${pkgs[@]}" $libs

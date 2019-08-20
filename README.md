@@ -121,7 +121,11 @@ cd dotfiles
 ./setup-ubuntu.sh
 ```
 
+### Adding st & android studio's custom `.desktop`
 
+```
+cp support/st.desktop ~/.local/share/applications/st.desktop
+```
 
 ## License
 
