@@ -6,7 +6,7 @@ pushd ~ >/dev/null
 # Install source code pro font
 #$HOME/dotfiles/support/install-source-code-pro-font.sh
 
-sudo apt-get install software-properties-common
+sudo apt-get install -qq -y software-properties-common
 
 # Install applications and libraries
 if ! [ -x "$(command -v nvim)" ]; then
@@ -29,6 +29,7 @@ which curl >/dev/null || pkgs+=(curl)
 which cmake >/dev/null || pkgs+=(cmake)
 which fc-cache >/dev/null || pkgs+=(fontconfig)
 which git >/dev/null || pkgs+=(git)
+which git-lfs >/dev/null || pkgs+=(git-lfs)
 which htop >/dev/null || pkgs+=(htop)
 which xclip >/dev/null || pkgs+=(xclip)
 which mosh >/dev/null || pkgs+=(mosh)
