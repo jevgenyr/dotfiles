@@ -1,14 +1,20 @@
 #!/usr/bin/env bash
-set -x
+set -ex
 
 # flatpak remote-add flathub https://flathub.org/repo/flathub.flatpakrepo
 
-sudo dnf install -y python3 cmake git-lfs htop jq neovim python3-neovim tmux redis postgresql
+sudo dnf install -y python3 cmake git-lfs htop jq xclip neovim python3-neovim tmux redis postgresql-server
 
 git lfs install
 
-sudo -u postgres psql -c "create user $USER with superuser;" || true
-sudo -u postgres psql -c "create database $USER with owner $USER;" || true
+if sudo test ! -d "/var/lib/pgsql/data";  then
+  sudo /usr/bin/postgresql-setup --initdb
+  sudo systemctl restart postgresql
+  pushd ~ >/dev/null
+  sudo -u postgres psql -c "create user $USER with superuser;" || true
+  sudo -u postgres psql -c "create database $USER with owner $USER;" || true
+  popd
+fi
 
 sudo cp -r ~/dotfiles/support/fonts/go /usr/share/fonts/go
 sudo cp -r ~/dotfiles/support/fonts/input /usr/share/fonts/input
