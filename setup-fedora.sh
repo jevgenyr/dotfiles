@@ -5,16 +5,17 @@ set -ex
 
 sudo dnf install -y python3 cmake git-lfs htop jq xclip neovim python3-neovim tmux redis postgresql-server
 
-git lfs install
-
-if sudo test ! -d "/var/lib/pgsql/data";  then
+if sudo test ! -d "/var/lib/pgsql/data/log";  then
   sudo /usr/bin/postgresql-setup --initdb
+  sudo systemctl enable postgresql
   sudo systemctl restart postgresql
   pushd ~ >/dev/null
   sudo -u postgres psql -c "create user $USER with superuser;" || true
   sudo -u postgres psql -c "create database $USER with owner $USER;" || true
   popd
 fi
+
+sudo systemctl enable redis
 
 sudo cp -r ~/dotfiles/support/fonts/go /usr/share/fonts/go
 sudo cp -r ~/dotfiles/support/fonts/input /usr/share/fonts/input
@@ -40,7 +41,7 @@ rm -rf ~/.config/nvim/colors/u.vim && ln -s $HOME/dotfiles/vim/u.vim ~/.config/n
 [ ! -f ~/.config/nvim/autoload/plug.vim ] && cp ~/dotfiles/vim/plug.vim ~/.config/nvim/autoload/plug.vim
 
 if [ ! -f $HOME/code/dev/go/bin/go ]; then
-  curl -o go.tar.gz http://storage.googleapis.com/golang/go1.12.4.linux-amd64.tar.gz
+  curl -o go.tar.gz http://storage.googleapis.com/golang/go1.13.linux-amd64.tar.gz
   tar -xzf go.tar.gz
   mv go ~/code/dev
   rm go.tar.gz
@@ -52,3 +53,5 @@ if [ ! -d "$HOME/n" ]; then
   $HOME/n/bin/npm i -g yarn
   $HOME/n/bin/npm i -g eslint
 fi
+
+git lfs install

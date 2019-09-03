@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
+set -e
+
 # Base16 - Gnome Terminal color scheme install script
+
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# !! Make sure to add at least 1 custom profile for this script to work !!
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 [[ -z "$PROFILE_NAME" ]] && PROFILE_NAME="u"
 [[ -z "$PROFILE_SLUG" ]] && PROFILE_SLUG="u"
