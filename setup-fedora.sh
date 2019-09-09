@@ -3,9 +3,14 @@ set -ex
 
 # flatpak remote-add flathub https://flathub.org/repo/flathub.flatpakrepo
 
-sudo dnf install -y python3 cmake git-lfs htop jq xclip neovim python3-neovim tmux redis postgresql-server
+sudo dnf install -y python3 python3-devel cmake git-lfs htop jq xclip neovim python3-neovim tmux redis postgresql-server  postgresql-devel
 
 pip3 install ansible virtualenv
+
+# libvirt for kvm for the Android emulator
+sudo dnf install @virtualization
+sudo systemctl start libvirtd
+sudo systemctl enable libvirtd
 
 if sudo test ! -d "/var/lib/pgsql/data/log";  then
   sudo /usr/bin/postgresql-setup --initdb
