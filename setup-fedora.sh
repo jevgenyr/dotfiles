@@ -5,6 +5,8 @@ set -ex
 
 sudo dnf install -y python3 cmake git-lfs htop jq xclip neovim python3-neovim tmux redis postgresql-server
 
+pip3 install ansible virtualenv
+
 if sudo test ! -d "/var/lib/pgsql/data/log";  then
   sudo /usr/bin/postgresql-setup --initdb
   sudo systemctl enable postgresql
