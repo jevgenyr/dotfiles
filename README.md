@@ -127,6 +127,10 @@ cd dotfiles
 cp support/st.desktop ~/.local/share/applications/st.desktop
 ```
 
+### Bump max file watches
+
+echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+
 ## License
 
 MIT

@@ -3,7 +3,9 @@ set -ex
 
 # flatpak remote-add flathub https://flathub.org/repo/flathub.flatpakrepo
 
-sudo dnf install -y python3 python3-devel cmake git-lfs htop jq xclip neovim python3-neovim tmux redis postgresql-server  postgresql-devel
+sudo dnf install -y python3 python3-devel cmake git-lfs ripgrep htop jq xclip \
+  neovim python3-neovim tmux redis postgresql-server  postgresql-devel \
+  libX11-devel libXft-devel
 
 pip3 install ansible virtualenv
 
@@ -11,6 +13,16 @@ pip3 install ansible virtualenv
 sudo dnf install @virtualization
 sudo systemctl start libvirtd
 sudo systemctl enable libvirtd
+
+# docker
+sudo dnf -y install dnf-plugins-core
+sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+sudo dnf install docker-ce docker-ce-cli containerd.io
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
+sudo systemctl enable docker
+sudo systemctl start docker
 
 if sudo test ! -d "/var/lib/pgsql/data/log";  then
   sudo /usr/bin/postgresql-setup --initdb
@@ -62,3 +74,14 @@ if [ ! -d "$HOME/n" ]; then
 fi
 
 git lfs install
+
+curl https://cli-assets.heroku.com/install.sh | sh
+
+if [ ! -d $HOME/code/repos/st ]; then
+  git clone git://git.suckless.org/st ~/code/repos/st
+fi
+rm -f ~/code/repos/st/config.h
+ln -s ~/dotfiles/support/st-config.h ~/code/repos/st/config.h
+cd ~/code/repos/st
+sudo make clean install
+cd -

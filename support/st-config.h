@@ -171,6 +171,8 @@ static unsigned int mousebg = 0;
  */
 static unsigned int defaultattr = 11;
 
+static uint forcemousemod = ShiftMask;
+
 /*
  * Internal mouse shortcuts.
  * Beware that overloading Button1 will disable the selection.
