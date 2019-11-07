@@ -146,6 +146,18 @@ export PATH="$PATH:$HOME/Android/Sdk/emulator"
 alias startavd="$HOME/Android/Sdk/emulator/emulator -avd Nexus_5X_API_29_x86"
 ```
 
+To run on a real device, run `lsusb` for the first 4 digits of your device id.
+
+Then run:
+
+```
+sudo groupadd plugdev
+sudo usermod -aG plugdev $USER
+echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="<first 4 of device id>", MODE="0666", GROUP="plugdev"' | sudo tee /etc/udev/rules.d/51-android-usb.rules
+```
+
+Now `adb devices` should show your device after you accept the prompt on the device
+
 ## License
 
 MIT
