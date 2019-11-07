@@ -131,6 +131,21 @@ cp support/st.desktop ~/.local/share/applications/st.desktop
 
 echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
 
+### Setup React-Native & Android
+
+Install Android Studio, download the latest SDK, create an virtual device.
+
+Then add the following to your `~/.env`:
+
+```
+export ANDROID_NDK_ROOT="/home/kiasaki/Android/Sdk/ndk-bundle"
+export ANDROID_HOME="$HOME/Android/Sdk/"
+export PATH="$PATH:$HOME/Android/Sdk/tools/bin"
+export PATH="$PATH:$HOME/Android/Sdk/platform-tools"
+export PATH="$PATH:$HOME/Android/Sdk/emulator"
+alias startavd="$HOME/Android/Sdk/emulator/emulator -avd Nexus_5X_API_29_x86"
+```
+
 ## License
 
 MIT
