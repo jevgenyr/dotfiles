@@ -39,7 +39,7 @@ Edit `~/config/openbox/lxde-rc.xml` and add the following in the `<keyboard>` se
     <x>0</x>
     <y>0</y>
     <width>100%</width>
-    <height>50%</height>
+    <height>100%</height>
   </action>
 </keybind>
 <keybind key="W-Down">

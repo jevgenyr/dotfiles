@@ -153,7 +153,7 @@ Then run:
 ```
 sudo groupadd plugdev
 sudo usermod -aG plugdev $USER
-echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="<first 4 of device id>", MODE="0666", GROUP="plugdev"' | sudo tee /etc/udev/rules.d/51-android-usb.rules
+echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="18d1<first 4 of device id>", MODE="0666", GROUP="plugdev"' | sudo tee /etc/udev/rules.d/51-android-usb.rules
 ```
 
 Now `adb devices` should show your device after you accept the prompt on the device
