@@ -7,20 +7,19 @@ sudo dnf install -y python3 python3-devel cmake git-lfs ripgrep htop jq xclip \
   neovim python3-neovim tmux redis postgresql-server  postgresql-devel \
   libX11-devel libXft-devel
 
-pip3 install ansible virtualenv
+pip3 install --user ansible virtualenv
 
 # libvirt for kvm for the Android emulator
-sudo dnf install @virtualization
+sudo dnf install -y @virtualization
 sudo systemctl start libvirtd
 sudo systemctl enable libvirtd
 
 # docker
-sudo dnf -y install dnf-plugins-core
+sudo dnf install -y dnf-plugins-core
 sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
-sudo dnf install docker-ce docker-ce-cli containerd.io
-sudo groupadd docker
+sudo dnf install -y docker-ce docker-ce-cli containerd.io
+sudo groupadd docker || true
 sudo usermod -aG docker $USER
-newgrp docker
 sudo systemctl enable docker
 sudo systemctl start docker
 
@@ -40,7 +39,7 @@ sudo cp -r ~/dotfiles/support/fonts/go /usr/share/fonts/go
 sudo cp -r ~/dotfiles/support/fonts/input /usr/share/fonts/input
 fc-cache -f -v
 
-bash ./support/u.gnomeshell.sh
+# bash ./support/u.gnomeshell.sh
 
 mkdir -p ~/bin ~/code/{dev,repos,venv,go}
 mkdir -p ~/.vim/{autoload,colors,syntax} ~/.config/nvim/{autoload,colors,syntax}
