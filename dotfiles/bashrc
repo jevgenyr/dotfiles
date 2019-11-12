@@ -162,7 +162,7 @@ function _prompt_git {
 }
 export PS1='$(basename $(pwd)):$(_prompt_git)$ '
 
-setxkbmap -layout us -option ctrl:nocaps
+#setxkbmap -layout us -option ctrl:nocaps
 
 # Computer specific config & secrets
 source "$HOME/.env"

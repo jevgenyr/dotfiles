@@ -12,6 +12,8 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+inoremap jj <esc>
+inoremap jk <esc>
 vmap <C-c> :!xclip -f -sel clip<CR>
 autocmd VimResized * :wincmd =
 autocmd BufWinEnter *.tmpl set filetype=html

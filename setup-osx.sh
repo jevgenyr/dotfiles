@@ -48,7 +48,6 @@ defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 # Default location is Home folder
 defaults write com.apple.finder NewWindowTarget -string "PfLo"
 defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}"
-# Show path bar
 defaults write com.apple.finder ShowPathbar -bool true
 defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 # Disable file ext change warning
@@ -129,7 +128,7 @@ which git >/dev/null || pkgs+=(git)
 which hg >/dev/null || pkgs+=(mercurial)
 which vim >/dev/null || pkgs+=(vim)
 which neovim >/dev/null || pkgs+=(neovim/neovim/neovim)
-which psql >/dev/null || pkgs+=(postgresql-9.5)
+which psql >/dev/null || pkgs+=(postgresql@12)
 which sqlite >/dev/null || pkgs+=(sqlite)
 which redis >/dev/null || pkgs+=(redis)
 if test -n "$pkgs"; then
@@ -140,12 +139,10 @@ brew link -f postgresql-9.5
 
 brew tap caskroom/cask
 brew tap caskroom/fonts
-brew cask install google-chrome iterm2 dropbox gimp vlc virtualbox vagrant \
-  textual the-unarchiver flux licecap colorpicker spectacle textmate \
-  font-source-code-pro
+brew cask install google-chrome vlc virtualbox the-unarchiver licecap spectacle textmate
 
 ### iTerm2
 # Import color scheme
-open "${HOME}/dotfiles/colors/dracula.itermcolors"
+# open "${HOME}/dotfiles/colors/dracula.itermcolors"
 # Don't prompt on quit
-defaults write com.googlecode.iterm2 PromptOnQuit -bool false
+# defaults write com.googlecode.iterm2 PromptOnQuit -bool false
