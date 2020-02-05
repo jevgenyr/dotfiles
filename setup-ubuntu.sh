@@ -3,24 +3,7 @@ set -xe
 
 pushd ~ >/dev/null
 
-# Install source code pro font
-#$HOME/dotfiles/support/install-source-code-pro-font.sh
-
 sudo apt-get install -qq -y software-properties-common
-
-# Install applications and libraries
-if ! [ -x "$(command -v nvim)" ]; then
-  sudo apt-get install -qq -y python-dev python-pip python3-dev python3-pip
-  sudo add-apt-repository ppa:neovim-ppa/unstable
-  sudo apt-get update
-  sudo apt-get install -qq -y neovim
-fi
-
-if ! [ -x "$(command -v psql)" ]; then
-  sudo apt-get install -qq -y postgresql
-  sudo -u postgres psql -c "create user $USER with superuser;";
-  sudo -u postgres psql -c "create database $USER with owner $USER;"
-fi
 
 libs="build-essential libfreetype6-dev"
 pkgs=()
@@ -37,13 +20,16 @@ which tmux >/dev/null || pkgs+=(tmux)
 which curl >/dev/null || pkgs+=(curl)
 which jq >/dev/null || pkgs+=(jq)
 which ag >/dev/null || pkgs+=(silversearcher-ag)
+which nvim >/dev/null || pkgs+=(neovim)
 which redis-cli >/dev/null || pkgs+=(redis-server)
-which postgresql-10 >/dev/null || pkgs+=(postgresql-10)
+which psql >/dev/null || pkgs+=(postgresql)
 
 if [ ! -z "${pkgs}" ]; then
   sudo apt-get install -qq -y "${pkgs[@]}" $libs
 fi
 
+sudo -u postgres psql -c "create user $USER with superuser;" || true
+sudo -u postgres psql -c "create database $USER with owner $USER;" || true
 
 # Install deps for building suckless apps
 sudo apt-get install -qq -y xorg-dev

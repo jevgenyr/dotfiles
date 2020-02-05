@@ -77,26 +77,4 @@ if [ ! -d "$HOME/n" ]; then
   $HOME/n/bin/npm i -g eslint
 fi
 
-log "Language: Ruby"
-if ! [ -x "$(command -v chruby)" ]; then
-  log "Language: Ruby: Installing chruby"
-  if $osx; then
-    brew install ruby-install chruby
-  else
-    wget -O chruby-0.3.9.tar.gz https://github.com/postmodern/chruby/archive/v0.3.9.tar.gz
-    tar -xzvf chruby-0.3.9.tar.gz
-    cd chruby-0.3.9/
-    sudo make install
-    cd ..
-    rm -r chruby-0.3.9/ chruby-0.3.9.tar.gz
-
-    wget -O ruby-install-0.6.0.tar.gz https://github.com/postmodern/ruby-install/archive/v0.6.0.tar.gz
-    tar -xzvf ruby-install-0.6.0.tar.gz
-    cd ruby-install-0.6.0/
-    sudo make install
-    cd ..
-    rm -r ruby-install-0.6.0/ ruby-install-0.6.0.tar.gz
-  fi
-fi
-
 log "DONE!"
