@@ -14,7 +14,12 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 inoremap jj <esc>
 inoremap jk <esc>
-vmap <C-c> :!xclip -f -sel clip<CR>
+let s:uname = system("echo -n \"$(uname)\"")
+if s:uname == "Darwin"
+  vmap <C-x> :!pbcopy<CR>
+else
+  vmap <C-x> :!xclip -f -sel clip<CR>
+endif
 autocmd VimResized * :wincmd =
 autocmd BufWinEnter *.tmpl set filetype=html
 

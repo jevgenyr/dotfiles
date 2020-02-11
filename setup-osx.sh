@@ -119,6 +119,7 @@ pkgs=()
 which jq >/dev/null || pkgs+=(jq)
 which ag >/dev/null || pkgs+=(the_silver_searcher)
 which tig >/dev/null || pkgs+=(tig)
+which git-lfs >/dev/null || pkgs+=(git-lfs)
 which tree >/dev/null || pkgs+=(tree)
 which tmux >/dev/null || pkgs+=(tmux)
 which curl >/dev/null || pkgs+=(curl)
@@ -128,14 +129,15 @@ which git >/dev/null || pkgs+=(git)
 which hg >/dev/null || pkgs+=(mercurial)
 which vim >/dev/null || pkgs+=(vim)
 which neovim >/dev/null || pkgs+=(neovim/neovim/neovim)
-which psql >/dev/null || pkgs+=(postgresql@12)
+which psql >/dev/null || pkgs+=(postgresql)
 which sqlite >/dev/null || pkgs+=(sqlite)
 which redis >/dev/null || pkgs+=(redis)
 if test -n "$pkgs"; then
   brew install "${pkgs[@]}"
 fi
 
-brew link -f postgresql-9.5
+git lfs install
+brew services start postgresql
 
 brew tap caskroom/cask
 brew tap caskroom/fonts
