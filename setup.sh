@@ -33,6 +33,14 @@ rm -rf ~/.vim/colors/u.vim         && ln -s $HOME/dotfiles/vim/u.vim ~/.vim/colo
 rm -rf ~/.config/nvim/init.vim     && ln -s $HOME/dotfiles/dotfiles/vimrc ~/.config/nvim/init.vim
 rm -rf ~/.config/nvim/colors/u.vim && ln -s $HOME/dotfiles/vim/u.vim ~/.config/nvim/colors/u.vim
 
+mkdir -p ~/.icewm
+rm -rf ~/.icewm/keys        && ln -s $HOME/dotfiles/dotfiles/icewm-keys ~/.icewm/keys
+rm -rf ~/.icewm/menu        && ln -s $HOME/dotfiles/dotfiles/icewm-menu ~/.icewm/menu
+rm -rf ~/.icewm/theme       && ln -s $HOME/dotfiles/dotfiles/icewm-theme ~/.icewm/theme
+rm -rf ~/.icewm/toolbar     && ln -s $HOME/dotfiles/dotfiles/icewm-toolbar ~/.icewm/toolbar
+rm -rf ~/.icewm/preferences && ln -s $HOME/dotfiles/dotfiles/icewm-preferences ~/.icewm/preferences
+
+
 log "Files: Creations"
 [ ! -f ~/.env ] && touch ~/.env
 [ ! -f ~/.hushlogin ] && touch ~/.hushlogin

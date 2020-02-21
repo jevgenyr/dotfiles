@@ -23,6 +23,9 @@ which ag >/dev/null || pkgs+=(silversearcher-ag)
 which nvim >/dev/null || pkgs+=(neovim)
 which redis-cli >/dev/null || pkgs+=(redis-server)
 which psql >/dev/null || pkgs+=(postgresql)
+which wmctrl >/dev/null || pkgs+=(wmctrl)
+which icewm >/dev/null || pkgs+=(icewm)
+which thunar >/dev/null || pkgs+=(thunar)
 
 if [ ! -z "${pkgs}" ]; then
   sudo apt-get install -qq -y "${pkgs[@]}" $libs

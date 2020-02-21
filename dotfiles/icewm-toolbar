@@ -1,0 +1,3 @@
+prog Terminal ! st
+prog Files folder thunar
+prog "Web Browser" ! firefox

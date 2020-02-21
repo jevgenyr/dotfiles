@@ -1,0 +1,17 @@
+SizeMaximized=1
+QuickSwitchToAllWorkspaces=1
+KeySysWorkspacePrev="Alt+Ctrl+Shift+Left"
+KeySysWorkspaceNext="Alt+Ctrl+Shift+Right"
+KeySysWorkspaceLast="Alt+Ctrl+Shift+Down"
+TaskBarShowAPMGraph=0
+TaskBarShowWorkspaces=0
+TaskBarShowCPUStatus=0
+TaskBarShowMEMStatus=0
+TaskBarShowNetStatus=0
+WorkspaceNames="1","2"
+LockCommand="slock"
+TerminalCommand="st"
+DesktopBackgroundCenter=1
+DesktopBackgroundScaled=1
+DesktopBackgroundImage="/home/kiasaki/Pictures/1\ Koffee.jpg"
+Splash="/home/kiasaki/Pictures/1\ Koffee.jpg"
