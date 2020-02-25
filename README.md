@@ -158,6 +158,16 @@ echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="18d1<first 4 of device id>", MODE="0666
 
 Now `adb devices` should show your device after you accept the prompt on the device
 
+### Installing alacritty on Ubuntu
+
+```
+sudo apt-get install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev python3
+git clone git@github.com:alacritty/alacritty.git
+cd alacritty
+cargo build
+cp target/debug/alacritty ~/bin/
+```
+
 ## License
 
 MIT
