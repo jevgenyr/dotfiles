@@ -68,8 +68,8 @@ export GOPATH=~/code/go
 export GOBIN=~/bin
 mkdir -p $GOPATH/src/github.com/kiasaki
 log "Language: Go: Installing tools"
-$GOROOT/bin/go get -u github.com/spf13/hugo
-$GOROOT/bin/go get -u github.com/motemen/gore
+#$GOROOT/bin/go get -u github.com/spf13/hugo
+#$GOROOT/bin/go get -u github.com/motemen/gore
 
 log "Language: Rust"
 if [ ! -d "$HOME/.rustup" ]; then
