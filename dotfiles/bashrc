@@ -5,9 +5,13 @@ export SHELL=/bin/bash
 export HISTSIZE=5000
 export HISTFILESIZE=10000
 export HISTCONTROL=ignoreboth:erasedups
-shopt -s histappend
 if [ -f /usr/local/etc/bash_completion ]; then
   . /usr/local/etc/bash_completion
+fi
+if [ -n "$ZSH_VERSION" ]; then
+  export PROMPT_SUBST=1
+else
+  shopt -s histappend
 fi
 
 _prompt_venv() {
@@ -26,12 +30,12 @@ _prompt() {
   local exit="$?"
   PS1=""
   PS1+="$(_prompt_exit $exit)"
-  PS1+="$(basename $(pwd))<"
+  PS1+="\A] $(basename $(pwd)) ["
   PS1+="\[\e[0;32m\]"
   PS1+="$(_prompt_git)"
   PS1+="$(_prompt_venv)"
   PS1+="$(_prompt_exit $exit)"
-  PS1+="> \[\e[0m\]"
+  PS1+="] \[\e[0m\]"
 }
 PROMPT_COMMAND=_prompt
 

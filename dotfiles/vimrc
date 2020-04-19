@@ -34,14 +34,15 @@ Plug 'b4b4r07/vim-hcl'
 Plug 'plasticboy/vim-markdown'
 Plug 'leafgarland/typescript-vim'
 Plug 'dart-lang/dart-vim-plugin'
+Plug 'evanleck/vim-svelte'
 call plug#end()
 
 let g:go_fmt_command = 'goimports'
 let g:go_list_type = 'quickfix'
 let g:ale_fix_on_save = 1
 let g:ale_lint_on_text_changed = 'never'
-let g:ale_fixers = {'javascript': ['prettier'],'dart':['dartfmt'],'cpp':['clang-format'],'rust':['rustfmt']}
-let g:ale_linters = {'javascript':['eslint'],'dart':['language_server'],'cpp':['gcc'],'go':['gofmt','golint','go vet','go build']}
+let g:ale_fixers = {'javascript': ['prettier'],'dart':['dartfmt'],'cpp':['clang-format'],'rust':['rustfmt'],'svelte':['prettier']}
+let g:ale_linters = {'javascript':['eslint'],'dart':['language_server'],'cpp':['gcc'],'go':['gofmt','golint','go vet','go build'],'svelte':['eslint']}
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 let g:ctrlp_match_window = 'bottom,order:btt,min:5,max:5,results:10'
 let g:ctrlp_cmd = 'CtrlPMixed'
