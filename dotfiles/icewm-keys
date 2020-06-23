@@ -1,5 +1,0 @@
-key "Alt+Ctrl+f" thunar
-key "Alt+Ctrl+t" st
-key "Alt+Ctrl+l" slock
-key "Alt+Ctrl+Left" /home/kiasaki/dotfiles/support/window-left
-key "Alt+Ctrl+Right" /home/kiasaki/dotfiles/support/window-right

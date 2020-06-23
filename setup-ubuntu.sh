@@ -23,9 +23,6 @@ which ag >/dev/null || pkgs+=(silversearcher-ag)
 which nvim >/dev/null || pkgs+=(neovim)
 which redis-cli >/dev/null || pkgs+=(redis-server)
 which psql >/dev/null || pkgs+=(postgresql)
-which wmctrl >/dev/null || pkgs+=(wmctrl)
-which icewm >/dev/null || pkgs+=(icewm)
-which thunar >/dev/null || pkgs+=(thunar)
 
 if [ ! -z "${pkgs}" ]; then
   sudo apt-get install -qq -y "${pkgs[@]}" $libs
@@ -38,25 +35,17 @@ sudo -u postgres psql -c "create database $USER with owner $USER;" || true
 sudo apt-get install -qq -y xorg-dev
 
 # Install st
-if [ ! -d $HOME/code/repos/st ]; then
-  git clone git://git.suckless.org/st ~/code/repos/st
+if [ ! -d $HOME/code/repos/tmp/st ]; then
+  git clone git://git.suckless.org/st ~/code/repos/tmp/st
 fi
-rm -f ~/code/repos/st/config.h
-ln -s ~/dotfiles/support/st-config.h ~/code/repos/st/config.h
-cd ~/code/repos/st
-sudo make clean install
-
-# Install slock
-if [ ! -d $HOME/code/repos/slock ]; then
-  git clone git://git.suckless.org/slock ~/code/repos/slock
-fi
-cd ~/code/repos/slock
+rm -f ~/code/repos/tmp/st/config.h
+ln -s ~/dotfiles/support/config-st.h ~/code/repos/tmp/st/config.h
+cd ~/code/repos/tmp/st
 sudo make clean install
 
 # Install Input font
 sudo cp -r ~/dotfiles/support/fonts/go /usr/share/fonts/truetype/go
 sudo cp -r ~/dotfiles/support/fonts/input /usr/share/fonts/truetype/input
 fc-cache -f -v
-
 
 popd >/dev/null
