@@ -5,12 +5,13 @@ set -ex
 # curl https://cli-assets.heroku.com/install.sh | sh
 # flatpak remote-add flathub https://flathub.org/repo/flathub.flatpakrepo
 
-# libX11 and libXft for st terminal
+# libX11 and libXft and libXinerama-devel for suckless tools
 # libvirt for kvm for the Android emulator
 # podman for docker replacement
 sudo dnf install -y python3 python3-devel cmake git-lfs ripgrep htop jq xclip \
-  neovim python3-neovim tmux redis postgresql-server postgresql-devel \
-  libX11-devel libXft-devel podman podman-docker @virtualization \
+  neovim python3-neovim tmux redis postgresql-server postgresql-devel feh \
+  libX11-devel libXft-devel libXinerama-devel libXrandr-devel \
+  podman podman-docker @virtualization \
   --skip-broken
 
 sudo systemctl start redis
@@ -45,6 +46,7 @@ function install_dot() {
 install_dot dotfiles/dotfiles/vimrc .vimrc
 install_dot dotfiles/dotfiles/bashrc .bashrc
 install_dot dotfiles/dotfiles/psqlrc .psqlrc
+install_dot dotfiles/dotfiles/xinitrc .xinitrc
 install_dot dotfiles/dotfiles/tmux.conf .tmux.conf
 install_dot dotfiles/vim/u.vim .vim/colors/u.vim
 install_dot dotfiles/dotfiles/vimrc .config/nvim/init.vim
@@ -75,12 +77,3 @@ if [ ! -d "$HOME/n" ]; then
   $HOME/n/bin/npm i -g yarn
   $HOME/n/bin/npm i -g eslint
 fi
-
-if [ ! -d $HOME/code/repos/st ]; then
-  git clone git://git.suckless.org/st ~/code/repos/st
-fi
-rm -f ~/code/repos/st/config.h
-ln -s ~/dotfiles/support/config-st.h ~/code/repos/st/config.h
-cd ~/code/repos/st
-sudo make clean install
-cd -

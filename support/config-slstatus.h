@@ -33,8 +33,8 @@ static const char unknown_str[] = "n/a";
  * ipv6                 IPv6 address                    interface name (eth0)
  * kernel_release       `uname -r`                      NULL
  * keyboard_indicators  caps/num lock indicators        format string (c?n?)
- *                                                      see keyboard_indicators.c
- * keymap               layout (variant) of current     NULL
+ *                                                      see
+ * keyboard_indicators.c keymap               layout (variant) of current NULL
  *                      keymap
  * load_avg             load average                    NULL
  * netspeed_rx          receive network speed           interface name (wlan0)
@@ -61,14 +61,15 @@ static const char unknown_str[] = "n/a";
  * wifi_essid           WiFi ESSID                      interface name (wlan0)
  */
 static const struct arg args[] = {
-	/* function format          argument */
-    { cpu_perc,    "CPU %s% | ",      NULL      },
-    { ram_perc,    "RAM %s% | ",      NULL      },
-    { vol_perc,    "VOL %s% | ",     "/dev/mixer1"      },
-    { battery_state,    "BAT %s",      "BAT0"      },
-    { battery_perc,    "%s% | ",      "BAT0"      },
-    { wifi_essid,   "WLAN %s",          "wlp6s0"  },
-    { netspeed_rx,   " %s | ",       "wlp6s0"  },
-    { uptime,   "UP %s | ",          NULL  },
-	{ datetime, "%s ",           "%F %r" },
+    //{cpu_perc, "CPU %s% | ", NULL},
+    //{ ram_perc,    "RAM %s% | ",      NULL      },
+    //{ vol_perc,    "VOL %s% | ",     "/dev/mixer"      },
+    {run_command, "VOL:%s ",
+     "amixer sget Master | grep 'Right:' | awk -F'[][]' '{ print $2 }'"},
+    {battery_state, "BAT:%s", "BAT1"},
+    {battery_perc, "%s%% ", "BAT1"},
+    {wifi_essid, "WIFI:%s ", "wlp3s0"},
+    //{netspeed_rx, " %s | ", "wlp6s0"},
+    //{uptime, "UP %s | ", NULL},
+    {datetime, "%s ", "%b %d %H:%M"},
 };
