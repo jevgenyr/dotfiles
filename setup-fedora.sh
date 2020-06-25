@@ -9,9 +9,9 @@ set -ex
 # libvirt for kvm for the Android emulator
 # podman for docker replacement
 sudo dnf install -y python3 python3-devel cmake git-lfs ripgrep htop jq xclip \
-  neovim python3-neovim tmux redis postgresql-server postgresql-devel feh \
-  libX11-devel libXft-devel libXinerama-devel libXrandr-devel \
-  podman podman-docker @virtualization \
+  neovim python3-neovim tmux redis postgresql-server postgresql-devel \
+  libX11-devel libXft-devel libXinerama-devel libXrandr-devel feh pcmanfm xclip \
+  podman podman-docker @virtualization wpa_supplicant alsa-utils \
   --skip-broken
 
 sudo systemctl start redis
