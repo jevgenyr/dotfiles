@@ -137,11 +137,12 @@ if test -n "$pkgs"; then
 fi
 
 git lfs install
+pip3 install --user ansible awscli
 brew services start postgresql
 
 brew tap caskroom/cask
 brew tap caskroom/fonts
-brew cask install google-chrome vlc virtualbox the-unarchiver licecap spectacle textmate
+#brew cask install google-chrome vlc virtualbox the-unarchiver licecap spectacle textmate
 
 ### iTerm2
 # Import color scheme
