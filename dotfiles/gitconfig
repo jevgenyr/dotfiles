@@ -1,8 +1,6 @@
 [user]
-  name = Frederic Gingras
-  email = frederic@gingras.cc
-[core]
-  excludesfile = /Users/kiasaki/.gitignore_global
+  name = Frederic Tulsidin
+  email = frederic@tulsidin.ca
 [mergetool]
 	prompt = false
 [merge]

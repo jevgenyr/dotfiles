@@ -3,49 +3,82 @@ set -xe
 
 pushd ~ >/dev/null
 
-sudo apt-get install -qq -y software-properties-common
+sudo apt-get install -qq -y software-properties-common \
+  build-essential \
+  libfreetype6-dev \
+  make \
+  cmake \
+  curl \
+  fontconfig \
+  git \
+  git-lfs \
+  htop \
+  mosh \
+  tmux \
+  jq \
+  silversearcher-ag \
+  neovim \
+  redis-server \
+  postgresql \
+  python3-pip \
+  xorg-dev \
+  xclip \
+  feh
 
-libs="build-essential libfreetype6-dev"
-pkgs=()
-which make >/dev/null || pkgs+=(make)
-which curl >/dev/null || pkgs+=(curl)
-which cmake >/dev/null || pkgs+=(cmake)
-which fc-cache >/dev/null || pkgs+=(fontconfig)
-which git >/dev/null || pkgs+=(git)
-which git-lfs >/dev/null || pkgs+=(git-lfs)
-which htop >/dev/null || pkgs+=(htop)
-which xclip >/dev/null || pkgs+=(xclip)
-which mosh >/dev/null || pkgs+=(mosh)
-which tmux >/dev/null || pkgs+=(tmux)
-which curl >/dev/null || pkgs+=(curl)
-which jq >/dev/null || pkgs+=(jq)
-which ag >/dev/null || pkgs+=(silversearcher-ag)
-which nvim >/dev/null || pkgs+=(neovim)
-which redis-cli >/dev/null || pkgs+=(redis-server)
-which psql >/dev/null || pkgs+=(postgresql)
-
-if [ ! -z "${pkgs}" ]; then
-  sudo apt-get install -qq -y "${pkgs[@]}" $libs
-fi
-
+sudo systemctl start redis-server
+sudo systemctl enable redis-server
+git lfs install
+which ansible>/dev/null || pip3 install --user ansible virtualenv awscli
 sudo -u postgres psql -c "create user $USER with superuser;" || true
 sudo -u postgres psql -c "create database $USER with owner $USER;" || true
 
-# Install deps for building suckless apps
-sudo apt-get install -qq -y xorg-dev
-
-# Install st
-if [ ! -d $HOME/code/repos/tmp/st ]; then
-  git clone git://git.suckless.org/st ~/code/repos/tmp/st
-fi
-rm -f ~/code/repos/tmp/st/config.h
-ln -s ~/dotfiles/support/config-st.h ~/code/repos/tmp/st/config.h
-cd ~/code/repos/tmp/st
-sudo make clean install
-
-# Install Input font
-sudo cp -r ~/dotfiles/support/fonts/go /usr/share/fonts/truetype/go
-sudo cp -r ~/dotfiles/support/fonts/input /usr/share/fonts/truetype/input
+sudo cp -r ~/dotfiles/support/fonts/go /usr/share/fonts/go
+sudo cp -r ~/dotfiles/support/fonts/input /usr/share/fonts/input
 fc-cache -f -v
 
-popd >/dev/null
+mkdir -p ~/bin ~/code/{dev,repos,venv,go}
+mkdir -p ~/.vim/{autoload,colors,syntax} ~/.config/nvim/{autoload,colors,syntax}
+function install_dot() {
+  local source="$1"
+  local target="$2"
+  rm -rf "$HOME/$target"
+  ln -s "$HOME/$source" "$HOME/$target"
+}
+install_dot dotfiles/dotfiles/vimrc .vimrc
+install_dot dotfiles/dotfiles/bashrc .bashrc
+install_dot dotfiles/dotfiles/psqlrc .psqlrc
+install_dot dotfiles/dotfiles/xinitrc .xinitrc
+install_dot dotfiles/dotfiles/tmux.conf .tmux.conf
+install_dot dotfiles/vim/u.vim .vim/colors/u.vim
+install_dot dotfiles/dotfiles/vimrc .config/nvim/init.vim
+install_dot dotfiles/vim/u.vim .config/nvim/colors/u.vim
+install_dot dotfiles/vim/go.vim .config/nvim/syntax/go.vim
+install_dot dotfiles/vim/dart.vim .config/nvim/syntax/dart.vim
+install_dot dotfiles/vim/markdown.vim .config/nvim/syntax/markdown.vim
+
+[ ! -f ~/.env ] && touch ~/.env
+[ ! -f ~/.hushlogin ] && touch ~/.hushlogin
+[ ! -f ~/.npmrc ] && cp $HOME/dotfiles/dotfiles/npmrc ~/.npmrc
+[ ! -f ~/.gitconfig ] && cp $HOME/dotfiles/dotfiles/gitconfig ~/.gitconfig
+[ ! -f ~/.vim/autoload/plug.vim ] && cp ~/dotfiles/vim/plug.vim ~/.vim/autoload/plug.vim
+[ ! -f ~/.config/nvim/autoload/plug.vim ] && cp ~/dotfiles/vim/plug.vim ~/.config/nvim/autoload/plug.vim
+
+if [ ! -f $HOME/code/dev/go/bin/go ]; then
+  curl -o go.tar.gz http://storage.googleapis.com/golang/go1.14.4.linux-amd64.tar.gz
+  tar -xzf go.tar.gz
+  mv go ~/code/dev
+  rm go.tar.gz
+  export GOROOT=~/code/dev/go
+  export GOPATH=~/code/go
+  $GOROOT/bin/go get github.com/motemen/gore
+  $GOROOT/bin/go get golang.org/x/tools/cmd/goimports
+fi
+
+if [ ! -d "$HOME/n" ]; then
+  curl -L http://git.io/n-install | bash -s -- -n -y
+  export PATH="$PATH:$HOME/n/bin"
+  $HOME/n/bin/npm i -g yarn
+  $HOME/n/bin/npm i -g eslint
+fi
+
+echo "setxkbmap -option ctrl:nocaps" >> ~/.env

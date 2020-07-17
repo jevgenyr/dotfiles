@@ -7,6 +7,7 @@ fi
 rm -f ~/code/repos/tmp/st/config.h
 ln -s ~/dotfiles/support/config-st.h ~/code/repos/tmp/st/config.h
 cd ~/code/repos/tmp/st
+git apply ~/dotfiles/support/patches/st-anysize-0.8.1.diff || true
 make clean
 make
 sudo make install
