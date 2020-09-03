@@ -86,12 +86,6 @@ alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C
 alias gfco="git branch | sed 's/^[ *]*//' | vis-menu | xargs git checkout"
 
 
-# Database helpers
-alias pgup="postgres -D /data/postgres -h 0.0.0.0"
-alias redisup="redis-server ${HOME}/dotfiles/support/redis.conf"
-alias influxup="influxd -config /usr/local/etc/influxdb.conf"
-
-
 # Go helpers
 export GOPATH=$HOME/code/go
 export GOROOT=$HOME/code/dev/go
@@ -132,6 +126,10 @@ alias asp='ansible-playbook --ask-vault-pass -v '
 alias dockerstopall='docker stop $(docker ps -a -q)'
 alias dockerrmall='docker rm $(docker ps -a -q)'
 alias dockercleanuntagged='docker rmi $(docker images | grep "^<none>" | tr -s " " | cut -d " " -f 3)'
+
+
+# Kubernetes helpers
+alias k="kubectl"
 
 
 # Tmux helpers
