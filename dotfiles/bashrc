@@ -30,7 +30,7 @@ _prompt() {
   local exit="$?"
   PS1=""
   PS1+="$(_prompt_exit $exit)"
-  PS1+="\A] $(basename $(pwd)) ["
+  PS1+="\A] $(basename "$(pwd)") ["
   PS1+="\[\e[0;32m\]"
   PS1+="$(_prompt_git)"
   PS1+="$(_prompt_venv)"
